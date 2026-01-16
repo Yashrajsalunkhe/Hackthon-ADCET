@@ -501,12 +501,70 @@ pre,
 /*--------------------------------------------------------------
 # Prizes - Modern Design
 --------------------------------------------------------------*/
+
+/* Prize Track Sections */
+.prize-track-section {
+	margin: 60px auto;
+	max-width: 1400px;
+	padding: 0 20px;
+}
+
+.track-header {
+	text-align: center;
+	margin-bottom: 50px;
+	padding: 30px;
+	background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
+	border-radius: 20px;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	position: relative;
+	overflow: hidden;
+}
+
+.track-header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, #4169E1, #1E90FF);
+}
+
+.track-header:has(.track-icon:contains("⚙️"))::before {
+	background: linear-gradient(90deg, #FF6B35, #F7931E);
+}
+
+.track-icon {
+	font-size: 3.5rem;
+	margin-bottom: 15px;
+	display: inline-block;
+	filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.track-title {
+	font-family: "Anton SC", sans-serif;
+	font-size: 2.2rem;
+	font-weight: 700;
+	color: #fff;
+	margin-bottom: 10px;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+}
+
+.track-description {
+	font-family: 'Inter', sans-serif;
+	font-size: 1.1rem;
+	color: rgba(255, 255, 255, 0.7);
+	letter-spacing: 0.05em;
+	margin: 0;
+}
+
 .prizes-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 70vh;
-	padding: 60px 20px;
+	padding: 40px 20px;
 	position: relative;
 }
 
@@ -874,6 +932,29 @@ pre,
 
 /* Enhanced responsive design */
 @media (max-width: 768px) {
+	.prize-track-section {
+		margin: 40px auto;
+		padding: 0 15px;
+	}
+	
+	.track-header {
+		padding: 25px 20px;
+		margin-bottom: 35px;
+	}
+	
+	.track-icon {
+		font-size: 2.8rem;
+		margin-bottom: 12px;
+	}
+	
+	.track-title {
+		font-size: 1.8rem;
+	}
+	
+	.track-description {
+		font-size: 0.95rem;
+	}
+	
 	.prizes-grid {
 		flex-direction: column;
 		align-items: center;
@@ -946,6 +1027,28 @@ pre,
 }
 
 @media (max-width: 480px) {
+	.prize-track-section {
+		margin: 30px auto;
+		padding: 0 10px;
+	}
+	
+	.track-header {
+		padding: 20px 15px;
+		margin-bottom: 30px;
+	}
+	
+	.track-icon {
+		font-size: 2.5rem;
+	}
+	
+	.track-title {
+		font-size: 1.5rem;
+	}
+	
+	.track-description {
+		font-size: 0.85rem;
+	}
+	
 	.prizes-container {
 		padding: 40px 15px;
 	}
