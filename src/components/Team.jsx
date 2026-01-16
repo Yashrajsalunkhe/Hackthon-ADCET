@@ -13,11 +13,11 @@ const Team = () => {
       { name: 'Kiran Nagrgatti', role: 'Core Team', img: 'img/Our team/kiran nagargatti.jpg' }
     ],
     [
-      { name: 'Pranav Patil', role: 'Organizing Team', img: 'https://placehold.co/300x300?text=Pranav+Patil' },
-      { name: 'Tanmay Patil', role: 'Organizing Team', img: 'https://placehold.co/300x300?text=Tanmay+Patil' },
-      { name: 'Aditya Padale', role: 'Organizing Team', img: 'https://placehold.co/300x300?text=Aditya+Padale' },
-      { name: 'Yashraj Salunkhe', role: 'Organizing Team', img: 'https://placehold.co/300x300?text=Yashraj+Salunkhe' },
-      { name: 'Amit Yeadage', role: 'Organizing Team', img: 'https://placehold.co/300x300?text=Amit+Yeadage' }
+      { name: 'Pranav Patil', role: 'Organizing Team', img: 'img/Our team/pranav patil.jpg' },
+      { name: 'Tanmay Patil', role: 'Organizing Team', img: 'img/Our team/tanmay patil.jpg' },
+      { name: 'Aditya Padale', role: 'Organizing Team', img: 'img/Our team/Aditya Padale.jpg' },
+      { name: 'Yashraj Salunkhe', role: 'Organizing Team', img: 'img/Our team/Yashraj Salunkhe.jpg' },
+      { name: 'Amit Yeadage', role: 'Organizing Team', img: 'img/Our team/amit yedage.jpg' }
     ]
   ];
 
