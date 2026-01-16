@@ -299,10 +299,6 @@ header.scrolled {
 --------------------------------------------------------------*/
 .back_home {
 	background-color: black;
-	background-image: url('../assets/images/file.svg?v=1') !important;
-	background-size: cover !important;
-	background-position: center 0% !important;
-	background-repeat: no-repeat !important;
 	padding-top: 18vh;
 	height: 100vh;
 	position: relative;
@@ -548,17 +544,17 @@ header.scrolled {
 	z-index: 100;
 }
 
-.back{
+.back {
 	background-color: #aa1d39 !important;
 	color: white !important;
 	border: 1px solid black !important;
 }
 
-.okay:hover{
+.okay:hover {
 	border-color: black !important;
 }
 
-.back:hover{
+.back:hover {
 	border-color: white !important;
 }
 
@@ -592,10 +588,7 @@ header.scrolled {
 	position: relative;
 	z-index: 1;
 	color: rgb(255, 255, 255);
-	background-image: url('../assets/images/file.svg?v=1') !important;
-	background-size: cover !important;
-	background-position: center 100% !important;
-	background-repeat: no-repeat !important;
+	background-color: black;
 	font-size: 1.4rem;
 	text-align: justify;
 }
@@ -710,11 +703,9 @@ h3 {
 # Glimpses
 --------------------------------------------------------------*/
 .back_glimpse {
-	/* background-color: rgb(138, 122, 69); */
-	background-image: url('../img/gallerybg.jpeg');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
+	background-color: rgb(0, 0, 0);
 }
 
 .glimpses_container {

@@ -16,15 +16,25 @@ const Glimpse = () => {
   ];
 
   return (
-    <section className="back_glimpse not-selectable" data-section="glimpse">
+    <section className="back_glimpse twinkle_back not-selectable" data-section="glimpse">
+      <div className="background-container">
+        <div className="stars"></div>
+        <div className="twinkling"></div>
+      </div>
       <div data-aos="fade-down" data-aos-once="true">
         <div className="lgx-inner pb100 pt80">
           <div className="container">
             <div className="section_title">
               <br />
-              <div className="heading">
+              <div className="heading not-selectable">
                 <h1 className="heading-shadow not-selectable">GLIMPSE</h1>
-                <h2 className="heading-small not-selectable">GLIMPSE</h2>
+                <h2 className="heading-small" style={{ color: '#ffffff' }}>
+                  {['G', 'L', 'I', 'M', 'P', 'S', 'E'].map((letter, index) => (
+                    <div key={index} style={{ overflow: 'hidden' }}>
+                      <div style={{ transform: 'translateY(0%)', willChange: 'auto' }}>{letter}</div>
+                    </div>
+                  ))}
+                </h2>
               </div>
               <br />
             </div>

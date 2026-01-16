@@ -1,13 +1,17 @@
 const Hero = () => {
   return (
-    <section className="back_home not-selectable" id="home" data-section="hero">
+    <section className="back_home twinkle_back not-selectable" id="home" data-section="hero">
+      <div className="background-container">
+        <div className="stars"></div>
+        <div className="twinkling"></div>
+      </div>
       <div className="hero" data-aos="zoom-in" data-aos-once="true">
         <div className="container-home">
           <div>
             <div className="cont">
               <h1 className="anton-sc-regular heading-pec not-selectable" id="heading-pec" style={{color: 'white'}}>
                 ADCET HACKATHON
-                <span className="outline anton-sc-regular">SEASON 3</span>
+                <span className="outline anton-sc-regular">    3.0</span>
                 <span className="CLH anton-sc-regular">Fostering Innovation for a Brighter Tomorrow</span>
               </h1>
             </div>
@@ -23,27 +27,9 @@ const Hero = () => {
                   >
                     Register for Hackathon
                   </a>
-                  <a 
-                    href="https://www.adcet.ac.in" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary me-2 okay"
-                    style={{backgroundColor: 'rgb(214, 214, 189)', color: 'black'}}
-                  >
-                    Visit College Website
-                  </a>
+                  
                 </p>
-                <p className="join_com">
-                  <a 
-                    href="https://eventopia.in/?utm_source=pechacks&utm_medium=website&utm_campaign=pechacks-referral" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary me-2 join_com white" 
-                    style={{backgroundColor: 'black'}}
-                  >
-                    FIND SIMILAR EVENTS
-                  </a>
-                </p>
+                
                 <div className="date-con">
                   <p className="anton-sc-regular not-selectable" id="hero-sub">
                     March 12-14, 2026
