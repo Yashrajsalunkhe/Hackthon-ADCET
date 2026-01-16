@@ -1,4 +1,14 @@
 const Domains = () => {
+  const handleOpenPDF = (filename) => {
+    const pdfPath = `/theme/${filename}`;
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="domains" className="twinkle_back container not-selectable" data-section="domains">
       <section className="back_domains">
@@ -31,7 +41,12 @@ const Domains = () => {
                 <div className="domain-overlay">
                   <h3>Viksit Bharat</h3>
                   <p>Developed India - Building Tomorrow's Nation</p>
-                  <button className="select-domain-btn">Explore Theme</button>
+                  <button 
+                    className="select-domain-btn"
+                    onClick={() => handleOpenPDF('Problem Statements (Hardware) as on 22-12-25.pdf')}
+                  >
+                    Explore Theme
+                  </button>
                 </div>
               </div>
             </div>
@@ -50,7 +65,12 @@ const Domains = () => {
                 <div className="domain-overlay">
                   <h3>Sustainable Development Goals (SDGs)</h3>
                   <p>Creating Solutions for a Sustainable Future</p>
-                  <button className="select-domain-btn">Explore Theme</button>
+                  <button 
+                    className="select-domain-btn"
+                    onClick={() => handleOpenPDF('Problem Statements (Software) as on 29-12-25.pdf')}
+                  >
+                    Explore Theme
+                  </button>
                 </div>
               </div>
             </div>
