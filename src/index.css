@@ -1,0 +1,59 @@
+/* Import all CSS files */
+@import './css/style1.css';
+@import './css/style2.css';
+@import './css/style3.css';
+@import './css/character-companion.css';
+
+/* Import AOS styles */
+@import 'aos/dist/aos.css';
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  display: block;
+}
+
+/* Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#preloader::before {
+  content: '';
+  width: 50px;
+  height: 50px;
+  border: 5px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  width: 100%;
+}

@@ -1,0 +1,64 @@
+const Domains = () => {
+  return (
+    <section id="domains" className="twinkle_back container not-selectable" data-section="domains">
+      <section className="back_domains">
+        <div className="background-container">
+          <div className="stars"></div>
+          <div className="twinkling"></div>
+        </div>
+        <br />
+        <div data-aos="fade-down" data-aos-once="true">
+          <div className="heading">
+            <h1 className="heading-shadow not-selectable">THEMES</h1>
+            <h2 className="heading-small not-selectable" style={{color: '#ffffff'}}>
+              {['T', 'H', 'E', 'M', 'E', 'S'].map((letter, index) => (
+                <div key={index} style={{overflow: 'hidden'}}>
+                  <div style={{transform: 'translateY(0%)', willChange: 'auto'}}>{letter}</div>
+                </div>
+              ))}
+            </h2>
+          </div>
+          <h2 className="dom_p" style={{color: '#ffffff'}}>
+            Choose a problem statement based on the themes below. <br/>
+            Solutions can involve Software, Hardware, or a combination of both.
+          </h2>
+
+          <div className="cool-domains-container">
+            {/* Theme 1: Viksit Bharat */}
+            <div className="domain-card-minimal">
+              <div className="domain-image-container">
+                <img src="img/Domains/Viksit Bharat- -2047 goals.png" alt="Viksit Bharat" />
+                <div className="domain-overlay">
+                  <h3>Viksit Bharat</h3>
+                  <p>Developed India - Building Tomorrow's Nation</p>
+                  <button className="select-domain-btn">Explore Theme</button>
+                </div>
+              </div>
+            </div>
+
+            {/* Clean Separator */}
+            <div className="domain-separator">
+              <div className="separator-line"></div>
+              <span className="separator-text">OR</span>
+              <div className="separator-line"></div>
+            </div>
+
+            {/* Theme 2: Sustainable Development Goals */}
+            <div className="domain-card-minimal">
+              <div className="domain-image-container">
+                <img src="img/Domains/sdg goals.png" alt="Sustainable Development Goals" />
+                <div className="domain-overlay">
+                  <h3>Sustainable Development Goals (SDGs)</h3>
+                  <p>Creating Solutions for a Sustainable Future</p>
+                  <button className="select-domain-btn">Explore Theme</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  );
+};
+
+export default Domains;
