@@ -1,5 +1,4 @@
-// This component is very large. Creating a simplified version.
-// You can enhance it by adding all judges/speakers data from the original HTML.
+
 
 const JudgesSpeakers = () => {
   const people = [

@@ -5,8 +5,9 @@ const Timeline = () => {
       date: '7 Jan – 5 Feb 2026', 
       title: 'Round 1: Idea Submission', 
       subtitle: 'Online Phase',
-      description: 'Register your team (4-5 members) and submit your project idea on Unstop platform.',
-      icon: '📝'
+      description: 'Register your team (4–5 members) with at least one female member mandatory, and submit your project idea on the Unstop platform.',
+      icon: '📝',
+      color: '#FF1744'
     },
     { 
       id: 'notification', 
@@ -15,7 +16,8 @@ const Timeline = () => {
       subtitle: 'Results Announcement',
       description: 'Final selection results for the offline hackathon will be sent to team leaders.',
       icon: '📢',
-      right: true 
+      right: true,
+      color: '#FF6B6B'
     },
     { 
       id: 'final-round', 
@@ -23,7 +25,8 @@ const Timeline = () => {
       title: 'Final Hackathon', 
       subtitle: 'Offline at ADCET, Ashta',
       description: '72-hour on-campus hackathon. Build, innovate, and present your solution.',
-      icon: '💻'
+      icon: '💻',
+      color: '#6366F1'
     },
     { 
       id: 'results', 
@@ -32,7 +35,8 @@ const Timeline = () => {
       subtitle: 'Grand Finale',
       description: 'Winners announced! Cash prizes worth ₹2 Lakh to be awarded.',
       icon: '🏆',
-      right: true 
+      right: true,
+      color: '#8B5CF6'
     },
   ];
 
