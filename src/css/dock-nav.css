@@ -24,6 +24,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   pointer-events: all;
+  overflow: visible;
 }
 
 .dock-logo-item {
@@ -69,7 +70,8 @@
 .dock-nav-items {
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  gap: 24px;
+  overflow: visible;
 }
 
 .dock-item-container {
@@ -77,6 +79,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+.dock-item-container:hover {
+  z-index: 100;
 }
 
 .magic-dock-item {
@@ -94,6 +103,7 @@
   text-decoration: none;
   color: rgba(255, 255, 255, 0.9);
   transform-origin: bottom center;
+  will-change: transform;
 }
 
 .magic-dock-item:hover {

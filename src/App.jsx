@@ -16,6 +16,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './css/timeline-modern.css';
 import './css/about-modern.css';
+import './css/about-enhanced.css';
 
 function App() {
   useEffect(() => {

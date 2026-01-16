@@ -1,24 +1,48 @@
 const Prizes = () => {
-  const prizeStructure = [
+  const softwarePrizes = [
     { 
       position: 'RUNNER UP', 
       amount: '₹30,000', 
       icon: '🥈',
-      tagline: '"So close to gold, but hey... silver\'s pretty shiny too! 🌟"',
+      tagline: '"Your code debugged itself in fear of losing! Almost legendary status!"',
       cardClass: 'runner-up-card'
     },
     { 
       position: 'CHAMPION', 
       amount: '₹50,000', 
       icon: '🏆',
-      tagline: '"Coding royalty! 👑 Time to add \'Hackathon Legend\' to your LinkedIn!"',
+      tagline: '"You didn\'t just break the code, you broke the competition! 🔥"',
       cardClass: 'champion-card'
     },
     { 
       position: '2ND RUNNER UP', 
       amount: '₹20,000', 
       icon: '🥉',
-      tagline: '"Third place? More like \'first place in being awesome!\' 🚀"',
+      tagline: '"Bronze medal but GOLDEN vibes! Your Git commits were fire! 💪"',
+      cardClass: 'second-runner-up-card'
+    }
+  ];
+
+  const hardwarePrizes = [
+    { 
+      position: 'RUNNER UP', 
+      amount: '₹30,000', 
+      icon: '🥈',
+      tagline: '"Your circuits were LIT! Silver today, solder legend tomorrow! ⚡"',
+      cardClass: 'runner-up-card'
+    },
+    { 
+      position: 'CHAMPION', 
+      amount: '₹50,000', 
+      icon: '🏆',
+      tagline: '"From breadboards to BOSS moves! You just Ctrl+Alt+Won! 🎯"',
+      cardClass: 'champion-card'
+    },
+    { 
+      position: '2ND RUNNER UP', 
+      amount: '₹20,000', 
+      icon: '🥉',
+      tagline: '"Third place? Your resistors clearly had ZERO resistance to winning! 🤖"',
       cardClass: 'second-runner-up-card'
     }
   ];
@@ -67,14 +91,13 @@ const Prizes = () => {
 
           {/* Software Track */}
           <div className="prize-track-section" data-aos="fade-up" data-aos-once="true">
-            <div className="track-header" style={{maxWidth: '800px' , margin: '0 auto'}}>
-              <span className="track-icon">💻</span>
+            <div className="track-header">
               <h3 className="track-title">Software Track</h3>
               <p className="track-description">For Digital Innovation & Software Solutions</p>
             </div>
             <div className="prizes-container">
               <div className="prizes-grid">
-                {prizeStructure.map((prize, index) => (
+                {softwarePrizes.map((prize, index) => (
                   <div key={`software-${index}`} className={`prize-card ${prize.cardClass}`}>
                     <div className="prize-icon">
                       <div className={`medal-icon ${prize.cardClass.replace('-card', '-medal')}`}>{prize.icon}</div>
@@ -90,14 +113,13 @@ const Prizes = () => {
 
           {/* Hardware Track */}
           <div className="prize-track-section" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
-            <div className="track-header" style={{maxWidth: '800px' , margin: '0 auto'}}>
-              <span className="track-icon">⚙️</span>
+            <div className="track-header">
               <h3 className="track-title">Hardware Track</h3>
               <p className="track-description">For IoT, Robotics & Hardware Innovation</p>
             </div>
             <div className="prizes-container">
               <div className="prizes-grid">
-                {prizeStructure.map((prize, index) => (
+                {hardwarePrizes.map((prize, index) => (
                   <div key={`hardware-${index}`} className={`prize-card ${prize.cardClass}`}>
                     <div className="prize-icon">
                       <div className={`medal-icon ${prize.cardClass.replace('-card', '-medal')}`}>{prize.icon}</div>

@@ -20,106 +20,54 @@ const About = () => {
           </div>
           {/* end of heading */}
 
-          <div className="about-modern-section">
-            {/* Main Content Card */}
-            <div className="about-content-card" data-aos="fade-up" data-aos-once="true">
-              <div className="about-intro">
-                <h3 className="about-title">Welcome, Innovators and Change-Makers!</h3>
-                <div className="about-highlight">
-                  <span className="highlight-text">ADCET HACKATHON – SEASON 3</span>
-                  <p className="highlight-tagline">Fostering Innovation for a Brighter Tomorrow</p>
+          <div className="about-content-wrapper">
+            <div className="about-main-content" data-aos="fade-up" data-aos-once="true" data-aos-duration="800">
+              <div className="about-intro-card">
+                <div className="intro-badge">
+                  <span className="badge-dot"></span>
+                  Season 3 • 2026
                 </div>
-              </div>
-
-              <div className="about-description">
-                <p>
-                  Where boundless creativity meets game-changing innovation! 
-                  Hosted by <span className="accent-text">Annasaheb Dange College of Engineering & Technology, Ashta</span>
-                  {' '}(An Empowered Autonomous Institute), this hackathon is your golden ticket to transform bold ideas into impactful solutions.
+                <h3 className="welcome-title">Welcome, Innovators and Change-Makers!</h3>
+                <div className="intro-divider"></div>
+                
+                <p className="about-para-enhanced">
+                  Introducing <span className="highlight-primary">ADCET HACKATHON – SEASON 3</span>, where boundless creativity meets game-changing innovation! <span className="highlight-secondary">Fostering Innovation for a Brighter Tomorrow</span>.
                 </p>
                 
-                <div className="about-details-grid">
-                  <div className="detail-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div className="detail-icon">📅</div>
-                    <div className="detail-content">
-                      <h4>Event Date</h4>
-                      <p>12th – 14th March 2026</p>
-                      <span className="detail-sub">72-hour innovation marathon</span>
-                    </div>
+                <p className="about-para-enhanced">
+                  Hosted by <span className="highlight-primary">Annasaheb Dange College of Engineering & Technology, Ashta</span> (An Empowered Autonomous Institute), this hackathon is your golden ticket to transform bold ideas into impactful solutions.
+                </p>
+                
+                <div className="event-highlight-box">
+                  <div className="event-date-wrapper">
+                    <svg className="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span className="event-date">12th – 14th March 2026</span>
                   </div>
+                  <p className="event-description">
+                    Join us for a <strong>72-hour innovation marathon</strong> focused on <span className="highlight-accent">Sustainable Development Goals (SDGs)</span> and <span className="highlight-accent">Viksit Bharat</span> themes. Team up with brilliant minds, tackle real-world challenges, and push the boundaries of technology!
+                  </p>
+                </div>
 
-                  <div className="detail-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div className="detail-icon">🎯</div>
-                    <div className="detail-content">
-                      <h4>Focus Themes</h4>
-                      <p>SDGs & Viksit Bharat</p>
-                      <span className="detail-sub">Real-world challenges</span>
-                    </div>
+                <div className="editions-wrapper">
+                  <div className="edition-badge software-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <span>Software Edition</span>
                   </div>
-
-                  <div className="detail-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div className="detail-icon">💡</div>
-                    <div className="detail-content">
-                      <h4>Two Editions</h4>
-                      <p>Software & Hardware</p>
-                      <span className="detail-sub">Choose your track</span>
-                    </div>
+                  <div className="edition-badge hardware-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Hardware Edition</span>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Stats Section */}
-            <div className="about-stats-section" data-aos="fade-up" data-aos-delay="400">
-              <h3 className="stats-title">By The Numbers</h3>
-              <div className="stats-grid">
-                <div className="stat-card">
-                  <lord-icon
-                    src="https://cdn.lordicon.com/srupsmbe.json"
-                    trigger="loop"
-                    colors="primary:#DC143C,secondary:#FFD700"
-                    style={{ width: '80px', height: '80px' }}
-                  ></lord-icon>
-                  <div className="stat-number">300+</div>
-                  <div className="stat-label">Hackers</div>
-                </div>
-
-                <div className="stat-card">
-                  <lord-icon
-                    src="https://cdn.lordicon.com/ogjpwrxe.json"
-                    trigger="loop"
-                    colors="primary:#DC143C,secondary:#FFD700"
-                    style={{ width: '80px', height: '80px' }}
-                  ></lord-icon>
-                  <div className="stat-number">60+</div>
-                  <div className="stat-label">Projects</div>
-                </div>
-
-                <div className="stat-card">
-                  <lord-icon
-                    src="https://cdn.lordicon.com/vttzorhw.json"
-                    trigger="loop"
-                    delay="1500"
-                    state="in-reveal"
-                    colors="primary:#DC143C,secondary:#FFD700"
-                    style={{ width: '80px', height: '80px' }}
-                  ></lord-icon>
-                  <div className="stat-number">8</div>
-                  <div className="stat-label">Prizes</div>
-                </div>
-
-                <div className="stat-card stat-card-highlight">
-                  <lord-icon
-                    src="https://cdn.lordicon.com/ytklkgsc.json"
-                    trigger="loop"
-                    delay="1500"
-                    state="in-reveal"
-                    colors="primary:#DC143C,secondary:#FFD700"
-                    style={{ width: '80px', height: '80px' }}
-                  ></lord-icon>
-                  <div className="stat-number">₹2,00,000</div>
-                  <div className="stat-label">Prize Pool</div>
-                  <div className="stat-sub">Team Size: 4-5 Members</div>
                 </div>
               </div>
             </div>

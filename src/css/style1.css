@@ -339,6 +339,107 @@ header.scrolled {
 	margin-top: 40px;
 }
 
+/* Countdown Timer Styles */
+.countdown-section {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+}
+
+.countdown-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #00bcd4;
+	font-size: 1.2rem;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+}
+
+.clock-icon {
+	width: 24px;
+	height: 24px;
+	color: #00bcd4;
+}
+
+.countdown-boxes {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.countdown-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 90px;
+	padding: 20px 25px;
+	border-radius: 15px;
+	border: 2px solid;
+	transition: all 0.3s ease;
+}
+
+.countdown-box:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.box-cyan {
+	background: rgba(0, 188, 212, 0.15);
+	border-color: #00bcd4;
+}
+
+.box-purple {
+	background: rgba(156, 39, 176, 0.15);
+	border-color: #9c27b0;
+}
+
+.box-pink {
+	background: rgba(233, 30, 99, 0.15);
+	border-color: #e91e63;
+}
+
+.box-orange {
+	background: rgba(255, 152, 0, 0.15);
+	border-color: #ff9800;
+}
+
+.countdown-value {
+	font-size: 3rem;
+	font-weight: 700;
+	font-family: 'Anton SC', sans-serif;
+	line-height: 1;
+	margin-bottom: 8px;
+}
+
+.box-cyan .countdown-value {
+	color: #00bcd4;
+}
+
+.box-purple .countdown-value {
+	color: #9c27b0;
+}
+
+.box-pink .countdown-value {
+	color: #e91e63;
+}
+
+.box-orange .countdown-value {
+	color: #ff9800;
+}
+
+.countdown-label {
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.9);
+	text-transform: capitalize;
+	letter-spacing: 1px;
+}
+
 .cont {
 	margin-bottom: 50px;
 	margin-top: 60px;
@@ -1138,6 +1239,33 @@ Base
 		height: 100vh;
 	}
 
+	/* Countdown Timer Responsive - Tablet */
+	.countdown-boxes {
+		gap: 15px;
+	}
+
+	.countdown-box {
+		min-width: 70px;
+		padding: 15px 18px;
+	}
+
+	.countdown-value {
+		font-size: 2.2rem;
+	}
+
+	.countdown-label {
+		font-size: 0.75rem;
+	}
+
+	.countdown-header {
+		font-size: 1rem;
+	}
+
+	.clock-icon {
+		width: 20px;
+		height: 20px;
+	}
+
 	.CLH {
 		font-size: 2.5rem;
 		margin-bottom: 0px;
@@ -1176,6 +1304,40 @@ Base
 		line-height: 5vw;
 		text-align: center;
 		margin: 10px;
+	}
+
+	/* Countdown Timer Responsive - Mobile */
+	.countdown-section {
+		margin-top: 30px;
+		gap: 15px;
+	}
+
+	.countdown-boxes {
+		gap: 8px;
+		flex-wrap: wrap;
+	}
+
+	.countdown-box {
+		min-width: 60px;
+		padding: 12px 15px;
+	}
+
+	.countdown-value {
+		font-size: 1.8rem;
+	}
+
+	.countdown-label {
+		font-size: 0.65rem;
+		letter-spacing: 0.5px;
+	}
+
+	.countdown-header {
+		font-size: 0.9rem;
+	}
+
+	.clock-icon {
+		width: 18px;
+		height: 18px;
 	}
 
 	.hero-buttons {
