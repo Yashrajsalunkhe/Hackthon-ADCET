@@ -27,7 +27,7 @@ const Footer = () => {
                 <a href="https://www.linkedin.com/school/annasaheb-dange-college-of-engineering-and-technology-ashta/"><span className="fa fa-brands fa-linkedin"></span></a>
               </li>
               <li>
-                <a href="https://www.youtube.com/"><span className="fa fa-brands fa-youtube"></span></a>
+                <a href="https://www.youtube.com/channel/UCM4WFVdIWyPvxWiVfMHhYFg"><span className="fa fa-brands fa-youtube"></span></a>
               </li>
             </ul>
           </div>
