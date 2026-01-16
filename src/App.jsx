@@ -14,6 +14,7 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import './css/timeline-modern.css';
 
 function App() {
   useEffect(() => {
