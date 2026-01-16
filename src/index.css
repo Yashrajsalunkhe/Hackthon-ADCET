@@ -3,6 +3,7 @@
 @import './css/style2.css';
 @import './css/style3.css';
 @import './css/character-companion.css';
+@import './css/dock-nav.css';
 
 /* Import AOS styles */
 @import 'aos/dist/aos.css';

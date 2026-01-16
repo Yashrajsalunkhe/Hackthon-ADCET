@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Header from './components/Header';
+import DockNav from './components/DockNav';
 import Hero from './components/Hero';
 import About from './components/About';
 import Glimpse from './components/Glimpse';
@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <div id="preloader"></div>
-      <Header />
+      <DockNav />
       <Hero />
       <About />
       <Glimpse />
