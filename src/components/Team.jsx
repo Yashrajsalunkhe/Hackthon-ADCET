@@ -64,7 +64,7 @@ const Team = () => {
         img: 'img/Our team/Yashraj Salunkhe.jpg',
         email: 'yashraj.salunkhe@example.com',
         linkedin: 'https://linkedin.com/in/yashrajsalunkhe',
-        instagram: 'https://instagram.com/yashrajsalunkhe'
+        instagram: 'https://www.instagram.com/yxshhhh_111'
       },
       { 
         name: 'Amit Yeadage', 
