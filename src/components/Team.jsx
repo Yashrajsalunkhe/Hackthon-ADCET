@@ -3,21 +3,76 @@
 const Team = () => {
   const teamRows = [
     [
-      { name: 'Dr. Amol Dange', role: 'Lead', img: 'img/Our team/amol dange.jpg' }
+      { 
+        name: 'Dr. Amol Dange', 
+        role: 'Lead', 
+        img: 'img/Our team/amol dange.jpg',
+        email: 'amol.dange@example.com',
+        linkedin: 'https://linkedin.com/in/amoldange'
+      }
     ],
     [
-      { name: 'Dr. Asma Shaikh', role: 'Faculty Coordinator', img: 'img/Our team/asma shaikh.jpg' }
+      { 
+        name: 'Dr. Asma Shaikh', 
+        role: 'Faculty Coordinator', 
+        img: 'img/Our team/asma shaikh.jpg',
+        email: 'asma.shaikh@example.com',
+        linkedin: 'https://linkedin.com/in/asmashaikh'
+      }
     ],
     [
-      { name: 'Krishnkumar', role: 'Core Team', img: 'img/Our team/krishnkumar.jpg' },
-      { name: 'Kiran Nagrgatti', role: 'Core Team', img: 'img/Our team/kiran nagargatti.jpg' }
+      { 
+        name: 'Krishnkumar', 
+        role: 'Core Team', 
+        img: 'img/Our team/krishnkumar.jpg',
+        email: 'krishnkumar@example.com',
+        linkedin: 'https://linkedin.com/in/krishnkumar'
+      },
+      { 
+        name: 'Kiran Nagrgatti', 
+        role: 'Core Team', 
+        img: 'img/Our team/kiran nagargatti.jpg',
+        email: 'kiran.nagrgatti@example.com',
+        linkedin: 'https://linkedin.com/in/kirannagrgatti'
+      }
     ],
     [
-      { name: 'Pranav Patil', role: 'Organizing Team', img: 'img/Our team/pranav patil.jpg' },
-      { name: 'Tanmay Patil', role: 'Organizing Team', img: 'img/Our team/tanmay patil.jpg' },
-      { name: 'Aditya Padale', role: 'Organizing Team', img: 'img/Our team/Aditya Padale.jpg' },
-      { name: 'Yashraj Salunkhe', role: 'Organizing Team', img: 'img/Our team/Yashraj Salunkhe.jpg' },
-      { name: 'Amit Yeadage', role: 'Organizing Team', img: 'img/Our team/amit yedage.jpg' }
+      { 
+        name: 'Pranav Patil', 
+        role: 'Organizing Team', 
+        img: 'img/Our team/pranav patil.jpg',
+        email: 'pranav.patil@example.com',
+        linkedin: 'https://linkedin.com/in/pranavpatil'
+      },
+      { 
+        name: 'Tanmay Patil', 
+        role: 'Organizing Team', 
+        img: 'img/Our team/tanmay patil.jpg',
+        email: 'tanmay.patil@example.com',
+        linkedin: 'https://linkedin.com/in/tanmaypatil'
+      },
+      { 
+        name: 'Aditya Padale', 
+        role: 'Organizing Team', 
+        img: 'img/Our team/Aditya Padale.jpg',
+        email: 'aditya.padale@example.com',
+        linkedin: 'https://linkedin.com/in/adityapadale'
+      },
+      { 
+        name: 'Yashraj Salunkhe', 
+        role: 'Organizing Team', 
+        img: 'img/Our team/Yashraj Salunkhe.jpg',
+        email: 'yashraj.salunkhe@example.com',
+        linkedin: 'https://linkedin.com/in/yashrajsalunkhe',
+        instagram: 'https://instagram.com/yashrajsalunkhe'
+      },
+      { 
+        name: 'Amit Yeadage', 
+        role: 'Organizing Team', 
+        img: 'img/Our team/amit yedage.jpg',
+        email: 'amit.yeadage@example.com',
+        linkedin: 'https://linkedin.com/in/amityeadage'
+      }
     ]
   ];
 
