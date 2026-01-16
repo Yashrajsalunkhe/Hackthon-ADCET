@@ -22,19 +22,6 @@ const FAQ = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  useEffect(() => {
-    const accordionButtons = document.querySelectorAll('#faq .accordion-button');
-    accordionButtons.forEach((button, index) => {
-      button.addEventListener('click', () => toggleAccordion(index));
-    });
-
-    return () => {
-      accordionButtons.forEach((button, index) => {
-        button.removeEventListener('click', () => toggleAccordion(index));
-      });
-    };
-  }, []);
-
   return (
     <section id="faq" className="faq-section not-selectable" data-section="faq">
       <div className="container">

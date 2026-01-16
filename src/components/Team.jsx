@@ -3,14 +3,14 @@
 const Team = () => {
   const teamRows = [
     [
-      { name: 'Dr. Amol Dange', role: 'Faculty Coordinator', img: 'https://placehold.co/300x300?text=Dr+Amol+Dange' }
+      { name: 'Dr. Amol Dange', role: 'Lead', img: 'img/Our team/amol dange.jpg' }
     ],
     [
-      { name: 'Dr. Asma Shaikh', role: 'Faculty Coordinator', img: 'https://placehold.co/300x300?text=Dr+Asma+Shaikh' }
+      { name: 'Dr. Asma Shaikh', role: 'Faculty Coordinator', img: 'img/Our team/asma shaikh.jpg' }
     ],
     [
-      { name: 'Krishnkumar', role: 'Core Team', img: 'https://placehold.co/300x300?text=Krishnkumar' },
-      { name: 'Kiran Nagrgatti', role: 'Core Team', img: 'https://placehold.co/300x300?text=Kiran+Nagrgatti' }
+      { name: 'Krishnkumar', role: 'Core Team', img: 'img/Our team/krishnkumar.jpg' },
+      { name: 'Kiran Nagrgatti', role: 'Core Team', img: 'img/Our team/kiran nagargatti.jpg' }
     ],
     [
       { name: 'Pranav Patil', role: 'Organizing Team', img: 'https://placehold.co/300x300?text=Pranav+Patil' },
