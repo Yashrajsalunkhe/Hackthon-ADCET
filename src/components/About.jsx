@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState('');
 
@@ -130,6 +132,45 @@ const About = () => {
                       <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                     </svg>
                     <span>Hardware Edition</span>
+                  </div>
+                  <div 
+                    className="edition-badge college-badge"
+                    onClick={() => navigate('/college-info')}
+                    style={{
+                      cursor: 'pointer',
+                      background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+                      border: '2px solid #3b82f6',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 20px rgba(59, 130, 246, 0.4)',
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)';
+                      e.currentTarget.style.borderColor = '#2563eb';
+                      e.currentTarget.style.transform = 'translateY(-8px) scale(1.05)';
+                      e.currentTarget.style.boxShadow = '0 8px 30px rgba(59, 130, 246, 0.6)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)';
+                      e.currentTarget.style.borderColor = '#3b82f6';
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(59, 130, 246, 0.4)';
+                    }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style={{color: '#fff', width: '28px', height: '28px'}}>
+                      <path strokeWidth="2" d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                      <path strokeWidth="2" d="M2 17l10 5 10-5"></path>
+                      <path strokeWidth="2" d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span style={{
+                      color: '#fff',
+                      fontWeight: '700',
+                      fontSize: '16px',
+                      textShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                    }}>
+                      🎓 Know More About ADCET
+                    </span>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import { 
   Calendar, Award, GraduationCap, Building, Users, Trophy, 
   MapPin, Target, Rocket, TrendingUp, ExternalLink, Home
@@ -7,26 +8,27 @@ import Footer from "./Footer";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import { useNavigate } from "react-router-dom";
 import "../css/college-info.css";
+import "../css/timeline.css";
 
 const CollegeInfo = () => {
   const navigate = useNavigate();
   useScrollToTop();
 
   const milestones = [
-    { year: "1999", event: "Foundation Esta...", detail: "Foundation Established", students: "180", highlight: "Genesis", color: "blue" },
-    { year: "2001", event: "Computer Scienc...", detail: "Computer Science Added", students: "240", highlight: "Tech Era", color: "blue" },
-    { year: "2004", event: "Electrical Engi...", detail: "Electrical Engineering", students: "300", highlight: "Power Up", color: "blue" },
-    { year: "2010", event: "Major Expansion", detail: "Civil & Mechanical added", students: "540", highlight: "Growth", color: "blue" },
-    { year: "2010", event: "ISO 9001:2008", detail: "Quality Certification", students: "540", highlight: "Quality", color: "orange" },
-    { year: "2011", event: "600 Students", detail: "Continued growth", students: "600", highlight: "Scale", color: "blue" },
-    { year: "2013", event: "Aeronautical Added", detail: "Aerospace Engineering", students: "660", highlight: "Sky High", color: "blue" },
-    { year: "2014", event: "NBA Accreditation", detail: "3 Programs Accredited", students: "660", highlight: "Recognition", color: "orange" },
-    { year: "2015", event: "NAAC A Grade", detail: "Academic Excellence", students: "660", highlight: "Excellence", color: "orange" },
-    { year: "2017", event: "Autonomous Status", detail: "Independent Excellence", students: "720", highlight: "Autonomy", color: "orange" },
-    { year: "2019", event: "Food Technology", detail: "New Department & NBA Extension", students: "780", highlight: "Innovation", color: "blue" },
-    { year: "2021", event: "AI & Data Science", detail: "Future Technology Programs", students: "1000", highlight: "Future", color: "blue" },
-    { year: "2022", event: "Enhanced NBA", detail: "Extended Accreditation", students: "1100", highlight: "Enhanced", color: "orange" },
-    { year: "2023", event: "NAAC A++", detail: "Highest Grade Achieved", students: "1200+", highlight: "Pinnacle", color: "orange" }
+    { year: "1999", month: "Genesis", event: "FOUNDATION ESTA...", fullEvent: "Foundation Established", students: "180", highlight: "Genesis", detail: "Foundation Established", color: "blue", number: "99" },
+    { year: "2001", month: "Tech Era", event: "COMPUTER SCIENC...", fullEvent: "Computer Science Added", students: "240", highlight: "Tech Era", detail: "Computer Science Added", color: "blue", number: "01" },
+    { year: "2004", month: "Power Up", event: "ELECTRICAL ENGI...", fullEvent: "Electrical Engineering", students: "300", highlight: "Power Up", detail: "Electrical Engineering", color: "blue", number: "04" },
+    { year: "2010", month: "Growth", event: "MAJOR EXPANSION", fullEvent: "Major Expansion", students: "540", highlight: "Growth", detail: "Civil & Mechanical added", color: "blue", number: "10" },
+    { year: "2010", month: "Quality", event: "ISO 9001:2008", fullEvent: "ISO 9001:2008", students: "540", highlight: "Quality", detail: "Quality Certification", color: "orange", number: "10" },
+    { year: "2011", month: "Scale", event: "600 STUDENTS", fullEvent: "600 Students", students: "600", highlight: "Scale", detail: "Continued growth", color: "blue", number: "11" },
+    { year: "2013", month: "Sky High", event: "AERONAUTICAL ADDED", fullEvent: "Aeronautical Added", students: "660", highlight: "Sky High", detail: "Aerospace Engineering", color: "blue", number: "13" },
+    { year: "2014", month: "Recognition", event: "NBA ACCREDITATION", fullEvent: "NBA Accreditation", students: "660", highlight: "Recognition", detail: "3 Programs Accredited", color: "orange", number: "14" },
+    { year: "2015", month: "Excellence", event: "NAAC A GRADE", fullEvent: "NAAC A Grade", students: "660", highlight: "Excellence", detail: "Academic Excellence", color: "orange", number: "15" },
+    { year: "2017", month: "Autonomy", event: "AUTONOMOUS STATUS", fullEvent: "Autonomous Status", students: "720", highlight: "Autonomy", detail: "Independent Excellence", color: "orange", number: "17" },
+    { year: "2019", month: "Innovation", event: "FOOD TECHNOLOGY", fullEvent: "Food Technology", students: "780", highlight: "Innovation", detail: "New Department & NBA Extension", color: "blue", number: "19" },
+    { year: "2021", month: "Future", event: "AI & DATA SCIENCE", fullEvent: "AI & Data Science", students: "1000", highlight: "Future", detail: "Future Technology Programs", color: "blue", number: "21" },
+    { year: "2022", month: "Enhanced", event: "ENHANCED NBA", fullEvent: "Enhanced NBA", students: "1100", highlight: "Enhanced", detail: "Extended Accreditation", color: "orange", number: "22" },
+    { year: "2023", month: "Pinnacle", event: "NAAC A++", fullEvent: "NAAC A++", students: "1200+", highlight: "Pinnacle", detail: "Highest Grade Achieved", color: "orange", number: "23" }
   ];
 
   return (
@@ -290,7 +292,7 @@ const CollegeInfo = () => {
 
         {/* Timeline Section */}
         <div style={{ marginBottom: '5rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               border: '1px solid #3b82f6', borderRadius: '25px', padding: '0.5rem 1rem',
@@ -300,7 +302,7 @@ const CollegeInfo = () => {
               <span>Growth Timeline • 1999 - 2025</span>
             </div>
             
-            <h2 style={{ fontSize: '3rem', fontWeight: '300' }}>
+            <h2 style={{ fontSize: '3rem', fontWeight: '300', marginBottom: '1rem' }}>
               Journey of <span style={{ 
                 background: 'linear-gradient(to right, #3b82f6, #10b981)',
                 WebkitBackgroundClip: 'text',
@@ -308,118 +310,215 @@ const CollegeInfo = () => {
               }}>Excellence</span>
             </h2>
             
-            <p style={{ fontSize: '1rem', color: '#9ca3af', marginTop: '1rem' }}>
+            <p style={{ fontSize: '1rem', color: '#9ca3af' }}>
               From <span style={{ color: '#3b82f6', fontWeight: '600' }}>180 students to 1200+</span> • 
               A testament to <span style={{ color: '#10b981', fontWeight: '600' }}>continuous innovation</span>
             </p>
           </div>
 
-          {/* Timeline Grid - Top Row */}
-          <div style={{ position: 'relative', marginBottom: '4rem' }}>
+          {/* Horizontal Timeline */}
+          <div style={{
+            position: 'relative',
+            padding: '5rem 3rem',
+            minHeight: '850px'
+          }}>
+            {/* Horizontal Line */}
             <div style={{
-              position: 'absolute', top: '50%', left: 0, right: 0,
-              height: '2px', background: 'linear-gradient(to right, #3b82f6, #f97316, #3b82f6)',
-              transform: 'translateY(-50%)', zIndex: 0
+              position: 'absolute',
+              top: '50%',
+              left: '2%',
+              right: '2%',
+              height: '3px',
+              background: 'linear-gradient(to right, transparent, #1e293b 2%, #1e293b 98%, transparent)',
+              transform: 'translateY(-50%)',
+              zIndex: 0
             }} />
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '1rem', position: 'relative', zIndex: 1 }}>
-              {milestones.slice(0, 7).map((milestone, idx) => (
-                <div key={idx} style={{ textAlign: 'center' }}>
-                  <div style={{
-                    background: '#3b82f6', color: '#fff', fontSize: '0.75rem',
-                    padding: '0.25rem 0.5rem', borderRadius: '15px', display: 'inline-block',
-                    marginBottom: '1rem', fontWeight: '700'
-                  }}>
-                    {milestone.year}
-                  </div>
-                  
-                  <div style={{
-                    background: '#0a0a0a', border: `2px solid ${milestone.color === 'orange' ? '#f97316' : '#3b82f6'}`,
-                    borderRadius: '12px', overflow: 'hidden', transition: 'all 0.3s'
-                  }}>
-                    <div style={{ height: '2px', background: milestone.color === 'orange' ? 'linear-gradient(to right, #f97316, #fbbf24)' : 'linear-gradient(to right, #3b82f6, #06b6d4)' }} />
-                    <div style={{ padding: '0.75rem', textAlign: 'center' }}>
-                      <div style={{
-                        fontSize: '0.7rem', padding: '0.25rem 0.5rem', borderRadius: '10px',
-                        background: milestone.color === 'orange' ? 'rgba(249, 115, 22, 0.1)' : 'rgba(59, 130, 246, 0.1)',
-                        color: milestone.color === 'orange' ? '#f97316' : '#3b82f6',
-                        marginBottom: '0.5rem', display: 'inline-block'
-                      }}>
-                        {milestone.color === 'orange' ? '🏆' : '📈'}
-                      </div>
-                      <h5 style={{ fontSize: '0.75rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                        {milestone.event}
-                      </h5>
-                      <div style={{ fontSize: '0.875rem', fontWeight: '700', color: '#3b82f6', marginBottom: '0.25rem' }}>
-                        {milestone.students}
-                      </div>
-                      <div style={{ fontSize: '0.7rem', color: milestone.color === 'orange' ? '#f97316' : '#3b82f6', fontWeight: '600' }}>
-                        {milestone.highlight}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div style={{
-                    width: '16px', height: '16px', borderRadius: '50%',
-                    background: milestone.color === 'orange' ? '#f97316' : '#3b82f6',
-                    border: '2px solid #fff', margin: '1rem auto 0'
-                  }} />
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Timeline Grid - Bottom Row */}
-          <div style={{ position: 'relative' }}>
+            {/* Timeline Items Grid */}
             <div style={{
-              position: 'absolute', top: '50%', left: 0, right: 0,
-              height: '2px', background: 'linear-gradient(to right, #f97316, #3b82f6, #f97316)',
-              transform: 'translateY(-50%)', zIndex: 0
-            }} />
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '1rem', position: 'relative', zIndex: 1 }}>
-              {milestones.slice(7).map((milestone, idx) => (
-                <div key={idx} style={{ textAlign: 'center' }}>
-                  <div style={{
-                    width: '16px', height: '16px', borderRadius: '50%',
-                    background: milestone.color === 'orange' ? '#f97316' : '#3b82f6',
-                    border: '2px solid #fff', margin: '0 auto 1rem'
-                  }} />
-                  
-                  <div style={{
-                    background: '#0a0a0a', border: `2px solid ${milestone.color === 'orange' ? '#f97316' : '#3b82f6'}`,
-                    borderRadius: '12px', overflow: 'hidden', transition: 'all 0.3s'
+              display: 'grid',
+              gridTemplateColumns: 'repeat(7, 1fr)',
+              gap: '3.5rem',
+              position: 'relative',
+              maxWidth: '1800px',
+              margin: '0 auto'
+            }}>
+              {milestones.map((milestone, idx) => {
+                const isOrange = milestone.color === 'orange';
+                const isTop = idx % 2 === 0;
+                
+                return (
+                  <div key={idx} style={{
+                    position: 'relative',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: isTop ? 'flex-end' : 'flex-start',
+                    minHeight: '380px'
                   }}>
-                    <div style={{ height: '2px', background: milestone.color === 'orange' ? 'linear-gradient(to right, #f97316, #fbbf24)' : 'linear-gradient(to right, #3b82f6, #06b6d4)' }} />
-                    <div style={{ padding: '0.75rem', textAlign: 'center' }}>
+                    {/* Card */}
+                    <div style={{
+                      position: 'absolute',
+                      [isTop ? 'bottom' : 'top']: isTop ? 'calc(50% + 35px)' : 'calc(50% + 35px)',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '180px',
+                      background: isOrange 
+                        ? 'linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(0, 0, 0, 0.95))'
+                        : 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0.95))',
+                      border: `2px solid ${isOrange ? '#f97316' : '#3b82f6'}`,
+                      borderRadius: '14px',
+                      padding: '20px',
+                      backdropFilter: 'blur(12px)',
+                      boxShadow: `0 8px 24px ${isOrange ? 'rgba(249, 115, 22, 0.25)' : 'rgba(59, 130, 246, 0.25)'}`,
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      zIndex: 2
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateX(-50%) scale(1.03)';
+                      e.currentTarget.style.boxShadow = `0 12px 36px ${isOrange ? 'rgba(249, 115, 22, 0.45)' : 'rgba(59, 130, 246, 0.45)'}`;
+                      e.currentTarget.style.borderWidth = '3px';
+                      e.currentTarget.style.zIndex = '20';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateX(-50%) scale(1)';
+                      e.currentTarget.style.boxShadow = `0 8px 24px ${isOrange ? 'rgba(249, 115, 22, 0.25)' : 'rgba(59, 130, 246, 0.25)'}`;
+                      e.currentTarget.style.borderWidth = '2px';
+                      e.currentTarget.style.zIndex = '2';
+                    }}>
+                      {/* Year Badge */}
                       <div style={{
-                        fontSize: '0.7rem', padding: '0.25rem 0.5rem', borderRadius: '10px',
-                        background: milestone.color === 'orange' ? 'rgba(249, 115, 22, 0.1)' : 'rgba(59, 130, 246, 0.1)',
-                        color: milestone.color === 'orange' ? '#f97316' : '#3b82f6',
-                        marginBottom: '0.5rem', display: 'inline-block'
+                        display: 'inline-block',
+                        background: isOrange 
+                          ? 'linear-gradient(135deg, #f97316, #fb923c)'
+                          : 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+                        color: '#fff',
+                        padding: '4px 12px',
+                        borderRadius: '16px',
+                        fontSize: '12px',
+                        fontWeight: '700',
+                        marginBottom: '10px',
+                        letterSpacing: '0.5px',
+                        boxShadow: isOrange 
+                          ? '0 3px 8px rgba(249, 115, 22, 0.4)'
+                          : '0 3px 8px rgba(59, 130, 246, 0.4)'
                       }}>
-                        {milestone.color === 'orange' ? '🏆' : '📈'}
+                        {milestone.year}
                       </div>
-                      <h5 style={{ fontSize: '0.75rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                        {milestone.event}
-                      </h5>
-                      <div style={{ fontSize: '0.875rem', fontWeight: '700', color: '#3b82f6', marginBottom: '0.25rem' }}>
-                        {milestone.students}
-                      </div>
-                      <div style={{ fontSize: '0.7rem', color: milestone.color === 'orange' ? '#f97316' : '#3b82f6', fontWeight: '600' }}>
+
+                      {/* Highlight Tag */}
+                      <div style={{
+                        fontSize: '9px',
+                        color: isOrange ? '#fb923c' : '#06b6d4',
+                        fontWeight: '700',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        marginBottom: '8px'
+                      }}>
                         {milestone.highlight}
                       </div>
+
+                      {/* Event Title */}
+                      <div style={{
+                        fontSize: '11px',
+                        fontWeight: '700',
+                        color: '#fff',
+                        marginBottom: '12px',
+                        lineHeight: '1.3',
+                        minHeight: '32px'
+                      }}>
+                        {milestone.fullEvent}
+                      </div>
+
+                      {/* Students Count */}
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'baseline',
+                        gap: '6px',
+                        paddingTop: '10px',
+                        borderTop: `1px solid ${isOrange ? 'rgba(249, 115, 22, 0.3)' : 'rgba(59, 130, 246, 0.3)'}`
+                      }}>
+                        <div style={{
+                          fontSize: '20px',
+                          fontWeight: '800',
+                          color: isOrange ? '#f97316' : '#3b82f6',
+                          lineHeight: '1'
+                        }}>
+                          {milestone.students}
+                        </div>
+                        <div style={{
+                          fontSize: '8px',
+                          color: '#9ca3af',
+                          fontWeight: '600',
+                          textTransform: 'uppercase'
+                        }}>
+                          Students
+                        </div>
+                      </div>
+
+                      {/* Arrow */}
+                      <div style={{
+                        position: 'absolute',
+                        [isTop ? 'bottom' : 'top']: '-10px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: 0,
+                        height: 0,
+                        borderLeft: '10px solid transparent',
+                        borderRight: '10px solid transparent',
+                        [isTop ? 'borderTop' : 'borderBottom']: `10px solid ${isOrange ? '#f97316' : '#3b82f6'}`
+                      }} />
                     </div>
+
+                    {/* Center Circle/Dot */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: '18px',
+                      height: '18px',
+                      borderRadius: '50%',
+                      background: isOrange ? '#f97316' : '#3b82f6',
+                      border: '3px solid #000',
+                      zIndex: 5,
+                      boxShadow: `0 0 0 6px ${isOrange ? 'rgba(249, 115, 22, 0.25)' : 'rgba(59, 130, 246, 0.25)'}`,
+                      transition: 'all 0.3s ease',
+                      cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.4)';
+                      e.currentTarget.style.boxShadow = `0 0 0 10px ${isOrange ? 'rgba(249, 115, 22, 0.35)' : 'rgba(59, 130, 246, 0.35)'}`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)';
+                      e.currentTarget.style.boxShadow = `0 0 0 6px ${isOrange ? 'rgba(249, 115, 22, 0.25)' : 'rgba(59, 130, 246, 0.25)'}`;
+                    }} />
                   </div>
-                  
-                  <div style={{
-                    background: '#3b82f6', color: '#fff', fontSize: '0.75rem',
-                    padding: '0.25rem 0.5rem', borderRadius: '15px', display: 'inline-block',
-                    marginTop: '1rem', fontWeight: '700'
-                  }}>
-                    {milestone.year}
-                  </div>
-                </div>
+                );
+              })}
+            </div>
+
+            {/* End decoration */}
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              right: '3%',
+              transform: 'translateY(-50%)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              zIndex: 5
+            }}>
+              {[0, 1, 2].map(i => (
+                <div key={i} style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: '#3b82f6',
+                  opacity: 1 - (i * 0.3)
+                }} />
               ))}
             </div>
           </div>
