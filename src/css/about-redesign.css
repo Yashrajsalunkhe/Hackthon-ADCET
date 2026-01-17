@@ -2,26 +2,31 @@
 
 /* Section Titles */
 .section-subtitle {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: #ffffff !important;
   margin-bottom: 20px;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
 }
 
 .subsection-title {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 20px;
+  letter-spacing: -0.01em;
 }
 
 /* About Description */
 .about-description {
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: #ffffff !important;
   margin-bottom: 18px;
+  letter-spacing: 0.01em;
 }
 
 .about-description strong {
@@ -73,16 +78,20 @@
 }
 
 .info-label {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: rgba(255, 255, 255, 0.7) !important;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  font-weight: 600;
 }
 
 .info-value {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: #ffffff !important;
+  letter-spacing: -0.01em;
 }
 
 /* Tracks Section */
@@ -126,17 +135,21 @@
 }
 
 .track-card h5 {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: #ffffff !important;
   margin-bottom: 10px;
+  letter-spacing: -0.01em;
 }
 
 .track-card p {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: #ffffff !important;
   margin-bottom: 15px;
-  line-height: 1.5;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
 .track-prize {

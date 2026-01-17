@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Hero = () => {
   const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+  const prevTimeRef = useRef({
     days: 0,
     hours: 0,
     minutes: 0,
@@ -15,12 +21,18 @@ const Hero = () => {
       const difference = targetDate - now;
 
       if (difference > 0) {
-        setTimeLeft({
+        const newTime = {
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
           hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
+        };
+        
+        // Only update if values actually changed
+        if (JSON.stringify(newTime) !== JSON.stringify(prevTimeRef.current)) {
+          prevTimeRef.current = newTime;
+          setTimeLeft(newTime);
+        }
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
@@ -31,6 +43,15 @@ const Hero = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+  const renderDigit = (value, unit, position) => {
+    const digit = String(value).padStart(2, '0')[position];
+    return (
+      <div className="time-value-wrapper" key={`${unit}-${position}`}>
+        <div className="time-value-clean">{digit}</div>
+      </div>
+    );
+  };
 
   return (
     <section className="back_home twinkle_back not-selectable" id="home" data-section="hero">
@@ -83,44 +104,32 @@ const Hero = () => {
                   <div className="countdown-display-clean">
                     <div className="time-unit-clean">
                       <div className="time-digits-wrapper">
-                        {String(timeLeft.days).padStart(2, '0').split('').map((digit, index) => (
-                          <div className="time-value-wrapper" key={`days-${index}`}>
-                            <div className="time-value-clean" key={`${timeLeft.days}-${index}`}>{digit}</div>
-                          </div>
-                        ))}
+                        {renderDigit(timeLeft.days, 'days', 0)}
+                        {renderDigit(timeLeft.days, 'days', 1)}
                       </div>
                       <div className="time-label-clean">Days</div>
                     </div>
                     <div className="time-separator-clean">:</div>
                     <div className="time-unit-clean">
                       <div className="time-digits-wrapper">
-                        {String(timeLeft.hours).padStart(2, '0').split('').map((digit, index) => (
-                          <div className="time-value-wrapper" key={`hours-${index}`}>
-                            <div className="time-value-clean" key={`${timeLeft.hours}-${index}`}>{digit}</div>
-                          </div>
-                        ))}
+                        {renderDigit(timeLeft.hours, 'hours', 0)}
+                        {renderDigit(timeLeft.hours, 'hours', 1)}
                       </div>
                       <div className="time-label-clean">Hours</div>
                     </div>
                     <div className="time-separator-clean">:</div>
                     <div className="time-unit-clean">
                       <div className="time-digits-wrapper">
-                        {String(timeLeft.minutes).padStart(2, '0').split('').map((digit, index) => (
-                          <div className="time-value-wrapper" key={`minutes-${index}`}>
-                            <div className="time-value-clean" key={`${timeLeft.minutes}-${index}`}>{digit}</div>
-                          </div>
-                        ))}
+                        {renderDigit(timeLeft.minutes, 'minutes', 0)}
+                        {renderDigit(timeLeft.minutes, 'minutes', 1)}
                       </div>
                       <div className="time-label-clean">Minutes</div>
                     </div>
                     <div className="time-separator-clean">:</div>
                     <div className="time-unit-clean">
                       <div className="time-digits-wrapper">
-                        {String(timeLeft.seconds).padStart(2, '0').split('').map((digit, index) => (
-                          <div className="time-value-wrapper" key={`seconds-${index}`}>
-                            <div className="time-value-clean" key={`${timeLeft.seconds}-${index}`}>{digit}</div>
-                          </div>
-                        ))}
+                        {renderDigit(timeLeft.seconds, 'seconds', 0)}
+                        {renderDigit(timeLeft.seconds, 'seconds', 1)}
                       </div>
                       <div className="time-label-clean">Seconds</div>
                     </div>

@@ -1,101 +1,75 @@
 const Rules = () => {
   const rules = [
     {
-      category: "General Rules",
-      icon: "📋",
+      category: "General Rules & Conduct",
+      color: "green",
       items: [
         "Each team is allowed to submit only one Idea",
-        "Participants must strictly follow the Code of Conduct provided by organizers and Unstop platform",
-        "Teams are encouraged to develop projects entirely during the hackathon duration",
-        "For Software Edition: If using re-used code or re-submitting from another hackathon, disclose previous usage and extent clearly",
-        "At least one team member must be present at the team desk at all times during final round",
-        "IPR: Intellectual Property jointly owned by developing team and sponsoring industry (if any)"
+        "Participants must strictly follow the Code of Conduct",
+        "Teams encouraged to develop projects entirely during hackathon",
+        "At least one team member must be present at desk during final round",
+        "IPR: Intellectual Property jointly owned by team and sponsor",
+        "Decision of ADCET shall be final and binding"
       ]
     },
     {
       category: "Eligibility & Team Formation",
-      icon: "👥",
+      color: "blue",
       items: [
-        "Open to all students of recognized institutions in India (UG / PG / Diploma)",
+        "Open to all students of recognized institutions in India",
+        "Team Size: 4-5 Members (At least one girl student mandatory)",
         "Team members must be currently enrolled students",
-        "Team Size: 4-5 Members (At least one girl student mandatory from any department)",
-        "Team members can be from same or multiple institutes (permission letter required from all institutes)",
+        "Members can be from multiple institutes (permission letter required)",
         "Registration Fees for first round: Nil",
-        "Shortlisted teams for final round may pay accommodation charges if necessary"
+        "Shortlisted teams may pay accommodation charges if necessary"
       ]
     },
     {
-      category: "Project Development Rules",
-      icon: "⚡",
+      category: "Project Development & Hardware",
+      color: "orange",
       items: [
-        "Software Edition: Projects must be developed from scratch during the hackathon",
-        "Hardware Edition: Maximum 40% project completion allowed before final round (basic structural assembly/module testing)",
-        "Major integration, final fabrication, testing & validation must be done during event",
-        "Teams must strictly follow assigned problem theme",
+        "Software: Projects must be developed from scratch during hackathon",
+        "Hardware: Maximum 40% completion allowed before final round",
         "Working prototype/product mandatory at end of hackathon",
-        "Teams may use open-source libraries and tools",
-        "Any pre-built templates must be explicitly disclosed during final presentation"
+        "Teams must bring their own hardware and laptops",
+        "Hardware teams must demonstrate ≤40% completion upon arrival",
+        "Teams must strictly follow assigned problem theme"
       ]
     },
     {
-      category: "Hardware & Resource Guidelines",
-      icon: "🔧",
+      category: "Safety & Resources",
+      color: "red",
       items: [
-        "Participants may use off-the-shelf hardware (Arduino, Raspberry Pi, Sensors, modules)",
-        "Teams must bring their own hardware components; organizers won't provide additional components",
-        "Teams must carry own laptops and computing resources",
-        "Status Check: Hardware teams must demonstrate ≤40% completion upon arrival (points penalty/disqualification if exceeded)",
-        "Organizers provide: Casting/testing facilities (Civil), Workshop facilities, Power supply, Internet connectivity",
-        "Basic prototyping kit (breadboards, jumper wires) available in limited quantity"
-      ]
-    },
-    {
-      category: "Safety Guidelines",
-      icon: "⚠️",
-      items: [
-        "Participants must strictly follow safety protocols while working with hardware",
-        "Projects with flammable components, hazardous wiring, or unsafe voltage/current handling will be disqualified immediately",
-        "Organizers not responsible for loss or damage to participant's hardware or equipment",
-        "Report any safety concerns to organizers immediately",
+        "Strictly follow safety protocols while working with hardware",
+        "Hazardous projects will be disqualified immediately",
+        "Organizers not responsible for loss or damage to equipment",
+        "Report safety concerns to organizers immediately",
         "Maintain clean and organized workspace",
         "Emergency medical assistance available on campus"
       ]
     },
     {
       category: "Submission & Documentation",
-      icon: "📄",
+      color: "cyan",
       items: [
-        "Final submission must include: Working prototype, 2-3 minute video demo, Presentation (PPT/PDF)",
-        "Documentation must include: Problem statement, Approach & Technologies Used, Challenges & Solutions",
-        "Include hardware design files/block diagrams & product photographs",
+        "Include: Working prototype, video demo, Presentation (PPT/PDF)",
+        "Documentation: Problem statement, Technologies, Challenges",
         "Provide code repository (GitHub, Google Drive, etc.)",
-        "Teams must clearly disclose any pre-existing IP used in project",
-        "Teams responsible for protecting their own confidential information"
+        "Include hardware design files/block diagrams & photographs",
+        "Disclose any pre-existing IP or pre-built templates used",
+        "Solutions should align with: Innovation, Scalability, Feasibility"
       ]
     },
     {
-      category: "Judging Criteria",
-      icon: "⚖️",
+      category: "Judging & Final Guidelines",
+      color: "purple",
       items: [
         "Innovation & Creativity: 20%",
         "Technical Complexity: 20%",
         "Practicality & Real-World Impact: 20%",
         "Functionality & Working Prototype: 20%",
         "Final Demonstration: 20%",
-        "Decision of Judging Panel is final and binding",
-        "Winners selected strictly according to above criteria"
-      ]
-    },
-    {
-      category: "Additional Guidelines",
-      icon: "✅",
-      items: [
-        "All participants will receive certificate of participation",
-        "Solutions should align with: Innovation, Scalability, Feasibility, Societal Impact",
-        "Organizers may use project details for academic, promotional, or research purposes with due credit",
-        "Organizers, judges, mentors not responsible for maintaining confidentiality of disclosed ideas",
-        "Avoid sharing sensitive or patent-pending information unless adequately protected",
-        "In event of rule changes, decision of ADCET shall be final and binding"
+        "Decision of Judging Panel is final and binding"
       ]
     }
   ];
@@ -129,13 +103,44 @@ const Rules = () => {
           {rules.map((ruleSection, index) => (
             <div 
               key={index}
-              className="rule-card"
+              className={`rule-card ${ruleSection.color}`}
               data-aos="fade-up"
               data-aos-once="true"
               data-aos-delay={index * 100}
             >
               <div className="rule-card-header">
-                <span className="rule-icon">{ruleSection.icon}</span>
+                <div className="rule-icon-wrapper">
+                  {ruleSection.color === 'green' && (
+                    <svg className="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                  )}
+                  {ruleSection.color === 'blue' && (
+                    <svg className="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  )}
+                  {ruleSection.color === 'orange' && (
+                    <svg className="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  )}
+                  {ruleSection.color === 'red' && (
+                    <svg className="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  )}
+                  {ruleSection.color === 'cyan' && (
+                    <svg className="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  )}
+                  {ruleSection.color === 'purple' && (
+                    <svg className="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                    </svg>
+                  )}
+                </div>
                 <h3 className="rule-category">{ruleSection.category}</h3>
               </div>
               <ul className="rule-items">

@@ -1,12 +1,12 @@
 /* ============================================
-   RULES SECTION - MODERN DESIGN
+   RULES SECTION - COLORFUL CARD UI
    ============================================ */
 
 .rules-section {
   position: relative;
-  padding: 120px 0;
+  padding: 100px 0;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(10, 10, 20, 0.5) 0%, rgba(20, 10, 30, 0.3) 100%);
+  background: #232228;
 }
 
 .rules-wrapper {
@@ -17,200 +17,337 @@
 
 .rules-intro {
   text-align: center;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 30px auto 60px;
-  max-width: 700px;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #ddd;
+  margin: 30px auto 70px;
+  max-width: 600px;
+  line-height: 1.8;
   font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
 .rules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
   margin-top: 60px;
 }
 
 .rule-card {
-  background: linear-gradient(135deg, rgba(20, 20, 35, 0.7), rgba(30, 30, 45, 0.5));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 35px;
-  backdrop-filter: blur(15px);
-  transition: all 0.4s ease;
   position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2.25rem;
+  padding: 28px;
+  box-shadow: 0.063em 0.75em 1.563em rgba(0, 0, 0, 0.78);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
 .rule-card::before {
-  content: '';
   position: absolute;
+  content: "";
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, 
-    #FF1744 0%, 
-    #FF6B6B 25%, 
-    #6366F1 50%, 
-    #8B5CF6 75%, 
-    #00D9FF 100%
-  );
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease;
+  height: 100%;
+  border-radius: 2.25rem;
+  z-index: -1;
+  border: 2.5px solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
 }
 
 .rule-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(99, 102, 241, 0.5);
-  box-shadow: 
-    0 15px 50px rgba(99, 102, 241, 0.3),
-    0 0 60px rgba(99, 102, 241, 0.15),
-    inset 0 0 40px rgba(99, 102, 241, 0.05);
-  background: linear-gradient(135deg, rgba(25, 25, 45, 0.85), rgba(35, 35, 55, 0.7));
-}
-
-.rule-card:hover::before {
-  transform: scaleX(1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
 }
 
 .rule-card-header {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rule-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rule-icon {
-  font-size: 2.5rem;
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-  animation: float-icon 3s ease-in-out infinite;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes float-icon {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.rule-card:hover .rule-icon {
+  transform: scale(1.1);
 }
 
 .rule-category {
   font-family: "Anton SC", sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #00D9FF;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
   margin: 0;
-  letter-spacing: 0.03em;
-  text-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+  letter-spacing: 0.05em;
   flex: 1;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .rule-items {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex: 1;
 }
 
 .rule-item {
   font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
-  padding: 12px 0 12px 30px;
+  color: #ddd;
+  padding: 10px 0 10px 24px;
   position: relative;
-  transition: all 0.3s ease;
-  border-left: 2px solid transparent;
-  margin-bottom: 8px;
+  transition: all 0.25s ease;
+  font-weight: 400;
 }
 
 .rule-item::before {
-  content: '▸';
+  content: '';
   position: absolute;
   left: 8px;
-  color: #6366F1;
-  font-weight: 900;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: all 0.25s ease;
 }
 
 .rule-item:hover {
-  color: rgba(255, 255, 255, 1);
-  padding-left: 35px;
-  border-left-color: #6366F1;
-  background: rgba(99, 102, 241, 0.05);
+  color: #fff;
+  padding-left: 28px;
 }
 
 .rule-item:hover::before {
-  color: #00D9FF;
-  left: 13px;
-  transform: scale(1.2);
+  opacity: 1;
+  left: 10px;
+  width: 7px;
+  height: 7px;
+}
+
+/* Color Variants */
+.rule-card.green {
+  background: radial-gradient(ellipse at right top, #107667ed 0%, #151419 47%, #151419 100%);
+}
+
+.rule-card.green::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #01c3a8) border-box;
+}
+
+.rule-card.blue {
+  background: radial-gradient(ellipse at right top, #00458f8f 0%, #151419 45%, #151419 100%);
+}
+
+.rule-card.blue::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #1890ff) border-box;
+}
+
+.rule-card.orange {
+  background: radial-gradient(ellipse at right top, #ffb74194 0%, #151419 47%, #151419 100%);
+}
+
+.rule-card.orange::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #ffb741) border-box;
+}
+
+.rule-card.red {
+  background: radial-gradient(ellipse at right top, #a63d2a82 0%, #151419 47%, #151419 100%);
+}
+
+.rule-card.red::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #a63d2a) border-box;
+}
+
+.rule-card.purple {
+  background: radial-gradient(ellipse at right top, #8b5cf6ad 0%, #151419 47%, #151419 100%);
+}
+
+.rule-card.purple::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #8b5cf6) border-box;
+}
+
+.rule-card.cyan {
+  background: radial-gradient(ellipse at right top, #06b6d4ad 0%, #151419 47%, #151419 100%);
+}
+
+.rule-card.cyan::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #06b6d4) border-box;
+}
+
+.rule-card.yellow {
+  background: radial-gradient(ellipse at right top, #eab308ad 0%, #151419 47%, #151419 100%);
+}
+
+.rule-card.yellow::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #eab308) border-box;
+}
+
+.rule-card.pink {
+  background: radial-gradient(ellipse at right top, #ec4899ad 0%, #151419 47%, #151419 100%);
+}
+
+.rule-card.pink::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #ec4899) border-box;
 }
 
 /* Rules Footer */
 .rules-footer {
-  margin-top: 80px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
 }
 
 .important-note {
-  background: linear-gradient(135deg, rgba(255, 23, 68, 0.15), rgba(220, 20, 60, 0.1));
-  border: 2px solid rgba(255, 23, 68, 0.4);
-  border-radius: 20px;
-  padding: 30px 40px;
+  background: radial-gradient(ellipse at right top, #a63d2a82 0%, #151419 47%, #151419 100%);
+  border: 2.5px solid transparent;
+  border-radius: 2.25rem;
+  padding: 28px 36px;
   max-width: 900px;
   display: flex;
-  gap: 25px;
-  align-items: flex-start;
-  backdrop-filter: blur(10px);
-  box-shadow: 
-    0 10px 40px rgba(255, 23, 68, 0.2),
-    inset 0 0 30px rgba(255, 23, 68, 0.05);
+  gap: 20px;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0.063em 0.75em 1.563em rgba(0, 0, 0, 0.78);
+}
+
+.important-note::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2.25rem;
+  z-index: -1;
+  border: 2.5px solid transparent;
+  background: linear-gradient(45deg, #232228, #232228, #232228, #232228, #ef4444) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.important-note:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.9);
 }
 
 .warning-icon {
-  width: 50px;
-  height: 50px;
-  color: #FF1744;
-  filter: drop-shadow(0 0 15px rgba(255, 23, 68, 0.6));
+  width: 40px;
+  height: 40px;
+  color: #f87171;
   flex-shrink: 0;
-  animation: pulse-warning 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.4));
 }
 
-@keyframes pulse-warning {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 15px rgba(255, 23, 68, 0.6));
-  }
-  50% {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 25px rgba(255, 23, 68, 0.8));
-  }
+.important-note:hover .warning-icon {
+  transform: scale(1.1);
 }
 
 .important-note h4 {
   font-family: "Anton SC", sans-serif;
-  font-size: 1.4rem;
-  color: #FF1744;
-  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #fff;
+  margin: 0 0 8px 0;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .important-note p {
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ddd;
   margin: 0;
+  font-weight: 400;
+}
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.important-note:hover {
+  border-color: rgba(248, 113, 113, 0.5);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(220, 38, 38, 0.08));
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.15);
+}
+
+.important-note:hover::before {
+  opacity: 1;
+}
+
+.warning-icon {
+  width: 36px;
+  height: 36px;
+  color: rgba(248, 113, 113, 0.9);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.3));
+}
+
+.important-note:hover .warning-icon {
+  color: rgba(248, 113, 113, 1);
+  filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.5));
+  transform: scale(1.05);
+}
+
+.important-note h4 {
+  font-family: "Anton SC", sans-serif;
+  font-size: 1.05rem;
+  background: linear-gradient(135deg, #fca5a5 0%, #f87171 50%, #ef4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.important-note p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  font-weight: 300;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .rules-grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
   }
 }
 
@@ -225,61 +362,74 @@
 
   .rules-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 1.8rem;
   }
 
   .rule-card {
-    padding: 28px;
+    padding: 24px;
+    min-height: 280px;
   }
 
   .rule-category {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
   }
 
   .rule-icon {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .important-note {
-    flex-direction: column;
-    padding: 25px 30px;
-    text-align: center;
+    flex-direction: row;
+    padding: 22px 28px;
+    align-items: flex-start;
   }
 
   .warning-icon {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto;
+    width: 32px;
+    height: 32px;
   }
 }
 
 @media (max-width: 640px) {
   .rules-intro {
-    font-size: 1rem;
-    margin: 20px auto 40px;
+    font-size: 0.95rem;
+    margin: 20px auto 50px;
   }
 
   .rule-card {
-    padding: 22px;
+    padding: 20px;
+    border-radius: 1.75rem;
   }
 
   .rule-category {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .rule-icon {
+    font-size: 1.6rem;
   }
 
   .rule-item {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    padding: 8px 0 8px 20px;
   }
 
   .important-note {
-    padding: 20px 25px;
+    padding: 20px 24px;
+    gap: 16px;
+    border-radius: 1.75rem;
   }
 
   .important-note h4 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .important-note p {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+  }
+
+  .warning-icon {
+    width: 28px;
+    height: 28px;
   }
 }

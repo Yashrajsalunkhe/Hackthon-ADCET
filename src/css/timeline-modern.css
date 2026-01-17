@@ -170,58 +170,65 @@
 	overflow: hidden;
 }
 
-.timeline-card::before {
-	content: '';
+/* Animated background circle */
+.timeline-card-bg {
+	height: 200px;
+	width: 200px;
+	background-color: #f9b234;
+	z-index: 0;
 	position: absolute;
-	top: -2px;
-	left: -2px;
-	right: -2px;
-	bottom: -2px;
-	background: linear-gradient(135deg, #FF1744, #DC143C, #6366F1, #4B0082);
-	border-radius: 20px;
-	z-index: -1;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	transition: all 0.5s ease;
+	pointer-events: none;
 	opacity: 0;
-	transition: opacity 0.4s ease;
-	animation: gradient-shift 3s ease infinite;
-	background-size: 200% 200%;
 }
 
-.timeline-card::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(255, 23, 68, 0.3), transparent);
-	opacity: 0;
-	transition: opacity 0.4s ease;
+/* Different colors for each card - soft, faint colors */
+.timeline-event:nth-child(1) .timeline-card-bg {
+	background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 99, 132, 0.4));
+}
+
+.timeline-event:nth-child(2) .timeline-card-bg {
+	background: linear-gradient(135deg, rgba(120, 200, 150, 0.3), rgba(62, 205, 94, 0.4));
+}
+
+.timeline-event:nth-child(3) .timeline-card-bg {
+	background: linear-gradient(135deg, rgba(129, 140, 248, 0.3), rgba(99, 102, 241, 0.4));
+}
+
+.timeline-event:nth-child(4) .timeline-card-bg {
+	background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(139, 92, 246, 0.4));
+}
+
+/* Make content relative to stay above background */
+.timeline-card-header,
+.timeline-icon,
+.timeline-date,
+.timeline-title,
+.timeline-subtitle,
+.timeline-description,
+.timeline-details {
+	position: relative;
+	z-index: 1;
 }
 
 .timeline-card:hover {
-	transform: translateY(-8px) scale(1.02);
-	border-color: rgba(255, 23, 68, 0.5);
-	box-shadow: 
-		0 20px 60px rgba(255, 23, 68, 0.2),
-		0 0 60px rgba(99, 102, 241, 0.15),
-		inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	transform: translateY(-5px);
 }
 
-.timeline-card:hover::before {
-	opacity: 0.3;
-}
-
-.timeline-card:hover::after {
+.timeline-card:hover .timeline-card-bg {
 	opacity: 1;
+	transform: translate(-50%, -50%) scale(6);
 }
 
-@keyframes gradient-shift {
-	0%, 100% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
+.timeline-card:hover .timeline-date,
+.timeline-card:hover .timeline-title,
+.timeline-card:hover .timeline-subtitle,
+.timeline-card:hover .timeline-description {
+	color: #FFF;
 }
 
 /* Card header */
