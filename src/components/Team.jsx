@@ -9,18 +9,14 @@ const Team = () => {
         img: 'img/Our team/amol dange.jpg',
         email: 'amol.dange@example.com',
         linkedin: 'https://linkedin.com/in/amoldange'
-      }
-    ],
-    [
+      },
       { 
         name: 'Dr. Asma Shaikh', 
         role: 'Faculty Coordinator', 
         img: 'img/Our team/asma shaikh.jpg',
         email: 'asma.shaikh@example.com',
         linkedin: 'https://linkedin.com/in/asmashaikh'
-      }
-    ],
-    [
+      },
       { 
         name: 'Krishnkumar', 
         role: 'Core Team', 

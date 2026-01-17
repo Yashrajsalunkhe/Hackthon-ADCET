@@ -44,12 +44,14 @@ const Domains = () => {
                 <div className="domain-overlay">
                   <h3>Viksit Bharat</h3>
                   <p>Developed India - Building Tomorrow's Nation</p>
-                  <button 
+                  <a 
                     className="select-domain-btn"
-                    onClick={() => handleOpenPDF('Problem Statements (Hardware) as on 22-12-25.pdf')}
+                    href="https://viksitindia.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Explore Theme
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -68,12 +70,15 @@ const Domains = () => {
                 <div className="domain-overlay">
                   <h3>Sustainable Development Goals (SDGs)</h3>
                   <p>Creating Solutions for a Sustainable Future</p>
-                  <button 
+                  <a
                     className="select-domain-btn"
-                    onClick={() => handleOpenPDF('Problem Statements (Software) as on 29-12-25.pdf')}
+                    
+                    href="https://sdgs.un.org/goals"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Explore Theme
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

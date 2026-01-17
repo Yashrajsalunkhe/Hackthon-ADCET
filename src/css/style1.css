@@ -332,7 +332,8 @@ header.scrolled {
 }
 
 .hero-buttons {
-	width: 100%;
+	width: 30%;
+	margin: 0 auto;
 }
 
 .date-con {
@@ -446,21 +447,21 @@ header.scrolled {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 25px;
+	gap: 20px;
+	padding: 20px;
 }
 
 .countdown-header-clean {
-	color: rgba(255, 255, 255, 0.7);
-	font-size: 1rem;
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 1.25rem;
 	font-weight: 400;
 	letter-spacing: 0.5px;
-	text-transform: uppercase;
 }
 
 .countdown-display-clean {
 	display: flex;
-	align-items: flex-start;
-	gap: 15px;
+	align-items: center;
+	gap: 10px;
 	justify-content: center;
 }
 
@@ -468,32 +469,55 @@ header.scrolled {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 8px;
+	gap: 12px;
 }
 
 .time-digits-wrapper {
 	display: flex;
-	gap: 5px;
+	gap: 8px;
 }
 
 .time-value-wrapper {
 	overflow: hidden;
-	height: 80px;
+	height: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 50px;
+	background: rgba(30, 30, 30, 0.8);
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
+				inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	position: relative;
+}
+
+.time-value-wrapper::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 12px;
+	background: linear-gradient(135deg, 
+		rgba(255, 255, 255, 0.05) 0%, 
+		rgba(255, 255, 255, 0) 100%);
+	pointer-events: none;
 }
 
 .time-value-clean {
-	font-size: 5rem;
-	font-weight: 900;
+	font-size: 3rem;
+	font-weight: 700;
 	font-family: 'Anton SC', sans-serif;
 	color: #ffffff;
 	line-height: 1;
-	letter-spacing: 0.02em;
-	text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+	letter-spacing: -0.02em;
+	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 	animation: slideUp 0.4s ease-out;
+	position: relative;
+	z-index: 1;
 }
 
 @keyframes slideUp {
@@ -508,19 +532,19 @@ header.scrolled {
 }
 
 .time-label-clean {
-	font-size: 0.85rem;
-	font-weight: 500;
-	color: rgba(255, 255, 255, 0.6);
-	text-transform: uppercase;
-	letter-spacing: 1.5px;
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 0.7);
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
 }
 
 .time-separator-clean {
-	font-size: 4rem;
+	font-size: 2.5rem;
 	font-weight: 700;
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.6);
 	line-height: 1;
-	padding-top: 10px;
+	padding-bottom: 25px;
 	font-family: 'Anton SC', sans-serif;
 }
 
@@ -1244,38 +1268,39 @@ Base
 	/* Clean Countdown Timer Responsive - Mobile */
 	.countdown-section-clean {
 		margin-top: 30px;
+		padding: 15px;
 	}
 
 	.countdown-header-clean {
-		font-size: 0.85rem;
+		font-size: 0.95rem;
 	}
 
 	.countdown-display-clean {
 		gap: 6px;
-		flex-wrap: wrap;
 	}
 
 	.time-digits-wrapper {
-		gap: 3px;
+		gap: 4px;
 	}
 
 	.time-value-wrapper {
-		height: 45px;
-		width: 28px;
+		height: 50px;
+		width: 35px;
+		border-radius: 8px;
 	}
 
 	.time-value-clean {
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 
 	.time-separator-clean {
-		font-size: 2.2rem;
-		padding-top: 3px;
+		font-size: 1.8rem;
+		padding-bottom: 18px;
 	}
 
 	.time-label-clean {
-		font-size: 0.65rem;
-		letter-spacing: 1px;
+		font-size: 0.7rem;
+		letter-spacing: 0.3px;
 	}
 }
 
@@ -1361,21 +1386,35 @@ Base
 	}
 
 	/* Clean Countdown Timer Responsive - Tablet */
+	.countdown-section-clean {
+		margin-top: 35px;
+	}
+
+	.countdown-header-clean {
+		font-size: 1.1rem;
+	}
+
 	.countdown-display-clean {
-		gap: 12px;
+		gap: 8px;
+	}
+
+	.time-digits-wrapper {
+		gap: 6px;
 	}
 
 	.time-value-wrapper {
 		height: 60px;
-		width: 38px;
+		width: 42px;
+		border-radius: 10px;
 	}
 
 	.time-value-clean {
-		font-size: 3.5rem;
+		font-size: 2.5rem;
 	}
 
 	.time-separator-clean {
-		font-size: 3rem;
+		font-size: 2rem;
+		padding-bottom: 22px;
 	}
 
 	.time-label-clean {
