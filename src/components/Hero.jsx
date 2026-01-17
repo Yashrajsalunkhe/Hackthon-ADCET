@@ -68,7 +68,10 @@ const Hero = () => {
                     March 12-14, 2026
                   </p>
                   <p className="anton-sc-regular not-selectable" id="hero-sub">
-                    48-hr Hackathon in Ashta, Maharashtra
+                    Annasaheb Dange College of Engineering and Technology
+                  </p>
+                  <p className="anton-sc-regular not-selectable" id="hero-sub" style={{fontSize: '0.9em', marginTop: '-10px'}}>
+                    Ashta, Taluka Walwa, District Sangli, Maharashtra - 416301
                   </p>
                 </div>
 

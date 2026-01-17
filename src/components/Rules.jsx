@@ -1,75 +1,101 @@
 const Rules = () => {
   const rules = [
     {
-      category: "Team Formation & Registration",
-      icon: "👥",
-      items: [
-        "Teams must consist of 4-5 members",
-        "At least one female member is mandatory in each team",
-        "All team members must be students from recognized institutions",
-        "Valid student ID card is mandatory for participation",
-        "Team formation must be finalized before registration",
-        "Team leader will be the primary point of contact"
-      ]
-    },
-    {
-      category: "Idea Submission Guidelines",
-      icon: "💡",
-      items: [
-        "Ideas must align with either Viksit Bharat or SDG themes",
-        "Submissions must be original work of the team",
-        "Plagiarism or copying will lead to immediate disqualification",
-        "Problem statements can be selected from provided lists",
-        "Include feasibility analysis in your submission",
-        "Submission deadline: February 5, 2026 (strictly enforced)"
-      ]
-    },
-    {
-      category: "Hackathon Rules",
-      icon: "⚡",
-      items: [
-        "Projects must be built during the 72-hour hackathon period only",
-        "Pre-built solutions are not allowed",
-        "Use of open-source libraries and frameworks is permitted",
-        "Teams must stay on campus for the entire duration",
-        "Working prototype/demo is mandatory for final presentation",
-        "Code must be uploaded to GitHub/similar platforms during the event"
-      ]
-    },
-    {
-      category: "Code of Conduct",
-      icon: "✅",
-      items: [
-        "Maintain professional and respectful behavior at all times",
-        "No harassment, discrimination, or inappropriate behavior",
-        "Respect organizing committee, mentors, and fellow participants",
-        "Follow campus rules and regulations",
-        "Keep workspace clean and organized",
-        "Report any issues immediately to organizers"
-      ]
-    },
-    {
-      category: "Evaluation & Judging",
-      icon: "⚖️",
-      items: [
-        "All teams must present their project to judges",
-        "Presentation time: 5-7 minutes per team",
-        "Working demo is mandatory - non-functional projects will not be considered",
-        "Judges' decision will be final and binding",
-        "Evaluation based on: Innovation, Implementation, Impact, Feasibility, and Presentation",
-        "Both software and hardware tracks will be judged separately"
-      ]
-    },
-    {
-      category: "General Guidelines",
+      category: "General Rules",
       icon: "📋",
       items: [
-        "Bring your own laptops, chargers, and hardware components",
-        "Internet connectivity will be provided by organizers",
-        "Meals and accommodation are free for all participants",
-        "Emergency medical assistance will be available on campus",
-        "Photography/videography for promotional purposes may be conducted",
-        "Organizers reserve the right to modify rules if necessary"
+        "Each team is allowed to submit only one Idea",
+        "Participants must strictly follow the Code of Conduct provided by organizers and Unstop platform",
+        "Teams are encouraged to develop projects entirely during the hackathon duration",
+        "For Software Edition: If using re-used code or re-submitting from another hackathon, disclose previous usage and extent clearly",
+        "At least one team member must be present at the team desk at all times during final round",
+        "IPR: Intellectual Property jointly owned by developing team and sponsoring industry (if any)"
+      ]
+    },
+    {
+      category: "Eligibility & Team Formation",
+      icon: "👥",
+      items: [
+        "Open to all students of recognized institutions in India (UG / PG / Diploma)",
+        "Team members must be currently enrolled students",
+        "Team Size: 4-5 Members (At least one girl student mandatory from any department)",
+        "Team members can be from same or multiple institutes (permission letter required from all institutes)",
+        "Registration Fees for first round: Nil",
+        "Shortlisted teams for final round may pay accommodation charges if necessary"
+      ]
+    },
+    {
+      category: "Project Development Rules",
+      icon: "⚡",
+      items: [
+        "Software Edition: Projects must be developed from scratch during the hackathon",
+        "Hardware Edition: Maximum 40% project completion allowed before final round (basic structural assembly/module testing)",
+        "Major integration, final fabrication, testing & validation must be done during event",
+        "Teams must strictly follow assigned problem theme",
+        "Working prototype/product mandatory at end of hackathon",
+        "Teams may use open-source libraries and tools",
+        "Any pre-built templates must be explicitly disclosed during final presentation"
+      ]
+    },
+    {
+      category: "Hardware & Resource Guidelines",
+      icon: "🔧",
+      items: [
+        "Participants may use off-the-shelf hardware (Arduino, Raspberry Pi, Sensors, modules)",
+        "Teams must bring their own hardware components; organizers won't provide additional components",
+        "Teams must carry own laptops and computing resources",
+        "Status Check: Hardware teams must demonstrate ≤40% completion upon arrival (points penalty/disqualification if exceeded)",
+        "Organizers provide: Casting/testing facilities (Civil), Workshop facilities, Power supply, Internet connectivity",
+        "Basic prototyping kit (breadboards, jumper wires) available in limited quantity"
+      ]
+    },
+    {
+      category: "Safety Guidelines",
+      icon: "⚠️",
+      items: [
+        "Participants must strictly follow safety protocols while working with hardware",
+        "Projects with flammable components, hazardous wiring, or unsafe voltage/current handling will be disqualified immediately",
+        "Organizers not responsible for loss or damage to participant's hardware or equipment",
+        "Report any safety concerns to organizers immediately",
+        "Maintain clean and organized workspace",
+        "Emergency medical assistance available on campus"
+      ]
+    },
+    {
+      category: "Submission & Documentation",
+      icon: "📄",
+      items: [
+        "Final submission must include: Working prototype, 2-3 minute video demo, Presentation (PPT/PDF)",
+        "Documentation must include: Problem statement, Approach & Technologies Used, Challenges & Solutions",
+        "Include hardware design files/block diagrams & product photographs",
+        "Provide code repository (GitHub, Google Drive, etc.)",
+        "Teams must clearly disclose any pre-existing IP used in project",
+        "Teams responsible for protecting their own confidential information"
+      ]
+    },
+    {
+      category: "Judging Criteria",
+      icon: "⚖️",
+      items: [
+        "Innovation & Creativity: 20%",
+        "Technical Complexity: 20%",
+        "Practicality & Real-World Impact: 20%",
+        "Functionality & Working Prototype: 20%",
+        "Final Demonstration: 20%",
+        "Decision of Judging Panel is final and binding",
+        "Winners selected strictly according to above criteria"
+      ]
+    },
+    {
+      category: "Additional Guidelines",
+      icon: "✅",
+      items: [
+        "All participants will receive certificate of participation",
+        "Solutions should align with: Innovation, Scalability, Feasibility, Societal Impact",
+        "Organizers may use project details for academic, promotional, or research purposes with due credit",
+        "Organizers, judges, mentors not responsible for maintaining confidentiality of disclosed ideas",
+        "Avoid sharing sensitive or patent-pending information unless adequately protected",
+        "In event of rule changes, decision of ADCET shall be final and binding"
       ]
     }
   ];
