@@ -8,6 +8,19 @@
 /* Import AOS styles */
 @import 'aos/dist/aos.css';
 
+/* CSS Variables for CollegeInfo */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --border: #333333;
+  --muted: #2a2a2a;
+  --muted-foreground: #a0a0a0;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #ec4899;
+}
+
 /* Base Reset */
 * {
   margin: 0;

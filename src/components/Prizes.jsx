@@ -11,14 +11,14 @@ const Prizes = () => {
       position: 'CHAMPION', 
       amount: '₹50,000', 
       icon: '🏆',
-      tagline: '"You didn\'t just break the code, you broke the competition! 🔥"',
+      tagline: '"You didn\'t just break the code, you broke the competition! "',
       cardClass: 'champion-card'
     },
     { 
       position: '2ND RUNNER UP', 
       amount: '₹20,000', 
       icon: '🥉',
-      tagline: '"Bronze medal but GOLDEN vibes! Your Git commits were fire! 💪"',
+      tagline: '"Bronze medal but GOLDEN vibes! Your Git commits were fire! "',
       cardClass: 'second-runner-up-card'
     }
   ];
@@ -28,7 +28,7 @@ const Prizes = () => {
       position: 'RUNNER UP', 
       amount: '₹30,000', 
       icon: '🥈',
-      tagline: '"Your circuits were LIT! Silver today, solder legend tomorrow! ⚡"',
+      tagline: '"Your circuits were LIT! Silver today, solder legend tomorrow! "',
       cardClass: 'runner-up-card'
     },
     { 

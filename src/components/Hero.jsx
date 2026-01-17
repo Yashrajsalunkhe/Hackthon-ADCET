@@ -68,7 +68,7 @@ const Hero = () => {
                     March 12-14, 2026
                   </p>
                   <p className="anton-sc-regular not-selectable" id="hero-sub">
-                    72-hr Hackathon in Ashta, Maharashtra
+                    48-hr Hackathon in Ashta, Maharashtra
                   </p>
                 </div>
 

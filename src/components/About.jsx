@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 const About = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="back_about twinkle_back not-selectable" id="about" data-section="about">
       <div className="background-container">
@@ -68,6 +72,46 @@ const About = () => {
                     </svg>
                     <span>Hardware Edition</span>
                   </div>
+                </div>
+
+                <div className="college-info-cta" style={{ marginTop: '2rem', textAlign: 'center' }}>
+                  <button 
+                    onClick={() => navigate('/college-info')}
+                    className="college-info-button"
+                    style={{
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: 'white',
+                      padding: '1rem 2rem',
+                      borderRadius: '50px',
+                      border: 'none',
+                      fontSize: '1rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'translateY(-2px)';
+                      e.target.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.6)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'translateY(0)';
+                      e.target.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+                    }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>To Know More About ADCET</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>

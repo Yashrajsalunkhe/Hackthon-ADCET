@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import DockNav from './components/DockNav';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,6 +14,7 @@ import Team from './components/Team';
 import Contact from './components/Contact';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import CollegeInfo from './components/CollegeInfo';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './css/timeline-modern.css';
@@ -44,20 +46,27 @@ function App() {
   return (
     <div className="App">
       <div id="preloader"></div>
-      <DockNav />
-      <Hero />
-      <About />
-      <Glimpse />
-      <Domains />
-      <Prizes />
-      <Timeline />
-      <Rules />
-      <Sponsors />
-      <Partnership />
-      <Team />
-      <Contact />
-      <FAQ />
-      <Footer />
+      <Routes>
+        <Route path="/college-info" element={<CollegeInfo />} />
+        <Route path="/" element={
+          <>
+            <DockNav />
+            <Hero />
+            <About />
+            <Glimpse />
+            <Domains />
+            <Prizes />
+            <Timeline />
+            <Rules />
+            <Sponsors />
+            <Partnership />
+            <Team />
+            <Contact />
+            <FAQ />
+            <Footer />
+          </>
+        } />
+      </Routes>
     </div>
   );
 }
