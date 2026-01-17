@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className={scrolled ? 'scrolled' : ''}>
       <a href="#" className="logo" style={{cursor: 'default'}}>
-        <img src="public/img/adcet.png" alt="Logo" />
+        <img src="/img/adcet.png" alt="Logo" />
       </a>
       <nav>
         <a href="#home" className="hit">Home</a>

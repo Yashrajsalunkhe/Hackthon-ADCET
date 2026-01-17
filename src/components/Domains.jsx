@@ -40,7 +40,7 @@ const Domains = () => {
             {/* Theme 1: Viksit Bharat */}
             <div className="domain-card-minimal">
               <div className="domain-image-container">
-                <img src="img/Domains/Viksit Bharat- -2047 goals.png" alt="Viksit Bharat" />
+                <img src="/img/Domains/Viksit Bharat- -2047 goals.png" alt="Viksit Bharat" />
                 <div className="domain-overlay">
                   <h3>Viksit Bharat</h3>
                   <p>Developed India - Building Tomorrow's Nation</p>
@@ -66,7 +66,7 @@ const Domains = () => {
             {/* Theme 2: Sustainable Development Goals */}
             <div className="domain-card-minimal">
               <div className="domain-image-container">
-                <img src="img/Domains/sdg goals.png" alt="Sustainable Development Goals" />
+                <img src="/img/Domains/sdg goals.png" alt="Sustainable Development Goals" />
                 <div className="domain-overlay">
                   <h3>Sustainable Development Goals (SDGs)</h3>
                   <p>Creating Solutions for a Sustainable Future</p>

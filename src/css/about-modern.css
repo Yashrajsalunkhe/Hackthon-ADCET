@@ -230,7 +230,9 @@
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
-  padding: 2rem;138, 43, 226, 0.15);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(138, 43, 226, 0.15);
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(255, 255, 255, 0.02));
   box-shadow: 0 4px 16px rgba(138, 43, 226, 0.05);
   transition: all 0.4s ease;
@@ -239,8 +241,7 @@
 .theme-item:hover {
   border-color: rgba(138, 43, 226, 0.4);
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.08), rgba(138, 43, 226, 0.03));
-  box-shadow: 0 8px 24px rgba(138, 43, 226, 0.153);
-  background: rgba(138, 43, 226, 0.03);
+  box-shadow: 0 8px 24px rgba(138, 43, 226, 0.15);
   transform: translateX(8px);
 }
 
@@ -275,7 +276,10 @@
 
 .track-compact {
   display: flex;
-  gap: 1.5rem;138, 43, 226, 0.15);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(138, 43, 226, 0.15);
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(255, 255, 255, 0.02));
   box-shadow: 0 4px 16px rgba(138, 43, 226, 0.05);
   transition: all 0.4s ease;
@@ -284,10 +288,7 @@
 .track-compact:hover {
   border-color: rgba(138, 43, 226, 0.4);
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.08), rgba(138, 43, 226, 0.03));
-  box-shadow: 0 8px 24px rgba(138, 43, 226, 0.15
-.track-compact:hover {
-  border-color: rgba(138, 43, 226, 0.3);
-  background: rgba(138, 43, 226, 0.03);
+  box-shadow: 0 8px 24px rgba(138, 43, 226, 0.15);
   transform: translateX(8px);
 }
 
