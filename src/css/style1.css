@@ -440,6 +440,90 @@ header.scrolled {
 	letter-spacing: 1px;
 }
 
+/* Clean Countdown Timer Styles */
+.countdown-section-clean {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 25px;
+}
+
+.countdown-header-clean {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 1rem;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+.countdown-display-clean {
+	display: flex;
+	align-items: flex-start;
+	gap: 15px;
+	justify-content: center;
+}
+
+.time-unit-clean {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+
+.time-digits-wrapper {
+	display: flex;
+	gap: 5px;
+}
+
+.time-value-wrapper {
+	overflow: hidden;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+}
+
+.time-value-clean {
+	font-size: 5rem;
+	font-weight: 900;
+	font-family: 'Anton SC', sans-serif;
+	color: #ffffff;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+	animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.time-label-clean {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.6);
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+}
+
+.time-separator-clean {
+	font-size: 4rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.5);
+	line-height: 1;
+	padding-top: 10px;
+	font-family: 'Anton SC', sans-serif;
+}
+
 .cont {
 	margin-bottom: 50px;
 	margin-top: 60px;
@@ -1156,6 +1240,43 @@ Base
 		max-width: 60px;
 		min-width: 55px;
 	}
+
+	/* Clean Countdown Timer Responsive - Mobile */
+	.countdown-section-clean {
+		margin-top: 30px;
+	}
+
+	.countdown-header-clean {
+		font-size: 0.85rem;
+	}
+
+	.countdown-display-clean {
+		gap: 6px;
+		flex-wrap: wrap;
+	}
+
+	.time-digits-wrapper {
+		gap: 3px;
+	}
+
+	.time-value-wrapper {
+		height: 45px;
+		width: 28px;
+	}
+
+	.time-value-clean {
+		font-size: 2.5rem;
+	}
+
+	.time-separator-clean {
+		font-size: 2.2rem;
+		padding-top: 3px;
+	}
+
+	.time-label-clean {
+		font-size: 0.65rem;
+		letter-spacing: 1px;
+	}
 }
 
 @media(max-width: 1340px) {
@@ -1237,6 +1358,28 @@ Base
 @media(max-width: 768px) {
 	.back_home {
 		height: 100vh;
+	}
+
+	/* Clean Countdown Timer Responsive - Tablet */
+	.countdown-display-clean {
+		gap: 12px;
+	}
+
+	.time-value-wrapper {
+		height: 60px;
+		width: 38px;
+	}
+
+	.time-value-clean {
+		font-size: 3.5rem;
+	}
+
+	.time-separator-clean {
+		font-size: 3rem;
+	}
+
+	.time-label-clean {
+		font-size: 0.75rem;
 	}
 
 	/* Countdown Timer Responsive - Tablet */

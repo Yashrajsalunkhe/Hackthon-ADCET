@@ -73,30 +73,53 @@ const Hero = () => {
                 </div>
 
                 {/* Countdown Timer */}
-                <div className="countdown-section">
-                  <div className="countdown-header">
-                    <svg className="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10"/>
-                      <polyline points="12 6 12 12 16 14"/>
-                    </svg>
+                <div className="countdown-section-clean">
+                  <div className="countdown-header-clean">
                     <span>Registration ends In:</span>
                   </div>
-                  <div className="countdown-boxes">
-                    <div className="countdown-box box-cyan">
-                      <div className="countdown-value">{timeLeft.days}</div>
-                      <div className="countdown-label">Days</div>
+                  <div className="countdown-display-clean">
+                    <div className="time-unit-clean">
+                      <div className="time-digits-wrapper">
+                        {String(timeLeft.days).padStart(2, '0').split('').map((digit, index) => (
+                          <div className="time-value-wrapper" key={`days-${index}`}>
+                            <div className="time-value-clean" key={`${timeLeft.days}-${index}`}>{digit}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="time-label-clean">Days</div>
                     </div>
-                    <div className="countdown-box box-purple">
-                      <div className="countdown-value">{timeLeft.hours}</div>
-                      <div className="countdown-label">Hours</div>
+                    <div className="time-separator-clean">:</div>
+                    <div className="time-unit-clean">
+                      <div className="time-digits-wrapper">
+                        {String(timeLeft.hours).padStart(2, '0').split('').map((digit, index) => (
+                          <div className="time-value-wrapper" key={`hours-${index}`}>
+                            <div className="time-value-clean" key={`${timeLeft.hours}-${index}`}>{digit}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="time-label-clean">Hours</div>
                     </div>
-                    <div className="countdown-box box-pink">
-                      <div className="countdown-value">{timeLeft.minutes}</div>
-                      <div className="countdown-label">Minutes</div>
+                    <div className="time-separator-clean">:</div>
+                    <div className="time-unit-clean">
+                      <div className="time-digits-wrapper">
+                        {String(timeLeft.minutes).padStart(2, '0').split('').map((digit, index) => (
+                          <div className="time-value-wrapper" key={`minutes-${index}`}>
+                            <div className="time-value-clean" key={`${timeLeft.minutes}-${index}`}>{digit}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="time-label-clean">Minutes</div>
                     </div>
-                    <div className="countdown-box box-orange">
-                      <div className="countdown-value">{timeLeft.seconds}</div>
-                      <div className="countdown-label">Seconds</div>
+                    <div className="time-separator-clean">:</div>
+                    <div className="time-unit-clean">
+                      <div className="time-digits-wrapper">
+                        {String(timeLeft.seconds).padStart(2, '0').split('').map((digit, index) => (
+                          <div className="time-value-wrapper" key={`seconds-${index}`}>
+                            <div className="time-value-clean" key={`${timeLeft.seconds}-${index}`}>{digit}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="time-label-clean">Seconds</div>
                     </div>
                   </div>
                 </div>
