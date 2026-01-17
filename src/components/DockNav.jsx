@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Home, Info, Target, Trophy, Clock, Handshake, HelpCircle } from 'lucide-react';
+import { Home, Info, Target, Trophy, Clock, FileText, Handshake, HelpCircle } from 'lucide-react';
 
 const DockNav = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -10,6 +10,7 @@ const DockNav = () => {
     { Icon: Target, label: 'Domains', href: '#domains' },
     { Icon: Trophy, label: 'Prizes', href: '#prizes' },
     { Icon: Clock, label: 'Timeline', href: '#timeline' },
+    { Icon: FileText, label: 'Rules', href: '#rules' },
     { Icon: Handshake, label: 'Partners', href: '#sponsors' },
     { Icon: HelpCircle, label: 'FAQs', href: '#faq' },
   ];

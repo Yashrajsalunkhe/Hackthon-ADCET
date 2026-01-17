@@ -4,38 +4,52 @@ const Timeline = () => {
       id: 'registration-starts', 
       date: '7 Jan – 5 Feb 2026', 
       title: 'Round 1: Idea Submission', 
-      subtitle: 'Online Phase',
-      description: 'Register your team (4–5 members) with at least one female member mandatory, and submit your project idea on the Unstop platform.',
+      subtitle: 'Online Phase • Unstop Platform',
+      description: 'Register your team (4–5 members) with at least one female member mandatory. Submit your innovative project idea aligned with Viksit Bharat or SDG themes. Include problem statement, proposed solution, and feasibility.',
+      details: ['Team registration on Unstop', 'Detailed idea submission', 'Problem statement selection'],
       icon: '📝',
       color: '#FF1744'
+    },
+    { 
+      id: 'evaluation', 
+      date: '6 Feb – 24 Feb 2026', 
+      title: 'Evaluation & Selection', 
+      subtitle: 'Jury Review Process',
+      description: 'Expert jury will evaluate all submissions based on innovation, feasibility, impact, and alignment with themes. Top teams will be shortlisted for the offline hackathon.',
+      details: ['Idea evaluation by expert panel', 'Assessment of technical feasibility', 'Final team selection'],
+      icon: '⚖️',
+      right: true,
+      color: '#FF6B6B'
     },
     { 
       id: 'notification', 
       date: '25 Feb 2026', 
       title: 'Shortlist Notification', 
       subtitle: 'Results Announcement',
-      description: 'Final selection results for the offline hackathon will be sent to team leaders.',
+      description: 'Selected teams will receive confirmation emails with detailed instructions for the offline hackathon. Prepare your laptops, hardware components, and get ready to innovate!',
+      details: ['Email notifications to team leaders', 'Travel and accommodation details', 'Pre-hackathon briefing'],
       icon: '📢',
-      right: true,
-      color: '#FF6B6B'
+      color: '#4CAF50'
     },
     { 
       id: 'final-round', 
       date: '12 – 14 Mar 2026', 
       title: 'Final Hackathon', 
-      subtitle: 'Offline at ADCET, Ashta',
-      description: '72-hour on-campus hackathon. Build, innovate, and present your solution.',
+      subtitle: 'Offline at ADCET, Ashta • 72 Hours',
+      description: 'On-campus innovation marathon! Build your solution with mentor guidance, access to resources, and 24/7 support. Present your working prototype to the judges.',
+      details: ['Day 1: Check-in, team setup & development begins', 'Day 2: Intensive development & mentor sessions', 'Day 3: Final presentation & demo to judges'],
       icon: '💻',
+      right: true,
       color: '#6366F1'
     },
     { 
       id: 'results', 
       date: '14 Mar 2026', 
       title: 'Results & Prize Distribution', 
-      subtitle: 'Grand Finale',
-      description: 'Winners announced! Cash prizes worth ₹2 Lakh to be awarded.',
+      subtitle: 'Grand Finale • Closing Ceremony',
+      description: 'Winners announced for both Software and Hardware tracks! Cash prizes worth ₹2 Lakh to be awarded along with certificates, swag, and recognition.',
+      details: ['Final presentations & demos', 'Winner announcements', 'Prize distribution ceremony'],
       icon: '🏆',
-      right: true,
       color: '#8B5CF6'
     },
   ];
@@ -89,6 +103,13 @@ const Timeline = () => {
                   <h3 className="timeline-title">{event.title}</h3>
                   <p className="timeline-subtitle">{event.subtitle}</p>
                   <p className="timeline-description">{event.description}</p>
+                  {event.details && (
+                    <ul className="timeline-details">
+                      {event.details.map((detail, idx) => (
+                        <li key={idx}>{detail}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ))}

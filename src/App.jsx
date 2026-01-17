@@ -6,6 +6,7 @@ import Glimpse from './components/Glimpse';
 import Domains from './components/Domains';
 import Prizes from './components/Prizes';
 import Timeline from './components/Timeline';
+import Rules from './components/Rules';
 import Sponsors from './components/Sponsors';
 import Partnership from './components/Partnership';
 import Team from './components/Team';
@@ -17,6 +18,8 @@ import 'aos/dist/aos.css';
 import './css/timeline-modern.css';
 import './css/about-modern.css';
 import './css/about-enhanced.css';
+import './css/about-redesign.css';
+import './css/rules.css';
 
 function App() {
   useEffect(() => {
@@ -48,6 +51,7 @@ function App() {
       <Domains />
       <Prizes />
       <Timeline />
+      <Rules />
       <Sponsors />
       <Partnership />
       <Team />

@@ -91,7 +91,7 @@ const Prizes = () => {
 
           {/* Software Track */}
           <div className="prize-track-section" data-aos="fade-up" data-aos-once="true">
-            <div className="track-header">
+            <div style={{margin: '0 auto', textAlign: 'center'}}>
               <h3 className="track-title">Software Track</h3>
               <p className="track-description">For Digital Innovation & Software Solutions</p>
             </div>
@@ -113,7 +113,7 @@ const Prizes = () => {
 
           {/* Hardware Track */}
           <div className="prize-track-section" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
-            <div className="track-header">
+            <div style={{margin: '0 auto', textAlign: 'center'}}>
               <h3 className="track-title">Hardware Track</h3>
               <p className="track-description">For IoT, Robotics & Hardware Innovation</p>
             </div>

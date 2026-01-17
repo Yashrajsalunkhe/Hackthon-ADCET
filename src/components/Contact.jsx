@@ -50,9 +50,16 @@ const Contact = () => {
           </div>
         </div>
         <div className="row-puw aos-init mb-4" data-aos="none" style={{marginTop: '30px'}}>
-          <div className="col-lg-12 d-flex justify-content-center align-items-center flex-column contact-container">
+          <div className="col-lg-6 d-flex justify-content-center align-items-center flex-column contact-container">
             <div className="details">
               <i className="bx bx-envelope icon-style"></i>
+              <h3 className="contact-title not-selectable">Email</h3>
+              <p className="contact-detail"><b><a href="mailto:hackathon@adcet.ac.in" style={{color: 'white', textDecoration: 'none'}}>hackathon@adcet.ac.in</a></b></p>
+            </div>
+          </div>
+          <div className="col-lg-6 d-flex justify-content-center align-items-center flex-column contact-container">
+            <div className="details">
+              <i className="bx bx-globe icon-style"></i>
               <h3 className="contact-title not-selectable">Website</h3>
               <p className="contact-detail"><b><a href="https://www.adcet.ac.in" target="_blank" rel="noopener noreferrer" style={{color: 'white', textDecoration: 'none'}}>www.adcet.ac.in</a></b></p>
             </div>

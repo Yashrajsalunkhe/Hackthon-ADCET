@@ -30,7 +30,10 @@ const Domains = () => {
           </div>
           <h2 className="dom_p" style={{color: '#ffffff'}}>
             Choose a problem statement based on the themes below. <br/>
-            Solutions can involve Software, Hardware, or a combination of both.
+            Solutions can involve Software, Hardware, or a combination of both. <br/>
+            <span style={{fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.8)', marginTop: '10px', display: 'inline-block'}}>
+              Download detailed problem statements by clicking on the theme cards below
+            </span>
           </h2>
 
           <div className="cool-domains-container">

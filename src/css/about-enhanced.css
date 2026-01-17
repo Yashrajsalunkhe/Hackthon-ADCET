@@ -15,15 +15,16 @@
 
 /* Intro Card */
 .about-intro-card {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
-  border: 1px solid rgba(138, 43, 226, 0.2);
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 24px;
   padding: 3rem;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
   box-shadow: 
-    0 8px 32px rgba(138, 43, 226, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05) !important;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -46,10 +47,12 @@
 }
 
 .about-intro-card:hover {
-  border-color: rgba(138, 43, 226, 0.4);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
   box-shadow: 
-    0 12px 48px rgba(138, 43, 226, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 12px 48px rgba(138, 43, 226, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
   transform: translateY(-4px);
 }
 
@@ -94,13 +97,8 @@
 .welcome-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
-  background: linear-gradient(135deg, #ffffff, #8a2be2, #ffffff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff !important;
   margin: 0 0 1.5rem 0;
-  animation: gradientShift 6s ease infinite;
   line-height: 1.2;
 }
 
@@ -123,7 +121,7 @@
 .about-para-enhanced {
   font-size: clamp(1rem, 2vw, 1.15rem);
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff !important;
   margin: 0 0 1.5rem 0;
   font-weight: 400;
   text-align: justify;
@@ -135,46 +133,52 @@
 
 /* Highlight Styles */
 .highlight-primary {
-  color: #8a2be2;
-  font-weight: 600;
+  color: #8a2be2 !important;
+  font-weight: 700;
   position: relative;
   padding: 0 4px;
   transition: all 0.3s ease;
 }
 
 .highlight-primary:hover {
-  color: #a855f7;
+  color: #a855f7 !important;
   text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
 }
 
 .highlight-secondary {
-  color: #ffd700;
-  font-weight: 600;
+  color: #ffd700 !important;
+  font-weight: 700;
   font-style: italic;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .highlight-accent {
-  color: #00d9ff;
-  font-weight: 600;
+  color: #00d9ff !important;
+  font-weight: 700;
   padding: 0 2px;
 }
 
 /* Event Highlight Box */
 .event-highlight-box {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 0, 0, 0.3));
-  border-left: 4px solid #8a2be2;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-left: 4px solid rgba(138, 43, 226, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 4px solid rgba(138, 43, 226, 0.8);
   border-radius: 16px;
   padding: 2rem;
   margin: 2rem 0;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
 }
 
 .event-highlight-box:hover {
   border-left-width: 6px;
-  box-shadow: 0 6px 30px rgba(138, 43, 226, 0.25);
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-color: rgba(255, 255, 255, 0.18);
+  border-left-color: rgba(138, 43, 226, 1);
+  box-shadow: 0 6px 30px rgba(138, 43, 226, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateX(5px);
 }
 
@@ -203,12 +207,12 @@
 .event-description {
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff !important;
   margin: 0;
 }
 
 .event-description strong {
-  color: #8a2be2;
+  color: #4FC3F7 !important;
   font-weight: 700;
 }
 

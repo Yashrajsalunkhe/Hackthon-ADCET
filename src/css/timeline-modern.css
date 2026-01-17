@@ -496,3 +496,42 @@
 		text-align: center;
 	}
 }
+/* Timeline Details List */
+.timeline-details {
+	margin-top: 20px;
+	padding-top: 15px;
+	border-top: 1px solid rgba(0, 217, 255, 0.15);
+	list-style: none;
+	padding-left: 0;
+}
+
+.timeline-details li {
+	font-family: 'Inter', sans-serif;
+	font-size: 0.88rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.85);
+	margin-bottom: 10px;
+	padding-left: 25px;
+	position: relative;
+	transition: all 0.3s ease;
+}
+
+.timeline-details li::before {
+	content: '→';
+	position: absolute;
+	left: 0;
+	color: #00D9FF;
+	font-weight: 700;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+}
+
+.timeline-details li:hover {
+	color: rgba(255, 255, 255, 1);
+	padding-left: 30px;
+}
+
+.timeline-details li:hover::before {
+	color: #FFD700;
+	left: 5px;
+}
