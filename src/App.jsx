@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import CollegeBanner from './components/CollegeBanner';
 import DockNav from './components/DockNav';
 import Hero from './components/Hero';
@@ -70,6 +71,7 @@ function App() {
           </>
         } />
       </Routes>
+      <Analytics />
     </div>
   );
 }
