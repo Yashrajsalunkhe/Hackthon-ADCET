@@ -1,12 +1,12 @@
 .college-banner {
-  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
   border-top: 3px solid;
   border-bottom: 3px solid;
   border-image: linear-gradient(90deg, #00d4ff 0%, #0099ff 50%, #00cc88 100%) 1;
-  padding: 2.5rem 2rem;
+  padding: 1.5rem 2rem;
   position: relative;
   overflow: visible;
   width: 100%;
+  background: transparent;
 }
 
 .college-banner::before {
@@ -37,38 +37,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.3) 0%, rgba(0, 153, 255, 0.15) 50%, rgba(10, 14, 39, 1) 100%);
-  border: 2px solid rgba(0, 212, 255, 0.5);
-  box-shadow: 
-    0 0 25px rgba(0, 212, 255, 0.4),
-    0 0 50px rgba(0, 153, 255, 0.2),
-    inset 0 0 20px rgba(0, 212, 255, 0.1);
-  transition: all 0.3s ease;
   position: relative;
-  padding: 10px;
-  margin: 0;
 }
 
 .banner-logo:hover {
-  box-shadow: 
-    0 0 40px rgba(0, 212, 255, 0.6),
-    0 0 80px rgba(0, 153, 255, 0.4),
-    inset 0 0 40px rgba(0, 212, 255, 0.15);
-  border-color: rgba(0, 212, 255, 0.8);
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .logo-img {
   width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  height: auto;
   object-fit: contain;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   flex-shrink: 0;
   position: relative;
   z-index: 2;
@@ -81,23 +61,21 @@
 }
 
 .banner-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: #aaa;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .banner-subtitle {
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ff4757 0%, #ff6b7a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
   line-height: 1.3;
+  white-space: nowrap;
 }
 
 .banner-description {

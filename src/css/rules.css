@@ -30,17 +30,17 @@
 .rules-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 2.5rem;
-  margin-top: 60px;
+  gap: 1.5rem;
+  margin-top: 50px;
 }
 
 .rule-card {
   position: relative;
-  min-height: 320px;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   border-radius: 2.25rem;
-  padding: 28px;
+  padding: 24px;
   box-shadow: 0.063em 0.75em 1.563em rgba(0, 0, 0, 0.78);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
@@ -70,9 +70,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding-bottom: 18px;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -116,9 +116,9 @@
 .rule-item {
   font-family: 'Inter', sans-serif;
   font-size: 0.92rem;
-  line-height: 1.7;
+  line-height: 1.6;
   color: #ddd;
-  padding: 10px 0 10px 24px;
+  padding: 6px 0 6px 24px;
   position: relative;
   transition: all 0.25s ease;
   font-weight: 400;
@@ -289,12 +289,7 @@
   margin: 0;
   font-weight: 400;
 }
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+
 
 .important-note:hover {
   border-color: rgba(248, 113, 113, 0.5);
