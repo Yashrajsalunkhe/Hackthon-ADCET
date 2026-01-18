@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import CollegeBanner from './components/CollegeBanner';
 import DockNav from './components/DockNav';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -22,6 +23,7 @@ import './css/about-modern.css';
 import './css/about-enhanced.css';
 import './css/about-redesign.css';
 import './css/rules.css';
+import './css/college-banner.css';
 
 function App() {
   useEffect(() => {
@@ -50,6 +52,7 @@ function App() {
         <Route path="/college-info" element={<CollegeInfo />} />
         <Route path="/" element={
           <>
+            <CollegeBanner />
             <DockNav />
             <Hero />
             <About />

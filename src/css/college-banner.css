@@ -1,0 +1,210 @@
+.college-banner {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+  border-top: 3px solid;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(90deg, #00d4ff 0%, #0099ff 50%, #00cc88 100%) 1;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: visible;
+  width: 100%;
+}
+
+.college-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 153, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.banner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.banner-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.3) 0%, rgba(0, 153, 255, 0.15) 50%, rgba(10, 14, 39, 1) 100%);
+  border: 2px solid rgba(0, 212, 255, 0.5);
+  box-shadow: 
+    0 0 25px rgba(0, 212, 255, 0.4),
+    0 0 50px rgba(0, 153, 255, 0.2),
+    inset 0 0 20px rgba(0, 212, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 10px;
+  margin: 0;
+}
+
+.banner-logo:hover {
+  box-shadow: 
+    0 0 40px rgba(0, 212, 255, 0.6),
+    0 0 80px rgba(0, 153, 255, 0.4),
+    inset 0 0 40px rgba(0, 212, 255, 0.15);
+  border-color: rgba(0, 212, 255, 0.8);
+  transform: scale(1.08);
+}
+
+.logo-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.banner-content {
+  flex: 1;
+  text-align: center;
+}
+
+.banner-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #aaa;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.banner-subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff4757 0%, #ff6b7a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.banner-description {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0.5rem 0;
+  font-weight: 300;
+}
+
+.banner-approval {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 300;
+}
+
+.banner-accreditation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.accreditation-text {
+  color: #aaa;
+}
+
+.accreditation-separator {
+  color: #00d4ff;
+  margin: 0 0.5rem;
+}
+
+.accreditation-highlight {
+  color: #00d4ff;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .banner-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .banner-logo {
+    width: 130px;
+    height: 130px;
+    border: 2px solid rgba(0, 212, 255, 0.4);
+    padding: 8px;
+  }
+
+  .logo-img {
+    width: 115px;
+    height: 115px;
+  }
+
+  .banner-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .banner-title {
+    font-size: 0.9rem;
+  }
+
+  .banner-description,
+  .banner-approval {
+    font-size: 0.85rem;
+  }
+
+  .banner-accreditation {
+    font-size: 0.8rem;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .college-banner {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .banner-container {
+   banner-logo {
+    width: 110px;
+    height: 110px;
+    border: 2px solid rgba(0, 212, 255, 0.4);
+    padding: 6px;
+  }
+
+  .logo-img {
+    width: 98px;
+    height: 98px;
+  }
+
+  .banner-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .banner-title {
+    font-size: 0.75rem;
+  }
+
+  .banner-description,
+  .banner-approval {
+    font-size: 0.8rem;
+  }
+}
+}
