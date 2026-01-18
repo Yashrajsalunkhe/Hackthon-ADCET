@@ -343,6 +343,114 @@
   font-weight: 300;
 }
 
+/* Download Buttons */
+.rule-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1.1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: 0;
+}
+
+.download-btn:hover::before {
+  left: 100%;
+}
+
+.download-icon {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.download-text {
+  flex: 1;
+  z-index: 1;
+}
+
+.download-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* Software Button Styles */
+.download-btn-software {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.1));
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.download-btn-software:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(37, 99, 235, 0.18));
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+  transform: translateY(-4px);
+}
+
+.download-btn-software:hover .download-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.download-btn-software:hover .download-arrow {
+  transform: translateX(4px);
+}
+
+/* Hardware Button Styles */
+.download-btn-hardware {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(219, 39, 119, 0.1));
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.download-btn-hardware:hover {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(219, 39, 119, 0.18));
+  border-color: rgba(236, 72, 153, 0.6);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.25);
+  transform: translateY(-4px);
+}
+
+.download-btn-hardware:hover .download-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.download-btn-hardware:hover .download-arrow {
+  transform: translateX(4px);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .rules-grid {

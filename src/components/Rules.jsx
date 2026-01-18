@@ -58,6 +58,20 @@ const Rules = () => {
         "Include hardware design files/block diagrams & photographs",
         "Disclose any pre-existing IP or pre-built templates used",
         "Solutions should align with: Innovation, Scalability, Feasibility"
+      ],
+      downloads: [
+        { 
+          name: "Software Submission Format", 
+          url: "/submission_format/software_submission_format.pdf",
+          icon: "💻",
+          type: "software"
+        },
+        { 
+          name: "Hardware Submission Format", 
+          url: "/submission_format/Hardware_submission_format.pdf",
+          icon: "⚙️",
+          type: "hardware"
+        }
       ]
     },
     {
@@ -150,6 +164,22 @@ const Rules = () => {
                   </li>
                 ))}
               </ul>
+              {ruleSection.downloads && (
+                <div className="rule-downloads">
+                  {ruleSection.downloads.map((download, idx) => (
+                    <a 
+                      key={idx}
+                      href={download.url} 
+                      download 
+                      className={`download-btn download-btn-${download.type}`}
+                    >
+                      <span className="download-icon">{download.icon}</span>
+                      <span className="download-text">{download.name}</span>
+                      <span className="download-arrow">→</span>
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
