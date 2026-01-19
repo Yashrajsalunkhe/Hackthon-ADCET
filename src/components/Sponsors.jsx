@@ -2,13 +2,13 @@
 
 const Sponsors = () => {
   const titleSponsor = [
-    { name: 'Logitech', logo: 'assets/sponsors/Logitech.PNG', link: 'https://www.logitech.com/en-in' }
+    { name: 'Logitech', logo: 'images/sponsors/Logitech.PNG', link: 'https://www.logitech.com/en-in' }
   ];
 
   const goldSponsors = [
-    { name: 'Devfolio', logo: 'assets/sponsors/4_lqjtfq.png', link: 'https://devfolio.co/' },
-    { name: 'Polygon', logo: 'assets/sponsors/6_cic6mb.png', link: 'https://polygon.technology/' },
-    { name: 'Aptos', logo: 'assets/sponsors/44_rgsqli.png', link: 'https://aptos.dev/' },
+    { name: 'Devfolio', logo: 'images/sponsors/4_lqjtfq.png', link: 'https://devfolio.co/' },
+    { name: 'Polygon', logo: 'images/sponsors/6_cic6mb.png', link: 'https://polygon.technology/' },
+    { name: 'Aptos', logo: 'images/sponsors/44_rgsqli.png', link: 'https://aptos.dev/' },
   ];
 
   return (

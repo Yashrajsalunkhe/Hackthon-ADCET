@@ -28,7 +28,7 @@ const DockNav = () => {
     <div className="dock-nav-container">
       <div className="magic-dock">
         <div className="dock-logo-item">
-          <img src="/img/adcet.png" alt="ADCET" />
+          <img src="/images/adcet.png" alt="ADCET" />
         </div>
         
         <div className="dock-divider"></div>

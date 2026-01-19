@@ -1,18 +1,18 @@
 const Glimpse = () => {
   const glimpseImages = [
-    { front: "img/glimpse/1.jpeg", back: "img/glimpse/2.jpeg" },
-    { front: "img/glimpse/3.jpeg", back: "img/glimpse/4.jpeg" },
-    { front: "img/glimpse/5.jpeg", back: "img/glimpse/6.jpeg" },
-    { front: "img/glimpse/7.jpeg", back: "img/glimpse/8.jpeg" },
-    { front: "img/glimpse/9.jpeg", back: "img/glimpse/10.jpeg" },
-    { front: "img/glimpse/11.jpeg", back: "img/glimpse/12.jpeg" },
-    { front: "img/glimpse/1.jpeg", back: "img/glimpse/3.jpeg" },
-    { front: "img/glimpse/5.jpeg", back: "img/glimpse/7.jpeg" },
-    { front: "img/glimpse/9.jpeg", back: "img/glimpse/11.jpeg" },
-    { front: "img/glimpse/2.jpeg", back: "img/glimpse/4.jpeg" },
-    { front: "img/glimpse/6.jpeg", back: "img/glimpse/8.jpeg" },
-    { front: "img/glimpse/10.jpeg", back: "img/glimpse/12.jpeg" },
-    { front: "img/glimpse/1.jpeg", back: "img/glimpse/2.jpeg" },
+    { front: "images/glimpse/1.jpeg", back: "images/glimpse/2.jpeg" },
+    { front: "images/glimpse/3.jpeg", back: "images/glimpse/4.jpeg" },
+    { front: "images/glimpse/5.jpeg", back: "images/glimpse/6.jpeg" },
+    { front: "images/glimpse/7.jpeg", back: "images/glimpse/8.jpeg" },
+    { front: "images/glimpse/9.jpeg", back: "images/glimpse/10.jpeg" },
+    { front: "images/glimpse/11.jpeg", back: "images/glimpse/12.jpeg" },
+    { front: "images/glimpse/1.jpeg", back: "images/glimpse/3.jpeg" },
+    { front: "images/glimpse/5.jpeg", back: "images/glimpse/7.jpeg" },
+    { front: "images/glimpse/9.jpeg", back: "images/glimpse/11.jpeg" },
+    { front: "images/glimpse/2.jpeg", back: "images/glimpse/4.jpeg" },
+    { front: "images/glimpse/6.jpeg", back: "images/glimpse/8.jpeg" },
+    { front: "images/glimpse/10.jpeg", back: "images/glimpse/12.jpeg" },
+    { front: "images/glimpse/1.jpeg", back: "images/glimpse/2.jpeg" },
   ];
 
   return (

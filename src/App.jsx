@@ -17,11 +17,11 @@ import Footer from './components/Footer';
 import CollegeInfo from './components/CollegeInfo';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import './css/timeline-modern.css';
-import './css/about-modern.css';
-import './css/about-enhanced.css';
-import './css/about-redesign.css';
-import './css/rules.css';
+import './styles/timeline-modern.css';
+import './styles/about-modern.css';
+import './styles/about-enhanced.css';
+import './styles/about-redesign.css';
+import './styles/rules.css';
 
 function App() {
   useEffect(() => {

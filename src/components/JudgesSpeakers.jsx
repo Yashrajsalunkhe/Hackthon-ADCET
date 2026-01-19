@@ -2,8 +2,8 @@
 
 const JudgesSpeakers = () => {
   const people = [
-    { name: 'Anish Mathew Sajeev', role: 'Judge', position: 'CEO & Founder, Susan Future Technologies', img: 'img/Speaker/Judge_1.jpg', linkedin: 'https://www.linkedin.com/in/anish-mathew-sajeev-58283954/', email: 'anish@susanfuturetechnologies.com' },
-    { name: 'Santhosh Chaluvadi', role: 'Judge', position: 'Founder & CEO, Supraja Technologies', img: 'img/Speaker/judge_san.jpg', linkedin: 'https://www.linkedin.com/in/chaluvadisantosh', email: 'santosh@suprajatechnologies.com' },
+    { name: 'Anish Mathew Sajeev', role: 'Judge', position: 'CEO & Founder, Susan Future Technologies', img: 'images/Speaker/Judge_1.jpg', linkedin: 'https://www.linkedin.com/in/anish-mathew-sajeev-58283954/', email: 'anish@susanfuturetechnologies.com' },
+    { name: 'Santhosh Chaluvadi', role: 'Judge', position: 'Founder & CEO, Supraja Technologies', img: 'images/Speaker/judge_san.jpg', linkedin: 'https://www.linkedin.com/in/chaluvadisantosh', email: 'santosh@suprajatechnologies.com' },
     // Add more judges/speakers as needed
   ];
 

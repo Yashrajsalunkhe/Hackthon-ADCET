@@ -1,9 +1,9 @@
 /* Import all CSS files */
-@import './css/style1.css';
-@import './css/style2.css';
-@import './css/style3.css';
-@import './css/character-companion.css';
-@import './css/dock-nav.css';
+@import './styles/style1.css';
+@import './styles/style2.css';
+@import './styles/style3.css';
+@import './styles/character-companion.css';
+@import './styles/dock-nav.css';
 
 /* Import AOS styles */
 @import 'aos/dist/aos.css';

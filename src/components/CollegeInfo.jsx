@@ -7,8 +7,8 @@ import DockNav from "./DockNav";
 import Footer from "./Footer";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import { useNavigate } from "react-router-dom";
-import "../css/college-info.css";
-import "../css/timeline.css";
+import "../styles/college-info.css";
+import "../styles/timeline.css";
 
 const CollegeInfo = () => {
   const navigate = useNavigate();
