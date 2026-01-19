@@ -18,7 +18,7 @@ const Team = () => {
         linkedin: 'https://linkedin.com/in/asmashaikh'
       },
       { 
-        name: 'Krishnkumar', 
+        name: 'Dr. Krishna kumar', 
         role: 'Core Team', 
         img: 'img/Our team/krishnkumar.jpg',
         email: 'krishnkumar@example.com',

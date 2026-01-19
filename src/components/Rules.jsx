@@ -154,6 +154,61 @@ const Rules = () => {
           ))}
         </div>
 
+        {/* Submission Templates Section */}
+        <div className="submission-templates-section" data-aos="fade-up" data-aos-once="true" data-aos-delay="500">
+          <h3 className="templates-heading">📋 Submission Templates</h3>
+          <p className="templates-description">
+            Download the official submission templates for your project documentation
+          </p>
+          <div className="templates-grid">
+            <a 
+              href="/documents/software_submission_format.pdf" 
+              download 
+              className="template-card software-template"
+            >
+              <div className="template-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div className="template-content">
+                <h4>Software Submission</h4>
+                <p>Template for software projects</p>
+              </div>
+              <div className="download-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </div>
+            </a>
+            
+            <a 
+              href="/documents/Hardware_submission_format.pdf" 
+              download 
+              className="template-card hardware-template"
+            >
+              <div className="template-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+              </div>
+              <div className="template-content">
+                <h4>Hardware Submission</h4>
+                <p>Template for hardware projects</p>
+              </div>
+              <div className="download-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <div className="rules-footer" data-aos="fade-up" data-aos-once="true" data-aos-delay="600">
           <div className="important-note">
             <svg className="warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

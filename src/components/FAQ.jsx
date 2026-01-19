@@ -6,7 +6,7 @@ const FAQ = () => {
     { question: 'Is there any registration fee?', answer: 'No, registrations for the event are entirely free of charge.' },
     { question: 'Who can participate in this hackathon?', answer: 'Students from Diploma, B.E./B.Tech, M.E./M.Tech, BCA/MCA, and other technical courses can participate. High school and undergraduate students are welcome.' },
     { question: 'What is the team size requirement?', answer: 'Teams must consist of 4-5 members. At least one female member is mandatory in each team. Team formation is allowed but individual registrations are not accepted.' },
-    { question: 'Should you stay on campus overnight?', answer: 'Yes, we ask that all participants stay on campus throughout the 72-hour hackathon for the best experience.' },
+    { question: 'Should you stay on campus overnight?', answer: 'Yes, we ask that all participants stay on campus throughout the 48-hour hackathon for the best experience.' },
     { question: 'What are the facilities arranged by the organizers?', answer: 'We have arranged everything for you, including meals (breakfast, lunch, dinner, and snacks), comfortable accommodations, Wi-Fi, workspace, swag, and all necessary amenities.' },
     { question: 'I am a newbie, can I hack?', answer: 'Absolutely! This hackathon welcomes beginners. Mentors and industry experts will assist you throughout the event with technical guidance.' },
     { question: 'Does this hackathon cover both software and hardware projects?', answer: 'Yes, it includes both software and hardware tracks. Each track has separate problem statements and prize pools of ₹1,00,000 each.' },

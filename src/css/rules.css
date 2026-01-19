@@ -433,3 +433,249 @@
     height: 28px;
   }
 }
+
+/* ============================================
+   SUBMISSION TEMPLATES SECTION
+   ============================================ */
+
+.submission-templates-section {
+  margin: 60px auto;
+  max-width: 1200px;
+}
+
+.templates-heading {
+  font-family: "Anton SC", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  color: #fff;
+  margin: 0 0 15px 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.templates-description {
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #ddd;
+  margin: 0 auto 40px;
+  max-width: 600px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 40px;
+}
+
+.template-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: radial-gradient(ellipse at right top, rgba(139, 92, 246, 0.15) 0%, #151419 47%, #151419 100%);
+  border: 2.5px solid transparent;
+  border-radius: 1.5rem;
+  padding: 28px;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0.063em 0.75em 1.563em rgba(0, 0, 0, 0.78);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.template-card::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  z-index: -1;
+  border: 2.5px solid transparent;
+  background: linear-gradient(45deg, #232228, #232228, #232228, #8b5cf6) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.template-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+}
+
+.software-template {
+  background: radial-gradient(ellipse at right top, rgba(6, 182, 212, 0.15) 0%, #151419 47%, #151419 100%);
+}
+
+.software-template::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #06b6d4) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.software-template:hover {
+  box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
+}
+
+.hardware-template {
+  background: radial-gradient(ellipse at right top, rgba(255, 183, 65, 0.15) 0%, #151419 47%, #151419 100%);
+}
+
+.hardware-template::before {
+  background: linear-gradient(45deg, #232228, #232228, #232228, #ffb741) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+.hardware-template:hover {
+  box-shadow: 0 20px 60px rgba(255, 183, 65, 0.3);
+}
+
+.template-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.template-icon svg {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.template-card:hover .template-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.template-content {
+  flex: 1;
+}
+
+.template-content h4 {
+  font-family: "Anton SC", sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.template-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #bbb;
+  margin: 0;
+  font-weight: 300;
+}
+
+.download-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.download-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.template-card:hover .download-icon {
+  transform: translateY(3px);
+}
+
+/* Responsive Design for Templates */
+@media (max-width: 768px) {
+  .templates-heading {
+    font-size: 1.6rem;
+  }
+
+  .templates-description {
+    font-size: 0.95rem;
+  }
+
+  .templates-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .template-card {
+    padding: 24px;
+  }
+
+  .template-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .template-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .template-content h4 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .submission-templates-section {
+    margin: 40px auto;
+  }
+
+  .templates-heading {
+    font-size: 1.4rem;
+  }
+
+  .template-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .template-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .template-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .template-content h4 {
+    font-size: 1rem;
+  }
+
+  .template-content p {
+    font-size: 0.85rem;
+  }
+
+  .download-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .download-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}

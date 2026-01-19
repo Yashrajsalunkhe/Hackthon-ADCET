@@ -1,18 +1,18 @@
 const Glimpse = () => {
   const glimpseImages = [
-    { front: "assets/Glimpse/26_u3e6dk.jpg", back: "assets/Glimpse/2_bnaqeq.jpg" },
-    { front: "assets/Glimpse/24_kxkw4b.jpg", back: "assets/Glimpse/23_p3iket.jpg" },
-    { front: "assets/Glimpse/22_khrztk.jpg", back: "assets/Glimpse/19_m9c8gn.jpg" },
-    { front: "assets/Glimpse/20_ckiooq.jpg", back: "assets/Glimpse/12_ydrqhn.jpg" },
-    { front: "assets/Glimpse/21_oerrzo.jpg", back: "assets/Glimpse/11_mbnss1.jpg" },
-    { front: "assets/Glimpse/9_yju36o.jpg", back: "assets/Glimpse/18_lpqiqe.jpg" },
-    { front: "assets/Glimpse/10_ge7keg.jpg", back: "assets/Glimpse/17_teqfwc.jpg" },
-    { front: "assets/Glimpse/16_yhepva.jpg", back: "assets/Glimpse/5_piqfql.jpg" },
-    { front: "assets/Glimpse/8_r3rru9.jpg", back: "assets/Glimpse/4_admym6.jpg" },
-    { front: "assets/Glimpse/7_tpgqmw.jpg", back: "assets/Glimpse/2_wipxwu.jpg" },
-    { front: "assets/Glimpse/6_gyx5qj.jpg", back: "assets/Glimpse/14_nyk7xo.jpg" },
-    { front: "assets/Glimpse/15_cqfiq9.jpg", back: "assets/Glimpse/3_ul7etg.jpg" },
-    { front: "assets/Glimpse/13_bwl6sl.jpg", back: "assets/Glimpse/1_b2cyhr.jpg" },
+    { front: "img/glimpse/1.jpeg", back: "img/glimpse/2.jpeg" },
+    { front: "img/glimpse/3.jpeg", back: "img/glimpse/4.jpeg" },
+    { front: "img/glimpse/5.jpeg", back: "img/glimpse/6.jpeg" },
+    { front: "img/glimpse/7.jpeg", back: "img/glimpse/8.jpeg" },
+    { front: "img/glimpse/9.jpeg", back: "img/glimpse/10.jpeg" },
+    { front: "img/glimpse/11.jpeg", back: "img/glimpse/12.jpeg" },
+    { front: "img/glimpse/1.jpeg", back: "img/glimpse/3.jpeg" },
+    { front: "img/glimpse/5.jpeg", back: "img/glimpse/7.jpeg" },
+    { front: "img/glimpse/9.jpeg", back: "img/glimpse/11.jpeg" },
+    { front: "img/glimpse/2.jpeg", back: "img/glimpse/4.jpeg" },
+    { front: "img/glimpse/6.jpeg", back: "img/glimpse/8.jpeg" },
+    { front: "img/glimpse/10.jpeg", back: "img/glimpse/12.jpeg" },
+    { front: "img/glimpse/1.jpeg", back: "img/glimpse/2.jpeg" },
   ];
 
   return (
