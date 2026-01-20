@@ -135,6 +135,29 @@ const Hero = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Hackathon Season 3 Image */}
+                <div className="hero-image-section" style={{
+                  marginTop: '2rem', 
+                  display: 'flex', 
+                  justifyContent: 'center',
+                  padding: '0 1rem',
+                  maxWidth: '900px',
+                  margin: '2rem auto 0'
+                }}>
+                  <img 
+                    src="https://www.adcet.ac.in/images/hackthon-season-3-090126.jpg" 
+                    alt="Hackathon Season 3"
+                    style={{
+                      width: '100%',
+                      maxWidth: '100%',
+                      height: 'auto', 
+                      borderRadius: '10px', 
+                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+                      display: 'block'
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
