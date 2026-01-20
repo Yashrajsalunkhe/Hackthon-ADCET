@@ -7,6 +7,7 @@ const Hero = () => {
     minutes: 0,
     seconds: 0
   });
+  const [showPoster, setShowPoster] = useState(false);
   const prevTimeRef = useRef({
     days: 0,
     hours: 0,
@@ -82,6 +83,13 @@ const Hero = () => {
                     Register for Hackathon
                   </a>
                   
+                  <button 
+                    onClick={() => setShowPoster(true)}
+                    className="btn btn-secondary back"
+                    style={{backgroundColor: 'rgb(189, 214, 214)', color: 'black'}}
+                  >
+                    View Poster
+                  </button>
                 </p>
                 
                 <div className="date-con">
@@ -135,34 +143,82 @@ const Hero = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Hackathon Season 3 Image */}
-                <div className="hero-image-section" style={{
-                  marginTop: '2rem', 
-                  display: 'flex', 
-                  justifyContent: 'center',
-                  padding: '0 1rem',
-                  maxWidth: '900px',
-                  margin: '2rem auto 0'
-                }}>
-                  <img 
-                    src="https://www.adcet.ac.in/images/hackthon-season-3-090126.jpg" 
-                    alt="Hackathon Season 3"
-                    style={{
-                      width: '100%',
-                      maxWidth: '100%',
-                      height: 'auto', 
-                      borderRadius: '10px', 
-                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
-                      display: 'block'
-                    }}
-                  />
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Poster Modal */}
+      {showPoster && (
+        <div 
+          className="poster-modal-overlay"
+          onClick={() => setShowPoster(false)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            padding: '20px'
+          }}
+        >
+          <div 
+            className="poster-modal-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: 'relative',
+              maxWidth: '1000px',
+              maxHeight: '90vh',
+              width: '100%',
+              backgroundColor: 'white',
+              borderRadius: '15px',
+              overflow: 'hidden',
+              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)'
+            }}
+          >
+            <button
+              onClick={() => setShowPoster(false)}
+              style={{
+                position: 'absolute',
+                top: '15px',
+                right: '15px',
+                background: 'rgba(0, 0, 0, 0.7)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                fontSize: '24px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 10000,
+                transition: 'background 0.3s'
+              }}
+              onMouseOver={(e) => e.target.style.background = 'rgba(0, 0, 0, 0.9)'}
+              onMouseOut={(e) => e.target.style.background = 'rgba(0, 0, 0, 0.7)'}
+            >
+              ×
+            </button>
+            <img 
+              src="https://www.adcet.ac.in/images/hackthon-season-3-090126.jpg" 
+              alt="Hackathon Season 3 Poster"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block'
+              }}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
