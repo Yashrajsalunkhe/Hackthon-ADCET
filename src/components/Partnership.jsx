@@ -20,7 +20,7 @@ const Partnership = () => {
               </p>
               <br />
               <div className="puw-btn">
-                <a className="cta-btn sponsor-brochure" href="/public/documents/Hackathon Broucher.pdf">
+                <a className="cta-btn sponsor-brochure" href="/documents/Hackathon Broucher.pdf" target="_blank" rel="noopener noreferrer">
                   View Brochure
                 </a>
               </div>

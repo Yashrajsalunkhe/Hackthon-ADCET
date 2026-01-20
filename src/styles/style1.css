@@ -644,7 +644,7 @@ header.scrolled {
 	position: absolute;
 	width: 255px;
 	height: 217px;
-	background-image: url("../images/dots-light.svg");
+	background-image: url("/images/dots-light.svg");
 	background-size: contain;
 	background-repeat: no-repeat;
 	right: -100px;
@@ -1138,23 +1138,23 @@ input:checked+.clash .description {
 }
 
 .clash[for="c1"] {
-	background-image: url("../img/Domains/Web_3_Blockchain_final.jpg");
+	background-image: url("/images/Domains/Web_3_Blockchain_final.jpg");
 }
 
 .clash[for="c2"] {
-	background-image: url("../img/Domains/AI_final.jpg");
+	background-image: url("/images/Domains/AI_final.jpg");
 }
 
 .clash[for="c3"] {
-	background-image: url("../img/Domains/Healthcare_final.jpg");
+	background-image: url("/images/Domains/Healthcare_final.jpg");
 }
 
 .clash[for="c4"] {
-	background-image: url("../img/Domains/Social_Impact_final.jpg");
+	background-image: url("/images/Domains/Social_Impact_final.jpg");
 }
 
 .clash[for="c5"] {
-	background-image: url("../img/Domains/Open_Track_final.jpg");
+	background-image: url("/images/Domains/Open_Track_final.jpg");
 }
 
 .clash {
@@ -2096,23 +2096,23 @@ Base
 	}
 
 	.clash[for="c1"] {
-		background-image: url("../img/Domains/Web3_Blockchain_blur.jpg");
+		background-image: url("/images/Domains/Web3_Blockchain_blur.jpg");
 	}
 
 	.clash[for="c2"] {
-		background-image: url("../img/Domains/AI_blur.jpg");
+		background-image: url("/images/Domains/AI_blur.jpg");
 	}
 
 	.clash[for="c3"] {
-		background-image: url("../img/Domains/HealthCare_blur.jpg");
+		background-image: url("/images/Domains/HealthCare_blur.jpg");
 	}
 
 	.clash[for="c4"] {
-		background-image: url("../img/Domains/Social_Impact_blur.jpg");
+		background-image: url("/images/Domains/Social_Impact_blur.jpg");
 	}
 
 	.clash[for="c5"] {
-		background-image: url("../img/Domains/Open_Track_blur.jpg");
+		background-image: url("/images/Domains/Open_Track_blur.jpg");
 	}
 
 	.clash>.marvel {
