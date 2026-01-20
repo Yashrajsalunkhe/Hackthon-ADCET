@@ -1,10 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const About = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState('');
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      
+      // Lock body scroll
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Restore body scroll
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [showModal]);
 
   const softwareThemes = [
     { sr: 1, category: 'Generative AI & Autonomous Systems', description: 'Develop intelligent software systems that can generate content, make decisions, and operate autonomously with minimal human intervention.' },
@@ -182,182 +207,46 @@ const About = () => {
       {/* Modal for Theme Details */}
       {showModal && (
         <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 9999,
-            padding: '20px',
-            overflow: 'auto'
-          }}
+          className="theme-modal-overlay"
           onClick={closeModal}
         >
           <div 
-            style={{
-              backgroundColor: '#1a1a2e',
-              borderRadius: '20px',
-              maxWidth: '1200px',
-              width: '100%',
-              maxHeight: '90vh',
-              overflow: 'auto',
-              padding: '40px',
-              position: 'relative',
-              border: '2px solid rgba(102, 126, 234, 0.3)',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)'
-            }}
+            className="theme-modal-container"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
+              className="theme-modal-close"
               onClick={closeModal}
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: 'none',
-                borderRadius: '50%',
-                width: '40px',
-                height: '40px',
-                cursor: 'pointer',
-                fontSize: '24px',
-                color: '#fff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-                e.target.style.transform = 'rotate(90deg)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-                e.target.style.transform = 'rotate(0deg)';
-              }}
             >
-              ×
+              ✕
             </button>
 
             {/* Header */}
-            <div style={{textAlign: 'center', marginBottom: '30px'}}>
-              <h2 style={{
-                fontSize: '2.5rem',
-                fontWeight: '700',
-                color: '#fff',
-                marginBottom: '10px',
-                background: selectedTrack === 'software' 
-                  ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-                  : 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
+            <div className="theme-modal-header">
+              <h2 className={`theme-modal-title ${selectedTrack === 'software' ? 'software-title' : 'hardware-title'}`}>
                 {selectedTrack === 'software' ? 'Software Edition' : 'Hardware Edition'}
               </h2>
-              <p style={{color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.1rem'}}>
-                Prize Pool: ₹1,00,000
-              </p>
-              <p style={{color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.95rem'}}>
-                Winner: ₹50,000 • Runner Up: ₹30,000 • 2nd Runner Up: ₹20,000
+              <p className="theme-modal-subtitle">
+                Prize Pool: <span className="prize-highlight">₹1,00,000</span> • 
+                1st: ₹50K • 2nd: ₹30K • 3rd: ₹20K
               </p>
             </div>
 
-            {/* Theme Table */}
-            <div style={{overflowX: 'auto'}}>
-              <table style={{
-                width: '100%',
-                borderCollapse: 'collapse',
-                color: '#fff'
-              }}>
-                <thead>
-                  <tr style={{
-                    background: selectedTrack === 'software' 
-                      ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-                      : 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                  }}>
-                    <th style={{
-                      padding: '15px',
-                      textAlign: 'left',
-                      fontWeight: '600',
-                      fontSize: '1.1rem',
-                      width: '80px'
-                    }}>Sr. No.</th>
-                    <th style={{
-                      padding: '15px',
-                      textAlign: 'left',
-                      fontWeight: '600',
-                      fontSize: '1.1rem'
-                    }}>Theme Category</th>
-                    <th style={{
-                      padding: '15px',
-                      textAlign: 'left',
-                      fontWeight: '600',
-                      fontSize: '1.1rem'
-                    }}>Theme Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(selectedTrack === 'software' ? softwareThemes : hardwareThemes).map((theme, index) => (
-                    <tr 
-                      key={index}
-                      style={{
-                        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                        transition: 'all 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(102, 126, 234, 0.1)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                      }}
-                    >
-                      <td style={{
-                        padding: '15px',
-                        fontSize: '1rem',
-                        fontWeight: '600',
-                        color: selectedTrack === 'software' ? '#667eea' : '#f5576c'
-                      }}>
-                        {theme.sr}
-                      </td>
-                      <td style={{
-                        padding: '15px',
-                        fontSize: '1rem',
-                        fontWeight: '600'
-                      }}>
-                        {theme.category}
-                      </td>
-                      <td style={{
-                        padding: '15px',
-                        fontSize: '0.95rem',
-                        color: 'rgba(255, 255, 255, 0.8)',
-                        lineHeight: '1.6'
-                      }}>
-                        {theme.description}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Footer */}
-            <div style={{
-              marginTop: '30px',
-              textAlign: 'center',
-              padding: '20px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: '10px'
-            }}>
-              <p style={{color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.95rem', margin: 0}}>
-                Choose a theme that aligns with your passion and skills to create innovative solutions for a better tomorrow!
-              </p>
+            {/* Theme Cards Grid */}
+            <div className="theme-cards-container">
+              {(selectedTrack === 'software' ? softwareThemes : hardwareThemes).map((theme, index) => (
+                <div 
+                  key={index}
+                  className={`theme-card ${selectedTrack === 'software' ? 'software-card' : 'hardware-card'}`}
+                >
+                  <div className="theme-card-header">
+                    <span className="theme-card-number">{theme.sr}</span>
+                    <h3 className="theme-card-title">{theme.category}</h3>
+                  </div>
+                  <p className="theme-card-description">{theme.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

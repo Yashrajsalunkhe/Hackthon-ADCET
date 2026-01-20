@@ -566,3 +566,264 @@ html {
     transform: translateY(0);
   }
 }
+/* Theme Modal Styles - Minimalistic Design */
+.theme-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.theme-modal-container {
+  background: #0f0f0f;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 32px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+.theme-modal-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-modal-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-modal-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.theme-modal-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.theme-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.theme-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.theme-modal-header {
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.theme-modal-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.theme-modal-title.software-title {
+  color: #667eea;
+}
+
+.theme-modal-title.hardware-title {
+  color: #f5576c;
+}
+
+.theme-modal-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.prize-highlight {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+/* Theme Cards Grid */
+.theme-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.theme-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  border-left-width: 3px;
+}
+
+.theme-card.software-card {
+  border-left-color: #667eea;
+}
+
+.theme-card.hardware-card {
+  border-left-color: #f5576c;
+}
+
+.theme-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
+}
+
+.theme-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.theme-card-number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.software-card .theme-card-number {
+  background: rgba(102, 126, 234, 0.15);
+  color: #667eea;
+}
+
+.hardware-card .theme-card-number {
+  background: rgba(245, 87, 108, 0.15);
+  color: #f5576c;
+}
+
+.theme-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.theme-card-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .theme-modal-container {
+    padding: 24px;
+    max-height: 90vh;
+  }
+
+  .theme-modal-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+  }
+
+  .theme-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .theme-modal-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .theme-card {
+    padding: 16px;
+  }
+
+  .theme-card-description {
+    margin-top: 8px;
+  }
+
+  .theme-card-header {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-modal-overlay {
+    padding: 12px;
+  }
+
+  .theme-modal-container {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .theme-modal-title {
+    font-size: 1.25rem;
+  }
+
+  .theme-modal-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .theme-card {
+    padding: 14px;
+  }
+
+  .theme-card-title {
+    font-size: 0.95rem;
+  }
+
+  .theme-card-description {
+    font-size: 0.825rem;
+  }
+}
