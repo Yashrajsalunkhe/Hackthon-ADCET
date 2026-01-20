@@ -20,7 +20,7 @@ const Partnership = () => {
               </p>
               <br />
               <div className="puw-btn">
-                <a className="cta-btn sponsor-brochure" href="assets/ADCET Hackathon 3.0 - Sponsor Deck.pdf">
+                <a className="cta-btn sponsor-brochure" href="/public/documents/Hackathon Broucher.pdf">
                   View Brochure
                 </a>
               </div>
