@@ -3,7 +3,7 @@
 @import './styles/style2.css';
 @import './styles/style3.css';
 @import './styles/character-companion.css';
-@import './styles/dock-nav.css';
+@import './styles/navbar.css';
 
 /* Import AOS styles */
 @import 'aos/dist/aos.css';

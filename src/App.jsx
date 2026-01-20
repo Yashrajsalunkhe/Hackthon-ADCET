@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import DockNav from './components/DockNav';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Glimpse from './components/Glimpse';
@@ -22,6 +22,7 @@ import './styles/about-modern.css';
 import './styles/about-enhanced.css';
 import './styles/about-redesign.css';
 import './styles/rules.css';
+import './styles/navbar.css';
 
 function App() {
   useEffect(() => {
@@ -50,7 +51,7 @@ function App() {
         <Route path="/college-info" element={<CollegeInfo />} />
         <Route path="/" element={
           <>
-            <DockNav />
+            <Navbar />
             <Hero />
             <About />
             <Glimpse />
