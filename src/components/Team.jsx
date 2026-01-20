@@ -37,28 +37,28 @@ const Team = () => {
         name: 'Pranav Patil', 
         role: 'Organizing Team', 
         img: 'images/Our team/pranav patil.jpg',
-        email: 'pranav.patil@example.com',
+        email: 'mrpranavpatil01@gmail.com',
         linkedin: 'https://linkedin.com/in/pranavpatil'
       },
       { 
         name: 'Tanmay Patil', 
         role: 'Organizing Team', 
         img: 'images/Our team/tanmay patil.jpg',
-        email: 'tanmay.patil@example.com',
+        email: 'pdhanaji482@gmail.com',
         linkedin: 'https://linkedin.com/in/tanmaypatil'
       },
       { 
         name: 'Aditya Padale', 
         role: 'Organizing Team', 
         img: 'images/Our team/Aditya Padale.jpg',
-        email: 'aditya.padale@example.com',
+        email: 'adityapadale25@gmail.com',
         linkedin: 'https://linkedin.com/in/adityapadale'
       },
       { 
         name: 'Yashraj Salunkhe', 
         role: 'Organizing Team', 
         img: 'images/Our team/Yashraj Salunkhe.jpg',
-        email: 'yashraj.salunkhe@example.com',
+        email: 'yashrajsalunkhe6@gmail.com',
         linkedin: 'https://linkedin.com/in/yashrajsalunkhe',
         instagram: 'https://www.instagram.com/yxshhhh_111'
       },
