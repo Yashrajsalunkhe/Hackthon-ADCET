@@ -6,9 +6,8 @@ const Sponsors = () => {
   ];
 
   const goldSponsors = [
-    { name: 'Devfolio', logo: 'images/sponsors/4_lqjtfq.png', link: 'https://devfolio.co/' },
-    { name: 'Polygon', logo: 'images/sponsors/6_cic6mb.png', link: 'https://polygon.technology/' },
-    { name: 'Aptos', logo: 'images/sponsors/44_rgsqli.png', link: 'https://aptos.dev/' },
+    { name: 'SBI Ashta', logo: '/images/sponsors/SBI.jpg', link: 'https://www.sbi.co.in/' },
+    { name: 'IDBI Bank, Ashta', logo: 'https://1000logos.net/wp-content/uploads/2021/05/IDBI-Bank-logo.jpg', link: 'https://www.idbi.bank.in/' },
   ];
 
   return (
@@ -31,7 +30,7 @@ const Sponsors = () => {
             </h2>
           </div>
 
-          <div className="sponsors">
+          {/* <div className="sponsors">
             <pre className="spon-title first-title"><h2><b id="light-des">TITLE SPONSOR</b></h2></pre>
             <div className="gold">
               {titleSponsor.map((sponsor, index) => (
@@ -41,7 +40,7 @@ const Sponsors = () => {
               ))}
             </div>
             <br />
-          </div>
+          </div> */}
 
           <div className="sponsors">
             <pre className="spon-title"><h2><b id="light-des">GOLD SPONSORS</b></h2></pre>
