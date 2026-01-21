@@ -29,22 +29,24 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <img src="/images/adcet.png" alt="ADCET" />
+          <img src="/images/adcet.png" alt="ADCET" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = 'ADCET'; }} />
         </div>
-        
-        <button 
-          className="navbar-menu-toggle" 
+
+        <button
+          className={`navbar-menu-toggle ${menuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          Menu {menuOpen ? '−' : '+'}
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
         </button>
 
         <div className={`navbar-links ${menuOpen ? 'active' : ''}`}>
           {navItems.map((item, index) => (
-            <a 
-              key={index} 
-              href={item.href} 
+            <a
+              key={index}
+              href={item.href}
               className="navbar-link"
               onClick={handleNavClick}
             >

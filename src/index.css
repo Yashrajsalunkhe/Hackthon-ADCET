@@ -4,6 +4,7 @@
 @import './styles/style3.css';
 @import './styles/character-companion.css';
 @import './styles/navbar.css';
+@import './styles/mobile-responsive.css';
 
 /* Import AOS styles */
 @import 'aos/dist/aos.css';
@@ -60,7 +61,9 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Smooth Scroll */

@@ -1,0 +1,150 @@
+/* Mobile Responsive Styles */
+
+/* Base responsive utilities */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Container responsive padding */
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 1.5rem !important;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 2rem 1rem !important;
+    }
+
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
+/* Typography responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    h3 {
+        font-size: 1.5rem !important;
+    }
+
+    p {
+        font-size: 0.95rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem !important;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3 {
+        font-size: 1.25rem !important;
+    }
+
+    p {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Grid and Flexbox responsive */
+@media (max-width: 768px) {
+
+    .grid,
+    .flex-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    .flex-row {
+        flex-direction: column !important;
+    }
+}
+
+/* Button responsive */
+@media (max-width: 768px) {
+
+    button,
+    .btn {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    button,
+    .btn {
+        padding: 0.6rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        width: 100%;
+    }
+}
+
+/* Card responsive */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.5rem !important;
+        margin: 1rem 0 !important;
+    }
+}
+
+/* Hide elements on mobile if needed */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+    .spacing-large {
+        margin: 2rem 0 !important;
+    }
+
+    .spacing-medium {
+        margin: 1.5rem 0 !important;
+    }
+
+    .spacing-small {
+        margin: 1rem 0 !important;
+    }
+}
+
+/* Overflow handling */
+body {
+    overflow-x: hidden;
+}
+
+/* Prevent horizontal scroll */
+.App {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
