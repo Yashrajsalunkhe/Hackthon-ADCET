@@ -50,6 +50,23 @@ img {
     p {
         font-size: 0.95rem !important;
     }
+
+    /* Section Headings - Override generic h1/h2 styles */
+    .heading-small,
+    .heading-shadow {
+        font-size: 14vw !important;
+    }
+
+    .heading-shadow,
+    .heading-shadow-p {
+        font-size: 28vw !important;
+        margin-bottom: 20px !important;
+    }
+
+    .heading-small,
+    .heading-small-p {
+        line-height: 14vw !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -68,6 +85,23 @@ img {
     p {
         font-size: 0.9rem !important;
     }
+
+    /* Section Headings - Override generic h1/h2 styles */
+    .heading-small,
+    .heading-shadow {
+        font-size: 14vw !important;
+    }
+
+    .heading-shadow,
+    .heading-shadow-p {
+        font-size: 26vw !important;
+        margin-bottom: 20px !important;
+    }
+
+    .heading-small,
+    .heading-small-p {
+        line-height: 14vw !important;
+    }
 }
 
 /* Grid and Flexbox responsive */
@@ -81,6 +115,21 @@ img {
 
     .flex-row {
         flex-direction: column !important;
+    }
+
+    /* Team Grid - 2 columns for better mobile layout */
+    .container-team .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        padding: 0 0.5rem !important;
+    }
+
+    .container-team .grid .card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        height: auto !important;
+        min-height: 280px !important;
     }
 }
 
@@ -101,6 +150,33 @@ img {
         padding: 0.6rem 1.25rem !important;
         font-size: 0.9rem !important;
         width: 100%;
+    }
+
+    /* Team Grid - Keep 2 columns on small phones */
+    .container-team .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+        padding: 0 0.5rem !important;
+    }
+
+    .container-team .grid .card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        min-height: 260px !important;
+    }
+
+    .container-team .card .content .img {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .container-team .card .content .cardContent h3 {
+        font-size: 0.9rem !important;
+    }
+
+    .container-team .card .content .cardContent p {
+        font-size: 0.75rem !important;
     }
 }
 

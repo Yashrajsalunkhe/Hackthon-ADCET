@@ -1182,18 +1182,18 @@ Base
 
 	.heading-small,
 	.heading-shadow {
-		font-size: 12vw;
+		font-size: 16vw;
 	}
 
 	.heading-shadow,
 	.heading-shadow-p {
-		font-size: 18vw;
+		font-size: 32vw;
 		margin-bottom: 20px;
 	}
 
 	.heading-small,
 	.heading-small-p {
-		line-height: 12vw;
+		line-height: 16vw;
 	}
 
 	.col-lg-5 {
@@ -1205,18 +1205,18 @@ Base
 
 	.heading-small,
 	.heading-shadow {
-		font-size: 16vw;
+		font-size: 18vw;
 	}
 
 	.heading-shadow,
 	.heading-shadow-p {
-		font-size: 25vw;
+		font-size: 36vw;
 		margin-bottom: 20px;
 	}
 
 	.heading-small,
 	.heading-small-p {
-		line-height: 16vw;
+		line-height: 18vw;
 	}
 
 	.col-lg-5 {
