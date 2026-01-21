@@ -121,7 +121,10 @@ const About = () => {
                     <span className="event-date">12th – 14th March 2026</span>
                   </div>
                   <p className="event-description">
-                    Join us for a <strong>72-hour innovation marathon</strong> where participants ideate, design, and implement innovative solutions addressing real-world challenges such as sustainable agriculture, clean energy, smart cities, healthcare accessibility, quality education, and more. This hackathon serves as a platform to transform ideas into impactful solutions!
+                    Join us for an innovation marathon where participants ideate, design, and implement innovative solutions addressing real-world challenges such as sustainable agriculture, clean energy, smart cities, healthcare accessibility, quality education, and more. This hackathon serves as a platform to transform ideas into impactful solutions!
+                    <br/><br/>
+                    <strong style={{color: '#667eea'}}>Software Track:</strong> 36 hours of intense coding and innovation<br/>
+                    <strong style={{color: '#f093fb'}}>Hardware Track:</strong> 42 hours to build and prototype your solution
                   </p>
                   
                   <div style={{marginTop: '20px', padding: '15px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '10px', borderLeft: '3px solid #667eea'}}>

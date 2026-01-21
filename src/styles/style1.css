@@ -635,11 +635,15 @@ header.scrolled {
 }
 
 #hero-sub {
+	font-family: 'Poppins', sans-serif !important;
 	font-size: 1.5rem;
+	font-weight: 600 !important;
 	color: white;
 	width: auto;
 	z-index: -100;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6);
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.7);
+	letter-spacing: 1px !important;
+	line-height: 1.6;
 }
 
 .hero .hero-img-wrap:after {
@@ -1252,7 +1256,10 @@ Base
 	}
 
 	#hero-sub {
-		line-height: 0vw;
+		font-size: 1.2rem;
+		letter-spacing: 1px !important;
+		line-height: 1.5;
+		font-weight: 600 !important;
 	}
 
 	nav a {
@@ -1562,8 +1569,10 @@ Base
 	}
 
 	#hero-sub {
-		font-size: 1.5rem;
-		line-height: 8vw;
+		font-size: 1.3rem;
+		letter-spacing: 1px !important;
+		line-height: 1.5;
+		font-weight: 600 !important;
 	}
 
 	.hero-buttons a,

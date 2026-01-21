@@ -91,6 +91,7 @@ const Hero = () => {
                   <p className="anton-sc-regular not-selectable" id="hero-sub">
                     Annasaheb Dange College of Engineering and Technology
                   </p>
+                  <br></br>
                   <p className="anton-sc-regular not-selectable" id="hero-sub" style={{fontSize: '0.9em', marginTop: '-10px'}}>
                     Ashta, Taluka Walwa, District Sangli, Maharashtra - 416301
                   </p>
