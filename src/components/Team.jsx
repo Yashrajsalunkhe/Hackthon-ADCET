@@ -61,13 +61,8 @@ const Team = () => {
         email: 'mrpranavpatil01@gmail.com',
         linkedin: 'https://linkedin.com/in/pranavpatil'
       },
-      {
-        name: 'Tanmay Patil',
-        role: 'Organizing Team',
-        img: 'images/Our team/tanmay patil.jpg',
-        email: 'pdhanaji482@gmail.com',
-        linkedin: 'https://linkedin.com/in/tanmaypatil'
-      },
+    ],
+    [
       {
         name: 'Aditya Padale',
         role: 'Organizing Team',
@@ -83,13 +78,6 @@ const Team = () => {
         linkedin: 'https://linkedin.com/in/yashrajsalunkhe',
         instagram: 'https://www.instagram.com/yxshhhh_111'
       },
-      {
-        name: 'Amit Yeadage',
-        role: 'Organizing Team',
-        img: 'images/Our team/amit yedage.jpg',
-        email: 'amit.yeadage@example.com',
-        linkedin: 'https://linkedin.com/in/amityeadage'
-      }
     ]
   ];
 
