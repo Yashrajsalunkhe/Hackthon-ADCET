@@ -33,11 +33,13 @@ const Navbar = () => {
         </div>
         
         <button 
-          className="navbar-menu-toggle" 
+          className={`navbar-menu-toggle ${menuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          Menu {menuOpen ? '−' : '+'}
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
         </button>
 
         <div className={`navbar-links ${menuOpen ? 'active' : ''}`}>
