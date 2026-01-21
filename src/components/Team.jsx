@@ -41,19 +41,28 @@ const Team = () => {
         linkedin: 'https://linkedin.com/in/pranavpatil'
       },
       { 
-        name: 'Tanmay Patil', 
+        name: 'Harshwardhan Patil', 
         role: 'Organizing Team', 
-        img: 'images/Our team/tanmay patil.jpg',
-        email: 'pdhanaji482@gmail.com',
-        linkedin: 'https://linkedin.com/in/tanmaypatil'
+        img: 'images/Our team/harshwardhan.jpg',
+        email: 'mrpranavpatil01@gmail.com',
+        linkedin: 'https://linkedin.com/in/pranavpatil'
       },
       { 
-        name: 'Aditya Padale', 
+        name: 'Raj Patil', 
         role: 'Organizing Team', 
-        img: 'images/Our team/Aditya Padale.jpg',
-        email: 'adityapadale25@gmail.com',
-        linkedin: 'https://linkedin.com/in/adityapadale'
+        img: 'images/Our team/raj.jpg',
+        email: 'mrpranavpatil01@gmail.com',
+        linkedin: 'https://linkedin.com/in/pranavpatil'
       },
+      { 
+        name: 'Ritika Shevade', 
+        role: 'Organizing Team', 
+        img: 'images/Our team/ritika.jpg',
+        email: 'mrpranavpatil01@gmail.com',
+        linkedin: 'https://linkedin.com/in/pranavpatil'
+      },
+    ],
+    [
       { 
         name: 'Yashraj Salunkhe', 
         role: 'Organizing Team', 
@@ -63,12 +72,12 @@ const Team = () => {
         instagram: 'https://www.instagram.com/yxshhhh_111'
       },
       { 
-        name: 'Amit Yeadage', 
+        name: 'Aditya Padale', 
         role: 'Organizing Team', 
-        img: 'images/Our team/amit yedage.jpg',
-        email: 'amit.yeadage@example.com',
-        linkedin: 'https://linkedin.com/in/amityeadage'
-      }
+        img: 'images/Our team/Aditya Padale.jpg',
+        email: 'adityapadale25@gmail.com',
+        linkedin: 'https://linkedin.com/in/adityapadale'
+      },
     ]
   ];
 

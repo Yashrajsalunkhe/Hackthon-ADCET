@@ -281,23 +281,8 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.important-note p {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #ddd;
-  margin: 0;
-  font-weight: 400;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
 .important-note:hover {
   border-color: rgba(248, 113, 113, 0.5);
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(220, 38, 38, 0.08));
   box-shadow: 0 8px 32px rgba(239, 68, 68, 0.15);
 }
 
