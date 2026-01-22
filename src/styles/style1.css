@@ -302,7 +302,7 @@ header.scrolled {
 	padding-top: 20vh;
 	min-height: 130vh;
 	height: auto;
-	padding-bottom: 8vh;
+	padding-bottom: 15vh;
 	position: relative;
 	font-family: "Teko", sans-serif;
 	margin: 0 auto;
@@ -810,7 +810,7 @@ header.scrolled {
 }
 
 #about {
-	padding-top: 20px;
+	padding-top: 120px;
 }
 
 .icon-container {
@@ -1849,7 +1849,9 @@ Base
 	}
 
 	.hero {
-		height: 650px !important;
+		height: auto !important;
+		min-height: 700px !important;
+		padding-bottom: 40px;
 	}
 
 	.cont {
