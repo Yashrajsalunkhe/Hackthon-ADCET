@@ -1824,11 +1824,11 @@ Base
 	}
 
 	.CLH {
-		font-size: 2.3rem;
+		font-size: 1.6rem;
 	}
 
 	#heading-pec {
-		font-size: 4.8rem;
+		font-size: 5.5rem;
 	}
 }
 
@@ -1880,11 +1880,11 @@ Base
 
 	.CLH {
 		margin-top: 18px;
-		font-size: 2rem;
+		font-size: 1.4rem;
 	}
 
 	#heading-pec {
-		font-size: 4rem;
+		font-size: 4.5rem;
 	}
 }
 
@@ -2261,11 +2261,11 @@ Base
 	}
 
 	#heading-pec {
-		font-size: 4rem;
+		font-size: 5rem;
 	}
 
 	.CLH {
-		font-size: 2rem;
+		font-size: 1.5rem;
 		margin: 15px 0 10px 0;
 	}
 
@@ -2395,11 +2395,11 @@ Base
 	}
 
 	#heading-pec {
-		font-size: 3rem;
+		font-size: 4rem;
 	}
 
 	.CLH {
-		font-size: 1.75rem;
+		font-size: 1.3rem;
 	}
 
 	#hero-sub {
@@ -2502,11 +2502,11 @@ Base
 /* Extra small mobile */
 @media (max-width: 375px) {
 	#heading-pec {
-		font-size: 2.5rem;
+		font-size: 3.2rem;
 	}
 
 	.CLH {
-		font-size: 1.5rem;
+		font-size: 1.1rem;
 	}
 
 	.countdown-box {

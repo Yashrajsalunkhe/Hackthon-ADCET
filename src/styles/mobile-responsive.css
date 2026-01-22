@@ -67,6 +67,15 @@ img {
     .heading-small-p {
         line-height: 14vw !important;
     }
+
+    /* Hero Title & Subtitle - Override generic h1 styles */
+    #heading-pec {
+        font-size: 5rem !important;
+    }
+
+    .CLH {
+        font-size: 1.5rem !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -101,6 +110,15 @@ img {
     .heading-small,
     .heading-small-p {
         line-height: 14vw !important;
+    }
+
+    /* Hero Title & Subtitle - Override generic h1 styles */
+    #heading-pec {
+        font-size: 4.5rem !important;
+    }
+
+    .CLH {
+        font-size: 1.4rem !important;
     }
 }
 
@@ -223,4 +241,26 @@ body {
 .App {
     max-width: 100vw;
     overflow-x: hidden;
+}
+
+/* Extra small mobile devices */
+@media (max-width: 375px) {
+    #heading-pec {
+        font-size: 3.5rem !important;
+    }
+
+    .CLH {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 320px) {
+    #heading-pec {
+        font-size: 3rem !important;
+    }
+
+    .CLH {
+        font-size: 1rem !important;
+    }
 }
