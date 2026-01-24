@@ -35,28 +35,28 @@ const Team = () => {
     [
       {
         name: 'Pranav Patil',
-        role: 'Organizing Team',
+        role: 'Software Team Lead',
         img: 'images/Our team/pranav patil.jpg',
         email: 'mrpranavpatil01@gmail.com',
         linkedin: 'https://linkedin.com/in/pranavpatil'
       },
       { 
-        name: 'Harshwardhan Patil', 
-        role: 'Organizing Team', 
-        img: 'images/Our team/harshwardhan.jpg',
-        email: 'mrpranavpatil01@gmail.com',
-        linkedin: 'https://linkedin.com/in/pranavpatil'
+        name: 'Harshvardhan Patil', 
+        role: 'Software Team Lead', 
+        img: 'images/Our team/Harshwardhan.jpg',
+        email: 'harshvardhanpatil1701@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/harshvardhan-patil-528b72287'
       },
       { 
-        name: 'Raj Patil', 
-        role: 'Organizing Team', 
+        name: 'Rajvardhan Patil', 
+        role: 'Hardware Team Lead', 
         img: 'images/Our team/raj.jpg',
-        email: 'mrpranavpatil01@gmail.com',
-        linkedin: 'https://linkedin.com/in/pranavpatil'
+        email: 'patilrajvardhan214@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/rajvardhan-patil-1b93612b1/'
       },
       { 
         name: 'Ritika Shevade', 
-        role: 'Organizing Team', 
+        role: 'Hardware Team Lead', 
         img: 'images/Our team/ritika.jpg',
         email: 'mrpranavpatil01@gmail.com',
         linkedin: 'https://linkedin.com/in/pranavpatil'

@@ -148,7 +148,7 @@ The production-ready files will be in the `dist/` directory.
 **Software Edition:**
 - Dr. Krishna Kumar: +91 8124755889
 - Mr. Pranav Patil: +91 9130867073
-- Mr. Harshwardhan Patil: +91 9699056766
+- Mr. Harshvardhan Patil: +91 9699056766
 
 **Hardware Edition:**
 - Prof. Kiran Nargatti: +91 8600620061

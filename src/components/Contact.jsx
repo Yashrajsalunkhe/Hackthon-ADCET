@@ -84,7 +84,7 @@ const Contact = () => {
             </div>
             <div className="contact_name">
               <p className="name contact-detail">
-                <b>Mr. Harshwardhan Patil</b> <br />
+                <b>Mr. Harshvardhan Patil</b> <br />
                 <b>+91 9699056766</b> <br />
                 <b><a href="mailto:harshvardhanpatil1701@gmail.com" style={{color: 'white', textDecoration: 'none'}}>harshvardhanpatil1701@gmail.com</a></b>
               </p>
@@ -105,7 +105,7 @@ const Contact = () => {
             </div>
             <div className="contact_name">
               <p className="name contact-detail">
-                <b>Mr. Harshwardhan Patil</b> <br />
+                <b>Mr. Harshvardhan Patil</b> <br />
                 <b>+91 9699056766</b> <br />
               </p>
               <p className="name contact-detail">
@@ -139,7 +139,7 @@ const Contact = () => {
             <div className="details">
               <i className="bx bx-envelope icon-style"></i>
               <h3 className="contact-title not-selectable">Email</h3>
-              <p className="contact-detail"><b><a href="mailto:hackathon@adcet.ac.in" style={{color: 'white', textDecoration: 'none'}}>hackathon@adcet.ac.in</a></b></p>
+              <p className="contact-detail"><b><a href="mailto:hackathon@adcet.ac.in" style={{color: 'white', textDecoration: 'none'}}>hackathon@adcet.in</a></b></p>
             </div>
           </div>
           <div className="col-lg-6 d-flex justify-content-center align-items-center flex-column contact-container">
