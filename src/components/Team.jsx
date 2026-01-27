@@ -35,28 +35,35 @@ const Team = () => {
     [
       {
         name: 'Pranav Patil',
-        role: 'Software Team Lead',
+        role: 'Software Lead',
         img: 'images/Our team/pranav patil.jpg',
         email: 'mrpranavpatil01@gmail.com',
         linkedin: 'https://linkedin.com/in/pranavpatil'
       },
       { 
         name: 'Harshvardhan Patil', 
-        role: 'Software Team Lead', 
+        role: 'Software Lead', 
         img: 'images/Our team/Harshwardhan.jpg',
         email: 'harshvardhanpatil1701@gmail.com',
         linkedin: 'https://www.linkedin.com/in/harshvardhan-patil-528b72287'
       },
       { 
+        name: 'Tanmay Patil', 
+        role: 'OverAll Team Lead', 
+        img: 'images/Our team/tanmay patil.jpg',
+        email: 'pdhanaji482@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/tanmay-patil'
+      },
+      { 
         name: 'Rajvardhan Patil', 
-        role: 'Hardware Team Lead', 
+        role: 'Hardware Lead', 
         img: 'images/Our team/raj.jpg',
         email: 'patilrajvardhan214@gmail.com',
         linkedin: 'https://www.linkedin.com/in/rajvardhan-patil-1b93612b1/'
       },
       { 
         name: 'Ritika Shevade', 
-        role: 'Hardware Team Lead', 
+        role: 'Hardware Lead', 
         img: 'images/Our team/ritika.jpg',
         email: 'mrpranavpatil01@gmail.com',
         linkedin: 'https://linkedin.com/in/pranavpatil'
@@ -64,20 +71,19 @@ const Team = () => {
     ],
     [
       {
+        name: 'Yashraj Salunkhe',
+        role: 'Technical Team',
+        img: 'images/Our team/Yashraj Salunkhe.jpg',
+        email: 'yashrajsalunkhe6@gmail.com',
+        linkedin: 'https://linkedin.com/in/yashrajsalunkhe'
+      },
+      {
         name: 'Aditya Padale',
-        role: 'Organizing Team',
+        role: 'Technical Team',
         img: 'images/Our team/Aditya Padale.jpg',
         email: 'adityapadale25@gmail.com',
         linkedin: 'https://linkedin.com/in/adityapadale'
-      },
-      {
-        name: 'Yashraj Salunkhe',
-        role: 'Organizing Team',
-        img: 'images/Our team/Yashraj Salunkhe.jpg',
-        email: 'yashrajsalunkhe6@gmail.com',
-        linkedin: 'https://linkedin.com/in/yashrajsalunkhe',
-        instagram: 'https://www.instagram.com/yxshhhh_111'
-      },
+      }
     ]
   ];
 
