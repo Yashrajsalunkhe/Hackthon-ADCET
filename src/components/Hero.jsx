@@ -16,7 +16,7 @@ const Hero = () => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const targetDate = new Date('2026-02-05T00:00:00').getTime();
+      const targetDate = new Date('2026-02-12T24:00:00').getTime();
       const now = new Date().getTime();
       const difference = targetDate - now;
 
