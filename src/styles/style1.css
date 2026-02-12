@@ -1131,7 +1131,8 @@ section .domains {
 	letter-spacing: .02rem;
 }
 
-input {
+input.clash-input,
+.clash-wrapper > input {
 	display: none;
 }
 

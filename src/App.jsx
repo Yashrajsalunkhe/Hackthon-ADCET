@@ -15,6 +15,8 @@ import Contact from './components/Contact';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CollegeInfo from './components/CollegeInfo';
+import Info from './components/Info';
+import Participants from './components/Participants';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './styles/timeline-modern.css';
@@ -49,6 +51,8 @@ function App() {
       <div id="preloader"></div>
       <Routes>
         <Route path="/college-info" element={<CollegeInfo />} />
+        <Route path="/info" element={<Info />} />
+        <Route path="/participants" element={<Participants />} />
         <Route path="/" element={
           <>
             <Navbar />
