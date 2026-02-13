@@ -17,6 +17,8 @@ import Footer from './components/Footer';
 import CollegeInfo from './components/CollegeInfo';
 import Info from './components/Info';
 import Participants from './components/Participants';
+import TrackDetails from './components/TrackDetails';
+import ParticipantDetails from './components/ParticipantDetails';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './styles/timeline-modern.css';
@@ -53,6 +55,8 @@ function App() {
         <Route path="/college-info" element={<CollegeInfo />} />
         <Route path="/info" element={<Info />} />
         <Route path="/participants" element={<Participants />} />
+        <Route path="/track/:track" element={<TrackDetails />} />
+        <Route path="/participant/:id" element={<ParticipantDetails />} />
         <Route path="/" element={
           <>
             <Navbar />

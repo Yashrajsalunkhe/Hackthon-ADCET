@@ -1,71 +1,7 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const About = () => {
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
-  const [selectedTrack, setSelectedTrack] = useState('');
-
-  // Prevent body scroll when modal is open
-  useEffect(() => {
-    if (showModal) {
-      // Save current scroll position
-      const scrollY = window.scrollY;
-      
-      // Lock body scroll
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-      
-      return () => {
-        // Restore body scroll
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflow = '';
-        
-        // Restore scroll position
-        window.scrollTo(0, scrollY);
-      };
-    }
-  }, [showModal]);
-
-  const softwareThemes = [
-    { sr: 1, category: 'Generative AI & Autonomous Systems', description: 'Develop intelligent software systems that can generate content, make decisions, and operate autonomously with minimal human intervention.' },
-    { sr: 2, category: 'Quantum Computing Applications (Software Perspective)', description: 'Build software applications, simulators, or hybrid models that demonstrate real-world problem solving using quantum or quantum-inspired computing.' },
-    { sr: 3, category: 'Digital Twins for Industry & Infrastructure', description: 'Create virtual replicas of physical systems to monitor, simulate, optimize, and predict performance of industrial or infrastructure assets.' },
-    { sr: 4, category: 'Digital Governance & e-Public Services', description: 'Develop digital platforms that enhance government service delivery, citizen engagement, transparency, and administrative efficiency' },
-    { sr: 5, category: 'EdTech 5.0 – Personalized & Immersive Learning', description: 'Propose technology-driven learning solutions that adapt to individual learners using AI, analytics, and immersive technologies.' },
-    { sr: 6, category: 'GameTech & Serious Games for Impact', description: 'Build games or interactive simulations aimed at education, training, awareness, and social or behavioural impact' },
-    { sr: 7, category: 'System Smart Supply Chain & Logistics Intelligence', description: 'Create data-driven software solutions to optimize logistics, forecasting, traceability, and supply chain efficiency' },
-    { sr: 8, category: 'AR/VR Solutions', description: 'Develop immersive augmented or virtual reality applications for education, training, healthcare, industry, or social impact.' },
-    { sr: 9, category: 'Cyber Security', description: 'Design and develop a comprehensive and extensible e-application fuzzing framework that automates the discovery and security testing of key web application components.' },
-    { sr: 10, category: 'Blockchain Technology', description: 'Develop a secure, technology-enabled digital platform for creating, managing, and enforcing assured contractual agreements among stakeholders across diverse sectors.' }
-  ];
-
-  const hardwareThemes = [
-    { sr: 1, category: 'Smart Resource Optimization System', description: 'Design a hardware-based system to monitor and optimize the usage of energy, water, materials, or fuel in industrial, institutional, or domestic applications.' },
-    { sr: 2, category: 'Affordable Automation for Small-Scale Industries', description: 'Develop a low-cost automated or semi-automated hardware solution to improve productivity, quality, or safety in small-scale or cottage industries.' },
-    { sr: 3, category: 'Smart Safety and Monitoring Device', description: 'Create a hardware solution that enhances safety, security, or hazard detection in workplaces, laboratories, construction sites, or public environments.' },
-    { sr: 4, category: 'Sustainable and Green Technology Solution', description: 'Design an eco-friendly hardware prototype focusing on renewable energy, waste reduction, recycling, or environmental monitoring.' },
-    { sr: 5, category: 'Smart Infrastructure and Built Environment', description: 'Develop a hardware-enabled system for smart buildings, smart campuses, roads, or infrastructure monitoring' },
-    { sr: 6, category: 'Assistive Technology for Health and Accessibility', description: 'Build a hardware-based assistive device supporting healthcare, elderly care, or differently-abled individuals.' },
-    { sr: 7, category: 'Smart Agriculture and Food Processing System', description: 'Design a hardware solution to enhance agricultural productivity, food processing efficiency, quality control, or storage.' },
-    { sr: 8, category: 'Predictive Maintenance and Fault Detection', description: 'Develop a system capable of detecting faults or predicting maintenance requirements in machines, structures, or equipment.' },
-    { sr: 9, category: 'Smart Mobility and Transportation Solution', description: 'Create an innovative hardware model to improve transportation safety, efficiency, or monitoring in ground or aerial systems' },
-    { sr: 10, category: 'Digital-Physical Integration for Business Applications', description: 'Design a hardware–software integrated solution for inventory management, logistics, operational tracking, or business process optimization.' }
-  ];
-
-  const openModal = (track) => {
-    setSelectedTrack(track);
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setSelectedTrack('');
-  };
 
   return (
     <section className="back_about twinkle_back not-selectable" id="about" data-section="about">
@@ -141,7 +77,7 @@ const About = () => {
                 <div className="editions-wrapper">
                   <div 
                     className="edition-badge software-badge"
-                    onClick={() => openModal('software')}
+                    onClick={() => navigate('/track/software')}
                     style={{cursor: 'pointer'}}
                   >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -152,7 +88,7 @@ const About = () => {
                   </div>
                   <div 
                     className="edition-badge hardware-badge"
-                    onClick={() => openModal('hardware')}
+                    onClick={() => navigate('/track/hardware')}
                     style={{cursor: 'pointer'}}
                   >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -206,54 +142,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
-      {/* Modal for Theme Details */}
-      {showModal && (
-        <div 
-          className="theme-modal-overlay"
-          onClick={closeModal}
-        >
-          <div 
-            className="theme-modal-container"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              className="theme-modal-close"
-              onClick={closeModal}
-            >
-              ✕
-            </button>
-
-            {/* Header */}
-            <div className="theme-modal-header">
-              <h2 className={`theme-modal-title ${selectedTrack === 'software' ? 'software-title' : 'hardware-title'}`}>
-                {selectedTrack === 'software' ? 'Software Edition' : 'Hardware Edition'}
-              </h2>
-              <p className="theme-modal-subtitle">
-                Prize Pool: <span className="prize-highlight">₹1,00,000</span> • 
-                1st: ₹50K • 2nd: ₹30K • 3rd: ₹20K
-              </p>
-            </div>
-
-            {/* Theme Cards Grid */}
-            <div className="theme-cards-container">
-              {(selectedTrack === 'software' ? softwareThemes : hardwareThemes).map((theme, index) => (
-                <div 
-                  key={index}
-                  className={`theme-card ${selectedTrack === 'software' ? 'software-card' : 'hardware-card'}`}
-                >
-                  <div className="theme-card-header">
-                    <span className="theme-card-number">{theme.sr}</span>
-                    <h3 className="theme-card-title">{theme.category}</h3>
-                  </div>
-                  <p className="theme-card-description">{theme.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
 
       <br /><br />
     </section>

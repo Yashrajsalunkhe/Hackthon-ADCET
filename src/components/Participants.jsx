@@ -18,7 +18,7 @@ const Participants = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [selectedParticipant, setSelectedParticipant] = useState(null);
+
 
   // Fetch participants from API
   useEffect(() => {
@@ -86,85 +86,6 @@ const Participants = () => {
         <Icon size={14} />
         {config.label}
       </span>
-    );
-  };
-
-  // Participant detail modal
-  const ParticipantModal = ({ participant, onClose }) => {
-    if (!participant) return null;
-
-    return (
-      <div className="modal-overlay" onClick={onClose}>
-        <div className="modal-content" onClick={e => e.stopPropagation()}>
-          <button className="modal-close" onClick={onClose}>&times;</button>
-          
-          <div className="modal-header">
-            <div className="modal-avatar">
-              {participant.photo ? (
-                <img src={participant.photo} alt={participant.name} />
-              ) : (
-                <User size={40} />
-              )}
-            </div>
-            <div>
-              <h2>{participant.name}</h2>
-              <StatusBadge status={participant.status} />
-            </div>
-          </div>
-
-          <div className="modal-body">
-            <div className="modal-section">
-              <h3>Contact Information</h3>
-              <div className="modal-info-grid">
-                <div className="modal-info-item">
-                  <Mail size={16} />
-                  <span>{participant.email}</span>
-                </div>
-                <div className="modal-info-item">
-                  <Phone size={16} />
-                  <span>{participant.phone}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="modal-section">
-              <h3>Project Details</h3>
-              <div className="project-card">
-                <h4>{participant.projectTitle}</h4>
-                <p className="project-description">{participant.projectDescription}</p>
-                <div className="tech-stack">
-                  <strong>Tech Stack:</strong>
-                  <div className="tech-tags">
-                    {participant.projectTechStack?.split(',').map((tech, idx) => (
-                      <span key={idx} className="tech-tag">{tech.trim()}</span>
-                    ))}
-                  </div>
-                </div>
-                {participant.projectGithubUrl && (
-                  <a href={participant.projectGithubUrl} target="_blank" rel="noopener noreferrer" className="project-link">
-                    <ExternalLink size={14} />
-                    View on GitHub
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <div className="modal-section">
-              <h3>Registration Info</h3>
-              <div className="modal-info-grid">
-                <div className="modal-info-item">
-                  <Clock size={16} />
-                  <span>Registered: {new Date(participant.createdAt).toLocaleDateString()}</span>
-                </div>
-                <div className="modal-info-item">
-                  <CheckCircle size={16} />
-                  <span>Payment: {participant.paymentStatus || 'Pending'}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     );
   };
 
@@ -314,7 +235,10 @@ const Participants = () => {
                   </span>
                   <button 
                     className="view-details-btn"
-                    onClick={() => setSelectedParticipant(participant)}
+                    onClick={() => {
+                      sessionStorage.setItem(`participant_${participant._id}`, JSON.stringify(participant));
+                      navigate(`/participant/${participant._id}`);
+                    }}
                   >
                     <Eye size={14} />
                     View Details
@@ -325,14 +249,6 @@ const Participants = () => {
           </div>
         )}
       </div>
-
-      {/* Participant Modal */}
-      {selectedParticipant && (
-        <ParticipantModal 
-          participant={selectedParticipant} 
-          onClose={() => setSelectedParticipant(null)} 
-        />
-      )}
 
       <Footer />
     </div>
