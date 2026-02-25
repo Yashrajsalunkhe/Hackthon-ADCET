@@ -14,15 +14,29 @@ app.use(express.urlencoded({ extended: true }));
 // ─── MongoDB (connection caching for serverless) ───────────────────────────
 const MONGODB_URI = process.env.MONGODB_URI;
 
+if (!MONGODB_URI) {
+  console.error('❌ MONGODB_URI environment variable is not set');
+}
+
 let cached = global._mongoConnection;
 if (!cached) cached = global._mongoConnection = { conn: null, promise: null };
 
 async function connectDB() {
+  if (!MONGODB_URI) {
+    throw new Error('MONGODB_URI is not defined. Please set it in Vercel environment variables.');
+  }
+  
   if (cached.conn) return cached.conn;
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false,
-    }).then(m => m);
+    }).then(m => {
+      console.log('✅ MongoDB connected successfully');
+      return m;
+    }).catch(err => {
+      console.error('❌ MongoDB connection error:', err.message);
+      throw err;
+    });
   }
   cached.conn = await cached.promise;
   return cached.conn;
@@ -83,6 +97,24 @@ const upload = multer({
 
 // ─── Routes ───────────────────────────────────────────────────────────────
 
+// Health check
+app.get('/api', (req, res) => {
+  res.json({ 
+    success: true, 
+    message: 'Hackathon API is running',
+    mongodb: MONGODB_URI ? 'configured' : 'not configured',
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    success: true, 
+    message: 'API is healthy',
+    mongodb: MONGODB_URI ? 'configured' : 'not configured'
+  });
+});
+
 // POST /api/registration  — create registration
 app.post(
   '/api/registration',
@@ -136,8 +168,17 @@ app.post(
         data: { id: registration._id, name: registration.name, email: registration.email, status: registration.status },
       });
     } catch (err) {
-      console.error('Registration Error:', err);
-      res.status(500).json({ success: false, message: 'Registration failed', error: err.message });
+      console.error('Registration Error Details:', {
+        message: err.message,
+        stack: err.stack,
+        name: err.name
+      });
+      res.status(500).json({ 
+        success: false, 
+        message: 'Registration failed',
+        error: err.message,
+        details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+      });
     }
   }
 );
