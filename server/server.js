@@ -28,7 +28,6 @@ const registrationSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
-  photo: { type: String }, // URL from Google Form
   
   // Documents (stored as file paths)
   governmentDocument: { type: String, required: true },
@@ -40,15 +39,6 @@ const registrationSchema = new mongoose.Schema({
   projectTechStack: { type: String, required: true },
   projectGithubUrl: { type: String },
   projectDemoUrl: { type: String },
-  
-  // Payment Information
-  paymentMethod: { type: String, required: true },
-  transactionId: { type: String, required: true },
-  paymentStatus: { 
-    type: String, 
-    enum: ['pending', 'verified', 'rejected'],
-    default: 'pending'
-  },
   
   // Registration Status
   status: {
@@ -103,10 +93,9 @@ app.post('/api/registration',
   async (req, res) => {
     try {
       const {
-        name, email, phone, photo,
+        name, email, phone,
         projectTitle, projectDescription, projectTechStack,
-        projectGithubUrl, projectDemoUrl,
-        paymentMethod, transactionId
+        projectGithubUrl, projectDemoUrl
       } = req.body;
 
       // Check if email already registered
@@ -131,16 +120,13 @@ app.post('/api/registration',
         name,
         email,
         phone,
-        photo,
         governmentDocument: governmentDocPath,
         collegeId: collegeIdPath,
         projectTitle,
         projectDescription,
         projectTechStack,
         projectGithubUrl,
-        projectDemoUrl,
-        paymentMethod,
-        transactionId
+        projectDemoUrl
       });
 
       await registration.save();
@@ -216,7 +202,7 @@ app.get('/api/registration/:id', async (req, res) => {
 app.get('/api/registration/status/:email', async (req, res) => {
   try {
     const registration = await Registration.findOne({ email: req.params.email })
-      .select('name email status paymentStatus projectTitle createdAt');
+      .select('name email status projectTitle createdAt');
     
     if (!registration) {
       return res.status(404).json({
@@ -241,13 +227,12 @@ app.get('/api/registration/status/:email', async (req, res) => {
 // PUT: Update registration status (Admin)
 app.put('/api/registration/:id/status', async (req, res) => {
   try {
-    const { status, paymentStatus } = req.body;
+    const { status } = req.body;
     
     const registration = await Registration.findByIdAndUpdate(
       req.params.id,
       { 
-        status, 
-        paymentStatus,
+        status,
         updatedAt: Date.now()
       },
       { new: true }

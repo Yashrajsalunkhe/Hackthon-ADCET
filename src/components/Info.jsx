@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { 
-  Home, User, Mail, Phone, FileText, CreditCard, 
-  Upload, CheckCircle, AlertCircle, Camera, Building,
-  Briefcase, Eye, DollarSign, Send, ArrowRight, ArrowLeft
+  Home, User, Mail, Phone, FileText,
+  Upload, CheckCircle, AlertCircle, Building,
+  Briefcase, Eye, Send, ArrowRight, ArrowLeft
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useScrollToTop } from "../hooks/useScrollToTop";
@@ -25,23 +25,19 @@ const Info = () => {
     governmentDocumentName: "",
     collegeId: null,
     collegeIdName: "",
-    photo: "",
     // Project Details
     projectTitle: "",
     projectDescription: "",
     projectTechStack: "",
     projectGithubUrl: "",
     projectDemoUrl: "",
-    // Payment
-    paymentMethod: "",
-    transactionId: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const totalSteps = 5;
+  const totalSteps = 4;
 
   // Handle input changes
   const handleInputChange = (e) => {
@@ -118,10 +114,7 @@ const Info = () => {
         // No required fields for review step
         break;
       
-      case 5: // Payment
-        if (!formData.paymentMethod) newErrors.paymentMethod = "Payment method is required";
-        if (!formData.transactionId.trim()) newErrors.transactionId = "Transaction ID is required";
-        break;
+
     }
     
     setErrors(newErrors);
@@ -174,14 +167,11 @@ const Info = () => {
           governmentDocumentName: "",
           collegeId: null,
           collegeIdName: "",
-          photo: "",
           projectTitle: "",
           projectDescription: "",
           projectTechStack: "",
           projectGithubUrl: "",
           projectDemoUrl: "",
-          paymentMethod: "",
-          transactionId: "",
         });
         setCurrentStep(1);
       } else {
@@ -198,7 +188,7 @@ const Info = () => {
   // Step indicator component
   const StepIndicator = () => (
     <div className="step-indicator">
-      {[1, 2, 3, 4, 5].map((step) => (
+      {[1, 2, 3, 4].map((step) => (
         <div key={step} className={`step-item ${currentStep >= step ? 'active' : ''} ${currentStep === step ? 'current' : ''}`}>
           <div className="step-number">{step}</div>
           <div className="step-label">
@@ -206,7 +196,6 @@ const Info = () => {
             {step === 2 && "Documents"}
             {step === 3 && "Project Overview"}
             {step === 4 && "Review"}
-            {step === 5 && "Payment"}
           </div>
         </div>
       ))}
@@ -316,25 +305,7 @@ const Info = () => {
                     {errors.phone && <span className="error-message">{errors.phone}</span>}
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="photo">
-                      <Camera size={18} />
-                      Photo URL (from Google Form)
-                    </label>
-                    <input
-                      type="url"
-                      id="photo"
-                      name="photo"
-                      value={formData.photo}
-                      onChange={handleInputChange}
-                      placeholder="Paste your photo URL from Google Form"
-                    />
-                    {formData.photo && (
-                      <div className="photo-preview">
-                        <img src={formData.photo} alt="Preview" onError={(e) => e.target.style.display = 'none'} />
-                      </div>
-                    )}
-                  </div>
+
                 </div>
               </div>
             )}
@@ -511,7 +482,7 @@ const Info = () => {
                 <div className="step-header">
                   <Eye size={28} className="step-icon" />
                   <h2>Review Your Information</h2>
-                  <p>Please verify all your details before proceeding to payment</p>
+                  <p>Please verify all your details before final submission</p>
                 </div>
 
                 <div className="review-container">
@@ -592,92 +563,23 @@ const Info = () => {
                           ) : "Not provided"}
                         </span>
                       </div>
-                    </div>
-                  </div>
-
-                  {formData.photo && (
-                    <div className="review-section">
-                      <h3><Camera size={20} /> Your Photo</h3>
-                      <div className="review-photo">
-                        <img src={formData.photo} alt="Profile" />
+                      <div className="review-item">
+                        <span className="review-label">Demo URL:</span>
+                        <span className="review-value">
+                          {formData.projectDemoUrl ? (
+                            <a href={formData.projectDemoUrl} target="_blank" rel="noopener noreferrer">
+                              View Demo
+                            </a>
+                          ) : "Not provided"}
+                        </span>
                       </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Step 5: Payment */}
-            {currentStep === 5 && (
-              <div className="form-step">
-                <div className="step-header">
-                  <CreditCard size={28} className="step-icon" />
-                  <h2>Payment</h2>
-                  <p>Complete your registration by making the payment</p>
-                </div>
-
-                <div className="payment-info">
-                  <div className="payment-amount">
-                    <DollarSign size={32} />
-                    <div>
-                      <span className="amount-label">Registration Fee</span>
-                      <span className="amount-value">₹500</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-grid">
-                  <div className="form-group full-width">
-                    <label>
-                      <CreditCard size={18} />
-                      Payment Method <span className="required">*</span>
-                    </label>
-                    <div className="payment-methods">
-                      {['UPI', 'Net Banking', 'Credit/Debit Card', 'Paytm'].map((method) => (
-                        <label key={method} className={`payment-option ${formData.paymentMethod === method ? 'selected' : ''}`}>
-                          <input
-                            type="radio"
-                            name="paymentMethod"
-                            value={method}
-                            checked={formData.paymentMethod === method}
-                            onChange={handleInputChange}
-                          />
-                          <span>{method}</span>
-                        </label>
-                      ))}
-                    </div>
-                    {errors.paymentMethod && <span className="error-message">{errors.paymentMethod}</span>}
-                  </div>
-
-                  <div className="form-group full-width">
-                    <label htmlFor="transactionId">
-                      <FileText size={18} />
-                      Transaction ID <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="transactionId"
-                      name="transactionId"
-                      value={formData.transactionId}
-                      onChange={handleInputChange}
-                      placeholder="Enter your payment transaction ID"
-                      className={errors.transactionId ? 'error' : ''}
-                    />
-                    {errors.transactionId && <span className="error-message">{errors.transactionId}</span>}
-                  </div>
-
-                  <div className="payment-instructions">
-                    <h4>Payment Instructions:</h4>
-                    <ul>
-                      <li>Make payment to UPI ID: <strong>hackathon@adcet</strong></li>
-                      <li>After payment, enter the transaction ID above</li>
-                      <li>Keep the payment screenshot for reference</li>
-                      <li>Verification may take up to 24 hours</li>
-                    </ul>
                   </div>
                 </div>
               </div>
             )}
+
+
 
             {/* Navigation Buttons */}
             <div className="form-navigation">

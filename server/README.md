@@ -95,7 +95,6 @@ The frontend will proxy API requests to the backend automatically through Vite's
   name: String,           // Full name
   email: String,          // Email (unique)
   phone: String,          // Phone number
-  photo: String,          // Photo URL from Google Form
   governmentDocument: String,  // File path
   collegeId: String,      // File path
   projectTitle: String,   // Project name
@@ -103,9 +102,6 @@ The frontend will proxy API requests to the backend automatically through Vite's
   projectTechStack: String,    // Technologies used
   projectGithubUrl: String,    // GitHub repo URL
   projectDemoUrl: String,      // Live demo URL
-  paymentMethod: String,  // UPI/Net Banking/Card/Paytm
-  transactionId: String,  // Payment transaction ID
-  paymentStatus: String,  // pending/verified/rejected
   status: String,         // pending/approved/rejected
   createdAt: Date,
   updatedAt: Date
