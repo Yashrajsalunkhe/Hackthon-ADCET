@@ -26,6 +26,7 @@ const Info = () => {
     collegeId: null,
     collegeIdName: "",
     // Project Details
+    projectCategory: "",
     projectTitle: "",
     projectDescription: "",
     projectTechStack: "",
@@ -101,6 +102,7 @@ const Info = () => {
         break;
       
       case 3: // Project Overview
+        if (!formData.projectCategory) newErrors.projectCategory = "Project category is required";
         if (!formData.projectTitle.trim()) newErrors.projectTitle = "Project title is required";
         if (!formData.projectDescription.trim()) {
           newErrors.projectDescription = "Project description is required";
@@ -167,6 +169,7 @@ const Info = () => {
           governmentDocumentName: "",
           collegeId: null,
           collegeIdName: "",
+          projectCategory: "",
           projectTitle: "",
           projectDescription: "",
           projectTechStack: "",
@@ -389,6 +392,25 @@ const Info = () => {
                 </div>
 
                 <div className="form-grid">
+                  <div className="form-group">
+                    <label htmlFor="projectCategory">
+                      <Briefcase size={18} />
+                      Project Category <span className="required">*</span>
+                    </label>
+                    <select
+                      id="projectCategory"
+                      name="projectCategory"
+                      value={formData.projectCategory}
+                      onChange={handleInputChange}
+                      className={errors.projectCategory ? 'error' : ''}
+                    >
+                      <option value="">Select category</option>
+                      <option value="software">Software</option>
+                      <option value="hardware">Hardware</option>
+                    </select>
+                    {errors.projectCategory && <span className="error-message">{errors.projectCategory}</span>}
+                  </div>
+
                   <div className="form-group full-width">
                     <label htmlFor="projectTitle">
                       <Briefcase size={18} />
@@ -541,6 +563,16 @@ const Info = () => {
                   <div className="review-section">
                     <h3><Briefcase size={20} /> Project Details</h3>
                     <div className="review-grid">
+                      <div className="review-item">
+                        <span className="review-label">Project Category:</span>
+                        <span className="review-value">
+                          {formData.projectCategory ? (
+                            <span className="category-display">
+                              {formData.projectCategory === 'software' ? '💻 Software' : '⚙️ Hardware'}
+                            </span>
+                          ) : "Not selected"}
+                        </span>
+                      </div>
                       <div className="review-item full-width">
                         <span className="review-label">Project Title:</span>
                         <span className="review-value">{formData.projectTitle || "Not provided"}</span>

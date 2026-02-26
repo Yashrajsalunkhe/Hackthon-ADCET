@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useScrollToTop } from '../hooks/useScrollToTop';
-import { Home, User, Mail, Phone, Clock, CheckCircle, ExternalLink, Briefcase, ArrowLeft } from 'lucide-react';
+import { Home, User, Mail, Phone, Clock, ExternalLink, Briefcase, ArrowLeft, Code, Cpu } from 'lucide-react';
 import Footer from './Footer';
 import '../styles/participant-details.css';
 
@@ -37,22 +37,6 @@ const ParticipantDetails = () => {
     );
   }
 
-  const StatusBadge = ({ status }) => {
-    const statusConfig = {
-      pending: { icon: Clock, color: '#eab308', label: 'Pending' },
-      approved: { icon: CheckCircle, color: '#22c55e', label: 'Approved' },
-      rejected: { icon: CheckCircle, color: '#ef4444', label: 'Rejected' }
-    };
-    const config = statusConfig[status] || statusConfig.pending;
-    const Icon = config.icon;
-    return (
-      <span className={`pd-status-badge pd-status-${status}`}>
-        <Icon size={16} />
-        {config.label}
-      </span>
-    );
-  };
-
   return (
     <div className="participant-detail-page">
       {/* Background */}
@@ -78,7 +62,13 @@ const ParticipantDetails = () => {
           </div>
           <div className="pd-profile-info">
             <h1 className="pd-name">{participant.name}</h1>
-            <StatusBadge status={participant.status} />
+            <span className={`pd-category-badge ${participant.projectCategory}`}>
+              {participant.projectCategory === 'software' ? (
+                <><Code size={16} /> Software Project</>
+              ) : (
+                <><Cpu size={16} /> Hardware Project</>
+              )}
+            </span>
           </div>
         </div>
 
@@ -107,13 +97,6 @@ const ParticipantDetails = () => {
                 <span className="pd-info-value">{new Date(participant.createdAt).toLocaleDateString()}</span>
               </div>
             </div>
-            <div className="pd-info-card">
-              <CheckCircle size={20} />
-              <div>
-                <span className="pd-info-label">Payment</span>
-                <span className="pd-info-value">{participant.paymentStatus || 'Pending'}</span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -140,6 +123,13 @@ const ParticipantDetails = () => {
               <a href={participant.projectGithubUrl} target="_blank" rel="noopener noreferrer" className="pd-github-link">
                 <ExternalLink size={16} />
                 View on GitHub
+              </a>
+            )}
+
+            {participant.projectDemoUrl && (
+              <a href={participant.projectDemoUrl} target="_blank" rel="noopener noreferrer" className="pd-demo-link">
+                <ExternalLink size={16} />
+                View Demo
               </a>
             )}
           </div>

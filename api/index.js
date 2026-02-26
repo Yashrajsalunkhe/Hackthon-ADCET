@@ -62,6 +62,7 @@ const registrationSchema = new mongoose.Schema({
   },
 
   // Project Details
+  projectCategory:    { type: String, enum: ['software', 'hardware'], required: true },
   projectTitle:       { type: String, required: true },
   projectDescription: { type: String, required: true },
   projectTechStack:   { type: String, required: true },
@@ -128,7 +129,7 @@ app.post(
 
       const {
         name, email, phone,
-        projectTitle, projectDescription, projectTechStack,
+        projectCategory, projectTitle, projectDescription, projectTechStack,
         projectGithubUrl, projectDemoUrl,
       } = req.body;
 
@@ -156,7 +157,7 @@ app.post(
           contentType: colFile.mimetype,
           filename:    colFile.originalname,
         },
-        projectTitle, projectDescription, projectTechStack,
+        projectCategory, projectTitle, projectDescription, projectTechStack,
         projectGithubUrl, projectDemoUrl,
       });
 

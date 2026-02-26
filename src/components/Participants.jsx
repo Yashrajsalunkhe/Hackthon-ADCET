@@ -17,7 +17,7 @@ const Participants = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
+  const [categoryFilter, setCategoryFilter] = useState("all");
 
 
   // Fetch participants from API
@@ -45,11 +45,12 @@ const Participants = () => {
           name: 'Demo User',
           email: 'demo@example.com',
           phone: '9876543210',
+          projectCategory: 'software',
           projectTitle: 'Smart Campus App',
           projectDescription: 'An innovative app for campus management with AI-powered features for students and faculty.',
           projectTechStack: 'React Native, Node.js, MongoDB',
-          status: 'approved',
-          paymentStatus: 'verified',
+          projectGithubUrl: 'https://github.com/demo/project',
+          projectDemoUrl: 'https://demo.example.com',
           createdAt: new Date().toISOString()
         }
       ]);
@@ -65,29 +66,14 @@ const Participants = () => {
       participant.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       participant.projectTitle?.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesStatus = statusFilter === "all" || participant.status === statusFilter;
+    const matchesCategory = categoryFilter === "all" || participant.projectCategory === categoryFilter;
     
-    return matchesSearch && matchesStatus;
+    return matchesSearch && matchesCategory;
   });
 
-  // Status badge component
-  const StatusBadge = ({ status }) => {
-    const statusConfig = {
-      pending: { icon: Clock, color: '#eab308', label: 'Pending' },
-      approved: { icon: CheckCircle, color: '#22c55e', label: 'Approved' },
-      rejected: { icon: XCircle, color: '#ef4444', label: 'Rejected' }
-    };
-    
-    const config = statusConfig[status] || statusConfig.pending;
-    const Icon = config.icon;
-    
-    return (
-      <span className={`status-badge status-${status}`}>
-        <Icon size={14} />
-        {config.label}
-      </span>
-    );
-  };
+  // Get category counts
+  const softwareCount = participants.filter(p => p.projectCategory === 'software').length;
+  const hardwareCount = participants.filter(p => p.projectCategory === 'hardware').length;
 
   return (
     <div className="participants-page">
@@ -129,12 +115,12 @@ const Participants = () => {
               <span className="stat-label">Total Registered</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">{participants.filter(p => p.status === 'approved').length}</span>
-              <span className="stat-label">Approved</span>
+              <span className="stat-number">{softwareCount}</span>
+              <span className="stat-label">Software</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">{participants.filter(p => p.status === 'pending').length}</span>
-              <span className="stat-label">Pending</span>
+              <span className="stat-number">{hardwareCount}</span>
+              <span className="stat-label">Hardware</span>
             </div>
           </div>
         </div>
@@ -154,13 +140,12 @@ const Participants = () => {
           <div className="filter-dropdown">
             <Filter size={18} />
             <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
             >
-              <option value="all">All Status</option>
-              <option value="approved">Approved</option>
-              <option value="pending">Pending</option>
-              <option value="rejected">Rejected</option>
+              <option value="all">All Categories</option>
+              <option value="software">Software</option>
+              <option value="hardware">Hardware</option>
             </select>
             <ChevronDown size={16} />
           </div>
@@ -200,7 +185,9 @@ const Participants = () => {
                       <User size={28} />
                     )}
                   </div>
-                  <StatusBadge status={participant.status} />
+                  <span className={`category-badge ${participant.projectCategory}`}>
+                    {participant.projectCategory === 'software' ? '💻 Software' : '⚙️ Hardware'}
+                  </span>
                 </div>
 
                 <div className="card-body">
@@ -208,6 +195,10 @@ const Participants = () => {
                   <p className="participant-email">
                     <Mail size={14} />
                     {participant.email}
+                  </p>
+                  <p className="participant-phone">
+                    <Phone size={14} />
+                    {participant.phone}
                   </p>
 
                   <div className="project-info">
@@ -226,6 +217,13 @@ const Participants = () => {
                       <span key={idx} className="tech-tag-mini">{tech.trim()}</span>
                     ))}
                   </div>
+
+                  {participant.projectGithubUrl && (
+                    <a href={participant.projectGithubUrl} target="_blank" rel="noopener noreferrer" className="github-link-mini">
+                      <ExternalLink size={12} />
+                      GitHub
+                    </a>
+                  )}
                 </div>
 
                 <div className="card-footer">
