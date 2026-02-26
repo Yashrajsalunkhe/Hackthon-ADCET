@@ -64,24 +64,42 @@ const Info = () => {
   // Handle file uploads
   const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0];
-    if (file) {
-      // Validate file size (max 50KB)
-      if (file.size > 50 * 1024) {
-        setErrors(prev => ({ ...prev, [fieldName]: "File size must be less than 50KB" }));
+    
+    // Clear previous errors first
+    setErrors(prev => ({ ...prev, [fieldName]: "" }));
+    
+    if (!file) {
+      // User cancelled file selection
+      return;
+    }
+
+    try {
+      // Validate file size (max 200KB)
+      if (file.size > 200 * 1024) {
+        setErrors(prev => ({ ...prev, [fieldName]: "File size must be less than 200KB" }));
+        e.target.value = ''; // Reset input
         return;
       }
+      
       // Validate file type
       const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
       if (!allowedTypes.includes(file.type)) {
         setErrors(prev => ({ ...prev, [fieldName]: "Only JPG, PNG, or PDF files are allowed" }));
+        e.target.value = ''; // Reset input
         return;
       }
+      
+      // Update form data
       setFormData(prev => ({
         ...prev,
         [fieldName]: file,
         [`${fieldName}Name`]: file.name
       }));
-      setErrors(prev => ({ ...prev, [fieldName]: "" }));
+      
+    } catch (error) {
+      console.error('File upload error:', error);
+      setErrors(prev => ({ ...prev, [fieldName]: "Error processing file. Please try again." }));
+      e.target.value = ''; // Reset input
     }
   };
 
@@ -120,16 +138,33 @@ const Info = () => {
   // Handle team member file uploads
   const handleTeamMemberFileChange = (e, index, fieldName) => {
     const file = e.target.files[0];
-    if (file) {
-      if (file.size > 50 * 1024) {
-        setErrors(prev => ({ ...prev, [`teamMember_${index}_${fieldName}`]: "File size must be less than 50KB" }));
+    const errorKey = `teamMember_${index}_${fieldName}`;
+    
+    // Clear previous errors first
+    setErrors(prev => ({ ...prev, [errorKey]: "" }));
+    
+    if (!file) {
+      // User cancelled file selection
+      return;
+    }
+
+    try {
+      // Validate file size (max 200KB)
+      if (file.size > 200 * 1024) {
+        setErrors(prev => ({ ...prev, [errorKey]: "File size must be less than 200KB" }));
+        e.target.value = ''; // Reset input
         return;
       }
+      
+      // Validate file type
       const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
       if (!allowedTypes.includes(file.type)) {
-        setErrors(prev => ({ ...prev, [`teamMember_${index}_${fieldName}`]: "Only JPG, PNG, or PDF files are allowed" }));
+        setErrors(prev => ({ ...prev, [errorKey]: "Only JPG, PNG, or PDF files are allowed" }));
+        e.target.value = ''; // Reset input
         return;
       }
+      
+      // Update team member data
       setFormData(prev => {
         const updated = [...prev.teamMembers];
         updated[index] = {
@@ -139,8 +174,36 @@ const Info = () => {
         };
         return { ...prev, teamMembers: updated };
       });
-      setErrors(prev => ({ ...prev, [`teamMember_${index}_${fieldName}`]: "" }));
+      
+    } catch (error) {
+      console.error('Team member file upload error:', error);
+      setErrors(prev => ({ ...prev, [errorKey]: "Error processing file. Please try again." }));
+      e.target.value = ''; // Reset input
     }
+  };
+
+  // Clear file upload
+  const clearFileUpload = (fieldName) => {
+    setFormData(prev => ({
+      ...prev,
+      [fieldName]: null,
+      [`${fieldName}Name`]: ""
+    }));
+    setErrors(prev => ({ ...prev, [fieldName]: "" }));
+  };
+
+  // Clear team member file upload
+  const clearTeamMemberFileUpload = (index, fieldName) => {
+    setFormData(prev => {
+      const updated = [...prev.teamMembers];
+      updated[index] = {
+        ...updated[index],
+        [fieldName]: null,
+        [`${fieldName}Name`]: ""
+      };
+      return { ...prev, teamMembers: updated };
+    });
+    setErrors(prev => ({ ...prev, [`teamMember_${index}_${fieldName}`]: "" }));
   };
 
   // Validate current step
@@ -553,6 +616,7 @@ const Info = () => {
                       <input
                         type="file"
                         id="governmentDocument"
+                        key={`gov-doc-${formData.governmentDocumentName || 'empty'}`}
                         accept=".jpg,.jpeg,.png,.pdf"
                         onChange={(e) => handleFileChange(e, 'governmentDocument')}
                       />
@@ -560,13 +624,21 @@ const Info = () => {
                       <span>
                         {formData.governmentDocumentName || "Click to upload or drag and drop"}
                       </span>
-                      <small>JPG, PNG or PDF (Max 50KB)</small>
+                      <small>JPG, PNG or PDF (Max 200KB)</small>
                     </div>
                     {errors.governmentDocument && <span className="error-message">{errors.governmentDocument}</span>}
                     {formData.governmentDocumentName && (
                       <div className="file-selected">
                         <CheckCircle size={16} />
                         <span>{formData.governmentDocumentName}</span>
+                        <button 
+                          type="button" 
+                          className="clear-file-btn"
+                          onClick={() => clearFileUpload('governmentDocument')}
+                          title="Remove file"
+                        >
+                          ×
+                        </button>
                       </div>
                     )}
                   </div>
@@ -581,6 +653,7 @@ const Info = () => {
                       <input
                         type="file"
                         id="collegeId"
+                        key={`college-id-${formData.collegeIdName || 'empty'}`}
                         accept=".jpg,.jpeg,.png,.pdf"
                         onChange={(e) => handleFileChange(e, 'collegeId')}
                       />
@@ -588,13 +661,21 @@ const Info = () => {
                       <span>
                         {formData.collegeIdName || "Click to upload or drag and drop"}
                       </span>
-                      <small>JPG, PNG or PDF (Max 50KB)</small>
+                      <small>JPG, PNG or PDF (Max 200KB)</small>
                     </div>
                     {errors.collegeId && <span className="error-message">{errors.collegeId}</span>}
                     {formData.collegeIdName && (
                       <div className="file-selected">
                         <CheckCircle size={16} />
                         <span>{formData.collegeIdName}</span>
+                        <button 
+                          type="button" 
+                          className="clear-file-btn"
+                          onClick={() => clearFileUpload('collegeId')}
+                          title="Remove file"
+                        >
+                          ×
+                        </button>
                       </div>
                     )}
                   </div>
@@ -619,18 +700,27 @@ const Info = () => {
                             <div className={`upload-area ${errors[`teamMember_${index}_governmentDocument`] ? 'error' : ''}`}>
                               <input
                                 type="file"
+                                key={`member-${index}-gov-${member.governmentDocumentName || 'empty'}`}
                                 accept=".jpg,.jpeg,.png,.pdf"
                                 onChange={(e) => handleTeamMemberFileChange(e, index, 'governmentDocument')}
                               />
                               <Upload size={28} />
                               <span>{member.governmentDocumentName || "Click to upload"}</span>
-                              <small>JPG, PNG or PDF (Max 50KB)</small>
+                              <small>JPG, PNG or PDF (Max 200KB)</small>
                             </div>
                             {errors[`teamMember_${index}_governmentDocument`] && <span className="error-message">{errors[`teamMember_${index}_governmentDocument`]}</span>}
                             {member.governmentDocumentName && (
                               <div className="file-selected">
                                 <CheckCircle size={14} />
                                 <span>{member.governmentDocumentName}</span>
+                                <button 
+                                  type="button" 
+                                  className="clear-file-btn"
+                                  onClick={() => clearTeamMemberFileUpload(index, 'governmentDocument')}
+                                  title="Remove file"
+                                >
+                                  ×
+                                </button>
                               </div>
                             )}
                           </div>
@@ -644,18 +734,27 @@ const Info = () => {
                             <div className={`upload-area ${errors[`teamMember_${index}_collegeId`] ? 'error' : ''}`}>
                               <input
                                 type="file"
+                                key={`member-${index}-college-${member.collegeIdName || 'empty'}`}
                                 accept=".jpg,.jpeg,.png,.pdf"
                                 onChange={(e) => handleTeamMemberFileChange(e, index, 'collegeId')}
                               />
                               <Upload size={28} />
                               <span>{member.collegeIdName || "Click to upload"}</span>
-                              <small>JPG, PNG or PDF (Max 50KB)</small>
+                              <small>JPG, PNG or PDF (Max 5MB)</small>
                             </div>
                             {errors[`teamMember_${index}_collegeId`] && <span className="error-message">{errors[`teamMember_${index}_collegeId`]}</span>}
                             {member.collegeIdName && (
                               <div className="file-selected">
                                 <CheckCircle size={14} />
                                 <span>{member.collegeIdName}</span>
+                                <button 
+                                  type="button" 
+                                  className="clear-file-btn"
+                                  onClick={() => clearTeamMemberFileUpload(index, 'collegeId')}
+                                  title="Remove file"
+                                >
+                                  ×
+                                </button>
                               </div>
                             )}
                           </div>

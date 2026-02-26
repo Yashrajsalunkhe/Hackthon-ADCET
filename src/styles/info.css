@@ -440,6 +440,28 @@
   font-size: 0.85rem;
 }
 
+.clear-file-btn {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: auto;
+  transition: all 0.2s ease;
+}
+
+.clear-file-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: scale(1.1);
+}
+
 /* ─── Team Members Section ──────────────────────────────────────────────── */
 .team-members-section {
   margin-top: 2rem;
