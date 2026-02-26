@@ -48,6 +48,16 @@ const registrationSchema = new mongoose.Schema({
   name:  { type: String, required: true },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
+  state: { type: String, required: true },
+  collegeName: { type: String, required: true },
+  letterFromCollege: {
+    data:        { type: Buffer },
+    contentType: { type: String },
+    filename:    { type: String },
+  },
+  mentorComing: { type: String, enum: ['yes', 'no'], required: true },
+  mentorName: { type: String },
+  address: { type: String, required: true },
   
   // Team Name
   teamName: { type: String, required: true },
@@ -139,34 +149,49 @@ app.get('/api/health', (req, res) => {
 // POST /api/registration  — create registration
 app.post(
   '/api/registration',
-  upload.fields([
-    { name: 'governmentDocument', maxCount: 1 },
-    { name: 'collegeId',          maxCount: 1 },
-    { name: 'memberGovDoc_0',     maxCount: 1 },
-    { name: 'memberGovDoc_1',     maxCount: 1 },
-    { name: 'memberGovDoc_2',     maxCount: 1 },
-    { name: 'memberGovDoc_3',     maxCount: 1 },
-    { name: 'memberCollegeId_0',  maxCount: 1 },
-    { name: 'memberCollegeId_1',  maxCount: 1 },
-    { name: 'memberCollegeId_2',  maxCount: 1 },
-    { name: 'memberCollegeId_3',  maxCount: 1 },
-  ]),
+  upload.any(), // Accept any fields to avoid field mismatch errors
+  (err, req, res, next) => {
+    if (err instanceof multer.MulterError) {
+      console.error('Multer Error:', err);
+      console.error('Request body keys:', Object.keys(req.body));
+      console.error('Request files:', req.files ? req.files.map(f => f.fieldname) : 'No files');
+      return res.status(400).json({
+        success: false,
+        message: `File upload error: ${err.message}`,
+        field: err.field,
+        code: err.code
+      });
+    }
+    next(err);
+  },
   async (req, res) => {
     try {
       await connectDB();
 
       const {
-        name, email, phone, teamName,
+        name, email, phone, teamName, state, collegeName, mentorComing, mentorName, address,
         projectCategory, projectTitle, projectDescription, projectTechStack,
         projectGithubUrl, projectDemoUrl, teamMembers,
       } = req.body;
 
       // Validate required fields
-      if (!name || !email || !phone || !teamName) {
+      if (!name || !email || !phone || !teamName || !state || !collegeName || !mentorComing || !address) {
         return res.status(400).json({ 
           success: false, 
-          message: 'Name, email, phone, and team name are required',
-          missing: { name: !name, email: !email, phone: !phone, teamName: !teamName }
+          message: 'Name, email, phone, team name, state, college name, mentor info, and address are required',
+          missing: { 
+            name: !name, email: !email, phone: !phone, teamName: !teamName,
+            state: !state, collegeName: !collegeName, mentorComing: !mentorComing, address: !address
+          }
+        });
+      }
+
+      // Validate mentor name if mentor is coming
+      if (mentorComing === 'yes' && (!mentorName || !mentorName.trim())) {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Mentor name is required when mentor is coming',
+          missing: { mentorName: true }
         });
       }
 
@@ -198,17 +223,23 @@ app.post(
         return res.status(400).json({ success: false, message: 'Email already registered' });
       }
 
-      const govFile = req.files?.governmentDocument?.[0];
-      const colFile = req.files?.collegeId?.[0];
+      // Extract files from the files array
+      const getFileByFieldname = (fieldname) => {
+        return req.files ? req.files.find(file => file.fieldname === fieldname) : null;
+      };
+
+      const govFile = getFileByFieldname('governmentDocument');
+      const colFile = getFileByFieldname('collegeId');
+      const letterFile = getFileByFieldname('letterFromCollege');
 
       if (!govFile || !colFile) {
-        return res.status(400).json({ success: false, message: 'Both documents are required' });
+        return res.status(400).json({ success: false, message: 'Government document and College ID are required' });
       }
 
       // Attach document files to each team member
       const teamMembersWithDocs = parsedTeamMembers.map((member, i) => {
-        const memberGov = req.files?.[`memberGovDoc_${i}`]?.[0];
-        const memberCol = req.files?.[`memberCollegeId_${i}`]?.[0];
+        const memberGov = getFileByFieldname(`memberGovDoc_${i}`);
+        const memberCol = getFileByFieldname(`memberCollegeId_${i}`);
         return {
           name: member.name,
           email: member.email,
@@ -227,7 +258,7 @@ app.post(
       });
 
       const registration = new Registration({
-        name, email, phone, teamName,
+        name, email, phone, teamName, state, collegeName, mentorComing, mentorName, address,
         governmentDocument: {
           data:        govFile.buffer,
           contentType: govFile.mimetype,
@@ -238,6 +269,11 @@ app.post(
           contentType: colFile.mimetype,
           filename:    colFile.originalname,
         },
+        letterFromCollege: letterFile ? {
+          data:        letterFile.buffer,
+          contentType: letterFile.mimetype,
+          filename:    letterFile.originalname,
+        } : undefined,
         projectCategory, projectTitle, projectDescription, projectTechStack,
         projectGithubUrl, projectDemoUrl,
         teamMembers: teamMembersWithDocs,

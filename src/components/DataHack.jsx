@@ -146,6 +146,11 @@ const DataHack = () => {
         name: 'John Doe',
         email: 'john@example.com',
         phone: '9876543210',
+        state: 'Maharashtra',
+        collegeName: 'ABC Engineering College',
+        mentorComing: 'yes',
+        mentorName: 'Dr. Smith Johnson',
+        address: '123 Tech Street, Mumbai, Maharashtra, 400001',
         projectTitle: 'Smart Health Monitor',
         projectDescription: 'An IoT-based health monitoring system that tracks vital signs and alerts healthcare providers in real-time.',
         projectTechStack: 'React, Node.js, MongoDB, Arduino, IoT Sensors',
@@ -154,6 +159,7 @@ const DataHack = () => {
         projectDemoUrl: 'https://health-monitor-demo.com',
         governmentDocument: 'uploads/john-aadhar.pdf',
         collegeId: 'uploads/john-college-id.pdf',
+        letterFromCollege: 'uploads/john-college-letter.pdf',
         status: 'approved',
         createdAt: '2024-02-20T10:30:00Z',
         teamMembers: [
@@ -178,6 +184,11 @@ const DataHack = () => {
         name: 'Alice Brown',
         email: 'alice@example.com',
         phone: '9876543220',
+        state: 'Karnataka',
+        collegeName: 'XYZ Institute of Technology',
+        mentorComing: 'no',
+        mentorName: '',
+        address: '456 Innovation Lane, Bangalore, Karnataka, 560001',
         projectTitle: 'EcoTrack - Carbon Footprint App',
         projectDescription: 'A mobile application that helps users track and reduce their carbon footprint through daily activity monitoring.',
         projectTechStack: 'React Native, Firebase, Machine Learning, Chart.js',
@@ -420,6 +431,12 @@ const DataHack = () => {
                             <span><Mail size={14} />{team.email}</span>
                             <span><Phone size={14} />{team.phone}</span>
                           </div>
+                          <div className="member-additional">
+                            <span><Building size={14} />State: {team.state || 'Not provided'}</span>
+                            <span><Building size={14} />College: {team.collegeName || 'Not provided'}</span>
+                            <span><User size={14} />Mentor: {team.mentorComing === 'yes' ? `Yes - ${team.mentorName}` : 'No'}</span>
+                            <span style={{ gridColumn: '1 / -1' }}><Building size={14} />Address: {team.address || 'Not provided'}</span>
+                          </div>
                         </div>
                         <div className="member-documents">
                           <div className="doc-item">
@@ -444,6 +461,18 @@ const DataHack = () => {
                             >
                               <Eye size={14} />
                               {team.collegeId ? 'View' : 'Not uploaded'}
+                            </button>
+                          </div>
+                          <div className="doc-item">
+                            <FileText size={16} />
+                            <span>Letter from College</span>
+                            <button
+                              onClick={() => handleViewDocument(team.letterFromCollege, team.projectTitle, team.name)}
+                              className="view-doc-btn"
+                              disabled={!team.letterFromCollege}
+                            >
+                              <Eye size={14} />
+                              {team.letterFromCollege ? 'View' : 'Not uploaded (Optional)'}
                             </button>
                           </div>
                         </div>

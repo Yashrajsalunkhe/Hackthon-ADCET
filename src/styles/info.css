@@ -261,10 +261,24 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .form-group.full-width {
   grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .form-group.full-width {
+    grid-column: span 1;
+  }
 }
 
 /* Form Group */
@@ -319,16 +333,98 @@
   appearance: none;
 }
 
+.info-page .form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+.info-page .form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+}
+
+.info-page .form-group input[type="file"] {
+  padding: 0.75rem;
+  background: rgba(30, 30, 30, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px;
+  color: #fff !important;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.info-page .form-group input[type="file"]::-webkit-file-upload-button {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-right: 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.info-page .form-group input[type="file"]::-webkit-file-upload-button:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  transform: translateY(-1px);
+}
+
 .info-page .form-group input[type="text"]:focus,
 .info-page .form-group input[type="email"]:focus,
 .info-page .form-group input[type="tel"]:focus,
 .info-page .form-group input[type="url"]:focus,
+.info-page .form-group input[type="file"]:focus,
 .info-page .form-group textarea:focus,
 .info-page .form-group select:focus {
   outline: none;
   border-color: #3b82f6 !important;
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
   background: rgba(40, 40, 40, 0.95) !important;
+}
+
+.info-page .form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+}
+
+.info-page .form-group input[type="file"] {
+  padding: 0.75rem;
+  background: rgba(30, 30, 30, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px;
+  color: #fff !important;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.info-page .form-group input[type="file"]::-webkit-file-upload-button {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-right: 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.info-page .form-group input[type="file"]::-webkit-file-upload-button:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  transform: translateY(-1px);
 }
 
 .info-page .form-group input::placeholder,
@@ -338,8 +434,10 @@
 }
 
 .info-page .form-group input.error,
-.info-page .form-group textarea.error {
+.info-page .form-group textarea.error,
+.info-page .form-group select.error {
   border-color: #ef4444 !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
 }
 
 .error-message {
@@ -376,8 +474,11 @@
 /* File Upload */
 .file-hint {
   font-size: 0.8rem;
-  color: #666;
-  margin-bottom: 0.5rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .upload-area {
@@ -763,6 +864,10 @@
 
 .file-status.error {
   color: #ef4444;
+}
+
+.file-status.optional {
+  color: #9ca3af;
 }
 
 .review-photo {

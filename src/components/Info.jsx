@@ -22,6 +22,13 @@ const Info = () => {
     name: "",
     email: "",
     phone: "",
+    state: "",
+    collegeName: "",
+    letterFromCollege: null,
+    letterFromCollegeName: "",
+    mentorComing: "",
+    mentorName: "",
+    address: "",
     // Team Information
     teamName: "",
     // Team Members
@@ -214,6 +221,13 @@ const Info = () => {
       case 1: // Personal Information
         if (!formData.name.trim()) newErrors.name = "Name is required";
         if (!formData.teamName.trim()) newErrors.teamName = "Team name is required";
+        if (!formData.state.trim()) newErrors.state = "State is required";
+        if (!formData.collegeName.trim()) newErrors.collegeName = "College name is required";
+        if (!formData.mentorComing) newErrors.mentorComing = "Please specify if mentor is coming";
+        if (formData.mentorComing === 'yes' && !formData.mentorName.trim()) {
+          newErrors.mentorName = "Mentor name is required";
+        }
+        if (!formData.address.trim()) newErrors.address = "Address is required";
         if (!formData.email.trim()) {
           newErrors.email = "Email is required";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -301,6 +315,8 @@ const Info = () => {
     try {
       // Create FormData for file uploads
       const submitData = new FormData();
+      
+      // Append non-file fields
       Object.keys(formData).forEach(key => {
         if (key === 'teamMembers') {
           // Serialize team members without File objects (files appended separately)
@@ -319,8 +335,19 @@ const Info = () => {
               submitData.append(`memberCollegeId_${i}`, member.collegeId);
             }
           });
-        } else if (formData[key] !== null && formData[key] !== "") {
-          submitData.append(key, formData[key]);
+        } else if (key === 'governmentDocument' || key === 'collegeId' || key === 'letterFromCollege') {
+          // Handle file fields - only append if they are actual File objects
+          if (formData[key] instanceof File) {
+            submitData.append(key, formData[key]);
+          }
+        } else {
+          // List of filename storage fields to exclude (not actual data fields)
+          const filenameFields = ['governmentDocumentName', 'collegeIdName', 'letterFromCollegeName'];
+          
+          // Include all other non-empty fields (collegeName, teamName, mentorName are actual data)
+          if (!filenameFields.includes(key) && formData[key] !== null && formData[key] !== "") {
+            submitData.append(key, formData[key]);
+          }
         }
       });
 
@@ -488,6 +515,112 @@ const Info = () => {
                       className={errors.phone ? 'error' : ''}
                     />
                     {errors.phone && <span className="error-message">{errors.phone}</span>}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="state">
+                      <Building size={18} />
+                      State <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="state"
+                      name="state"
+                      value={formData.state}
+                      onChange={handleInputChange}
+                      placeholder="Enter your state"
+                      className={errors.state ? 'error' : ''}
+                    />
+                    {errors.state && <span className="error-message">{errors.state}</span>}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="collegeName">
+                      <Building size={18} />
+                      College Name <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="collegeName"
+                      name="collegeName"
+                      value={formData.collegeName}
+                      onChange={handleInputChange}
+                      placeholder="Enter your college name"
+                      className={errors.collegeName ? 'error' : ''}
+                    />
+                    {errors.collegeName && <span className="error-message">{errors.collegeName}</span>}
+                  </div>
+
+                  <div className="form-group full-width">
+                    <label htmlFor="letterFromCollege">
+                      <FileText size={18} />
+                      Letter from College
+                    </label>
+                    <input
+                      type="file"
+                      id="letterFromCollege"
+                      name="letterFromCollege"
+                      onChange={(e) => handleFileChange(e, 'letterFromCollege')}
+                      accept=".pdf,.jpg,.jpeg,.png"
+                      className={errors.letterFromCollege ? 'error' : ''}
+                    />
+                    <small className="file-hint">Upload college letter/authorization (PDF, JPG, PNG - Max 5MB)</small>
+                    {errors.letterFromCollege && <span className="error-message">{errors.letterFromCollege}</span>}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="mentorComing">
+                      <User size={18} />
+                      Mentor Coming? <span className="required">*</span>
+                    </label>
+                    <select
+                      id="mentorComing"
+                      name="mentorComing"
+                      value={formData.mentorComing}
+                      onChange={handleInputChange}
+                      className={errors.mentorComing ? 'error' : ''}
+                    >
+                      <option value="">Select...</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                    {errors.mentorComing && <span className="error-message">{errors.mentorComing}</span>}
+                  </div>
+
+                  {formData.mentorComing === 'yes' && (
+                    <div className="form-group">
+                      <label htmlFor="mentorName">
+                        <User size={18} />
+                        Mentor Name <span className="required">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="mentorName"
+                        name="mentorName"
+                        value={formData.mentorName}
+                        onChange={handleInputChange}
+                        placeholder="Enter mentor's name"
+                        className={errors.mentorName ? 'error' : ''}
+                      />
+                      {errors.mentorName && <span className="error-message">{errors.mentorName}</span>}
+                    </div>
+                  )}
+
+                  <div className="form-group full-width">
+                    <label htmlFor="address">
+                      <Building size={18} />
+                      Address <span className="required">*</span>
+                    </label>
+                    <textarea
+                      id="address"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleInputChange}
+                      placeholder="Enter your complete address"
+                      rows={3}
+                      className={errors.address ? 'error' : ''}
+                    />
+                    {errors.address && <span className="error-message">{errors.address}</span>}
                   </div>
 
                   <div className="form-group full-width">
@@ -907,6 +1040,28 @@ const Info = () => {
                         <span className="review-label">Phone:</span>
                         <span className="review-value">{formData.phone || "Not provided"}</span>
                       </div>
+                      <div className="review-item">
+                        <span className="review-label">State:</span>
+                        <span className="review-value">{formData.state || "Not provided"}</span>
+                      </div>
+                      <div className="review-item">
+                        <span className="review-label">College Name:</span>
+                        <span className="review-value">{formData.collegeName || "Not provided"}</span>
+                      </div>
+                      <div className="review-item">
+                        <span className="review-label">Mentor Coming:</span>
+                        <span className="review-value">{formData.mentorComing === 'yes' ? 'Yes' : formData.mentorComing === 'no' ? 'No' : 'Not specified'}</span>
+                      </div>
+                      {formData.mentorComing === 'yes' && (
+                        <div className="review-item">
+                          <span className="review-label">Mentor Name:</span>
+                          <span className="review-value">{formData.mentorName || "Not provided"}</span>
+                        </div>
+                      )}
+                      <div className="review-item full-width">
+                        <span className="review-label">Address:</span>
+                        <span className="review-value">{formData.address || "Not provided"}</span>
+                      </div>
                     </div>
                   </div>
 
@@ -937,6 +1092,20 @@ const Info = () => {
                           ) : (
                             <span className="file-status error">
                               <AlertCircle size={14} /> Not uploaded
+                            </span>
+                          )}
+                        </span>
+                      </div>
+                      <div className="review-item">
+                        <span className="review-label">Letter from College:</span>
+                        <span className="review-value">
+                          {formData.letterFromCollegeName ? (
+                            <span className="file-status success">
+                              <CheckCircle size={14} /> {formData.letterFromCollegeName}
+                            </span>
+                          ) : (
+                            <span className="file-status optional">
+                              <AlertCircle size={14} /> Not uploaded (Optional)
                             </span>
                           )}
                         </span>

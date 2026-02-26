@@ -66,8 +66,8 @@ const Payment = ({ selectedCategory, teamSize }) => {
           </h3>
           <div className="qr-container">
             <img 
-              src="/payment.jpeg" 
-              alt="Payment QR Code" 
+              src={paymentDetails.category === 'hardware' ? "/hardware.jpeg" : "/software.png"} 
+              alt={`${paymentDetails.category} Payment QR Code`} 
               className="qr-code"
             />
             <div className="payment-instructions">

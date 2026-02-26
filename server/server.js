@@ -28,17 +28,30 @@ const registrationSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
+  state: { type: String, required: true },
+  collegeName: { type: String, required: true },
+  mentorComing: { type: String, enum: ['yes', 'no'], required: true },
+  mentorName: { type: String },
+  address: { type: String, required: true },
+  
+  // Team Name
+  teamName: { type: String, required: true },
   
   // Documents (stored as file paths)
   governmentDocument: { type: String, required: true },
   collegeId: { type: String, required: true },
+  letterFromCollege: { type: String },
   
   // Project Details
+  projectCategory: { type: String, enum: ['software', 'hardware'], required: true },
   projectTitle: { type: String, required: true },
   projectDescription: { type: String, required: true },
   projectTechStack: { type: String, required: true },
   projectGithubUrl: { type: String },
   projectDemoUrl: { type: String },
+  
+  // Payment
+  transactionId: { type: String, required: true },
   
   // Team Members
   teamMembers: [{
@@ -95,25 +108,19 @@ const upload = multer({
 
 // POST: Create new registration
 app.post('/api/registration', 
-  upload.fields([
-    { name: 'governmentDocument', maxCount: 1 },
-    { name: 'collegeId', maxCount: 1 },
-    { name: 'memberGovDoc_0', maxCount: 1 },
-    { name: 'memberGovDoc_1', maxCount: 1 },
-    { name: 'memberGovDoc_2', maxCount: 1 },
-    { name: 'memberGovDoc_3', maxCount: 1 },
-    { name: 'memberCollegeId_0', maxCount: 1 },
-    { name: 'memberCollegeId_1', maxCount: 1 },
-    { name: 'memberCollegeId_2', maxCount: 1 },
-    { name: 'memberCollegeId_3', maxCount: 1 },
-  ]),
+  upload.any(), // Accept any file fields
   async (req, res) => {
     try {
       const {
-        name, email, phone,
-        projectTitle, projectDescription, projectTechStack,
-        projectGithubUrl, projectDemoUrl, teamMembers
+        name, email, phone, state, collegeName, mentorComing, mentorName, address,
+        teamName, projectCategory, projectTitle, projectDescription, projectTechStack,
+        projectGithubUrl, projectDemoUrl, transactionId, teamMembers
       } = req.body;
+      
+      // Helper function to get file by fieldname
+      const getFileByFieldname = (fieldname) => {
+        return req.files ? req.files.find(file => file.fieldname === fieldname) : null;
+      };
 
       // Parse teamMembers if it's a JSON string
       let parsedTeamMembers = [];
@@ -134,28 +141,33 @@ app.post('/api/registration',
         });
       }
 
-      // Get file paths
-      const governmentDocPath = req.files['governmentDocument'] 
-        ? req.files['governmentDocument'][0].path 
-        : null;
-      const collegeIdPath = req.files['collegeId'] 
-        ? req.files['collegeId'][0].path 
-        : null;
+      // Get file paths using helper function
+      const govFile = getFileByFieldname('governmentDocument');
+      const colFile = getFileByFieldname('collegeId');
+      const letterFile = getFileByFieldname('letterFromCollege');
+      
+      const governmentDocPath = govFile ? govFile.path : null;
+      const collegeIdPath = colFile ? colFile.path : null;
+      const letterPath = letterFile ? letterFile.path : null;
+
+      // Validate required files
+      if (!governmentDocPath || !collegeIdPath) {
+        return res.status(400).json({
+          success: false,
+          message: 'Government document and College ID are required'
+        });
+      }
 
       // Attach document file paths to each team member
       const teamMembersWithDocs = parsedTeamMembers.map((member, i) => {
-        const memberGovPath = req.files[`memberGovDoc_${i}`]
-          ? req.files[`memberGovDoc_${i}`][0].path
-          : null;
-        const memberColPath = req.files[`memberCollegeId_${i}`]
-          ? req.files[`memberCollegeId_${i}`][0].path
-          : null;
+        const memberGovFile = getFileByFieldname(`memberGovDoc_${i}`);
+        const memberColFile = getFileByFieldname(`memberCollegeId_${i}`);
         return {
           name: member.name,
           email: member.email,
           phone: member.phone,
-          governmentDocument: memberGovPath,
-          collegeId: memberColPath,
+          governmentDocument: memberGovFile ? memberGovFile.path : null,
+          collegeId: memberColFile ? memberColFile.path : null,
         };
       });
 
@@ -164,13 +176,22 @@ app.post('/api/registration',
         name,
         email,
         phone,
+        state,
+        collegeName,
+        mentorComing,
+        mentorName: mentorComing === 'yes' ? mentorName : '',
+        address,
+        teamName,
         governmentDocument: governmentDocPath,
         collegeId: collegeIdPath,
+        letterFromCollege: letterPath,
+        projectCategory,
         projectTitle,
         projectDescription,
         projectTechStack,
         projectGithubUrl,
         projectDemoUrl,
+        transactionId,
         teamMembers: teamMembersWithDocs,
       });
 
