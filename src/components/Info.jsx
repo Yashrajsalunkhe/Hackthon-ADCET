@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { 
   Home, User, Mail, Phone, FileText,
   Upload, CheckCircle, AlertCircle, Building,
-  Briefcase, Eye, Send, ArrowRight, ArrowLeft
+  Briefcase, Eye, Send, ArrowRight, ArrowLeft,
+  Users, Trash2, UserPlus
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import Footer from "./Footer";
+import Payment from "./Payment";
 import "../styles/info.css";
 
 const Info = () => {
@@ -20,6 +22,8 @@ const Info = () => {
     name: "",
     email: "",
     phone: "",
+    // Team Members
+    teamMembers: [],
     // Documents
     governmentDocument: null,
     governmentDocumentName: "",
@@ -32,13 +36,16 @@ const Info = () => {
     projectTechStack: "",
     projectGithubUrl: "",
     projectDemoUrl: "",
+    projectCategory: "software", // hardware or software
+    // Payment Details
+    transactionId: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   // Handle input changes
   const handleInputChange = (e) => {
@@ -57,9 +64,9 @@ const Info = () => {
   const handleFileChange = (e, fieldName) => {
     const file = e.target.files[0];
     if (file) {
-      // Validate file size (max 5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors(prev => ({ ...prev, [fieldName]: "File size must be less than 5MB" }));
+      // Validate file size (max 50KB)
+      if (file.size > 50 * 1024) {
+        setErrors(prev => ({ ...prev, [fieldName]: "File size must be less than 50KB" }));
         return;
       }
       // Validate file type
@@ -74,6 +81,64 @@ const Info = () => {
         [`${fieldName}Name`]: file.name
       }));
       setErrors(prev => ({ ...prev, [fieldName]: "" }));
+    }
+  };
+
+  // Team member handlers
+  const addTeamMember = () => {
+    if (formData.teamMembers.length >= 4) {
+      setErrors(prev => ({ ...prev, teamMembers: "Maximum 4 team members allowed" }));
+      return;
+    }
+    setFormData(prev => ({
+      ...prev,
+      teamMembers: [...prev.teamMembers, { name: "", email: "", phone: "", governmentDocument: null, governmentDocumentName: "", collegeId: null, collegeIdName: "" }]
+    }));
+    setErrors(prev => ({ ...prev, teamMembers: "" }));
+  };
+
+  const removeTeamMember = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      teamMembers: prev.teamMembers.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleTeamMemberChange = (index, field, value) => {
+    setFormData(prev => {
+      const updated = [...prev.teamMembers];
+      updated[index] = { ...updated[index], [field]: value };
+      return { ...prev, teamMembers: updated };
+    });
+    // Clear team member errors
+    if (errors[`teamMember_${index}_${field}`]) {
+      setErrors(prev => ({ ...prev, [`teamMember_${index}_${field}`]: "" }));
+    }
+  };
+
+  // Handle team member file uploads
+  const handleTeamMemberFileChange = (e, index, fieldName) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 50 * 1024) {
+        setErrors(prev => ({ ...prev, [`teamMember_${index}_${fieldName}`]: "File size must be less than 50KB" }));
+        return;
+      }
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
+      if (!allowedTypes.includes(file.type)) {
+        setErrors(prev => ({ ...prev, [`teamMember_${index}_${fieldName}`]: "Only JPG, PNG, or PDF files are allowed" }));
+        return;
+      }
+      setFormData(prev => {
+        const updated = [...prev.teamMembers];
+        updated[index] = {
+          ...updated[index],
+          [fieldName]: file,
+          [`${fieldName}Name`]: file.name
+        };
+        return { ...prev, teamMembers: updated };
+      });
+      setErrors(prev => ({ ...prev, [`teamMember_${index}_${fieldName}`]: "" }));
     }
   };
 
@@ -94,11 +159,30 @@ const Info = () => {
         } else if (!/^[0-9]{10}$/.test(formData.phone.replace(/\s/g, ''))) {
           newErrors.phone = "Phone number must be 10 digits";
         }
+        // Validate team members
+        formData.teamMembers.forEach((member, index) => {
+          if (!member.name.trim()) newErrors[`teamMember_${index}_name`] = "Name is required";
+          if (!member.email.trim()) {
+            newErrors[`teamMember_${index}_email`] = "Email is required";
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(member.email)) {
+            newErrors[`teamMember_${index}_email`] = "Invalid email format";
+          }
+          if (!member.phone.trim()) {
+            newErrors[`teamMember_${index}_phone`] = "Phone is required";
+          } else if (!/^[0-9]{10}$/.test(member.phone.replace(/\s/g, ''))) {
+            newErrors[`teamMember_${index}_phone`] = "Phone must be 10 digits";
+          }
+        });
         break;
       
       case 2: // Documents
         if (!formData.governmentDocument) newErrors.governmentDocument = "Government document is required";
         if (!formData.collegeId) newErrors.collegeId = "College ID is required";
+        // Validate team member documents
+        formData.teamMembers.forEach((member, index) => {
+          if (!member.governmentDocument) newErrors[`teamMember_${index}_governmentDocument`] = "Government document is required";
+          if (!member.collegeId) newErrors[`teamMember_${index}_collegeId`] = "College ID is required";
+        });
         break;
       
       case 3: // Project Overview
@@ -110,10 +194,16 @@ const Info = () => {
           newErrors.projectDescription = "Description must be at least 50 characters";
         }
         if (!formData.projectTechStack.trim()) newErrors.projectTechStack = "Tech stack is required";
+        if (!formData.projectCategory) newErrors.projectCategory = "Project category is required";
         break;
       
       case 4: // Project Review - Optional validations
         // No required fields for review step
+        break;
+      
+      case 5: // Payment
+        if (!formData.transactionId.trim()) newErrors.transactionId = "Transaction ID is required";
+        else if (formData.transactionId.trim().length < 8) newErrors.transactionId = "Transaction ID must be at least 8 characters";
         break;
       
 
@@ -147,7 +237,24 @@ const Info = () => {
       // Create FormData for file uploads
       const submitData = new FormData();
       Object.keys(formData).forEach(key => {
-        if (formData[key] !== null && formData[key] !== "") {
+        if (key === 'teamMembers') {
+          // Serialize team members without File objects (files appended separately)
+          const membersData = formData[key].map(m => ({
+            name: m.name, email: m.email, phone: m.phone,
+            governmentDocumentName: m.governmentDocumentName || '',
+            collegeIdName: m.collegeIdName || '',
+          }));
+          submitData.append(key, JSON.stringify(membersData));
+          // Append each member's files with indexed field names
+          formData[key].forEach((member, i) => {
+            if (member.governmentDocument) {
+              submitData.append(`memberGovDoc_${i}`, member.governmentDocument);
+            }
+            if (member.collegeId) {
+              submitData.append(`memberCollegeId_${i}`, member.collegeId);
+            }
+          });
+        } else if (formData[key] !== null && formData[key] !== "") {
           submitData.append(key, formData[key]);
         }
       });
@@ -165,6 +272,7 @@ const Info = () => {
           name: "",
           email: "",
           phone: "",
+          teamMembers: [],
           governmentDocument: null,
           governmentDocumentName: "",
           collegeId: null,
@@ -191,7 +299,7 @@ const Info = () => {
   // Step indicator component
   const StepIndicator = () => (
     <div className="step-indicator">
-      {[1, 2, 3, 4].map((step) => (
+      {[1, 2, 3, 4, 5].map((step) => (
         <div key={step} className={`step-item ${currentStep >= step ? 'active' : ''} ${currentStep === step ? 'current' : ''}`}>
           <div className="step-number">{step}</div>
           <div className="step-label">
@@ -199,6 +307,7 @@ const Info = () => {
             {step === 2 && "Documents"}
             {step === 3 && "Project Overview"}
             {step === 4 && "Review"}
+            {step === 5 && "Payment"}
           </div>
         </div>
       ))}
@@ -310,6 +419,91 @@ const Info = () => {
 
 
                 </div>
+
+                {/* Team Members Section */}
+                <div className="team-members-section">
+                  <div className="team-members-header">
+                    <h3><Users size={20} /> Team Members</h3>
+                    <p className="team-hint">Add up to 4 team members (optional)</p>
+                    <button
+                      type="button"
+                      className="btn-add-member"
+                      onClick={addTeamMember}
+                      disabled={formData.teamMembers.length >= 4}
+                    >
+                      <UserPlus size={16} />
+                      Add Member
+                    </button>
+                    {errors.teamMembers && <span className="error-message">{errors.teamMembers}</span>}
+                  </div>
+
+                  {formData.teamMembers.map((member, index) => (
+                    <div key={index} className="team-member-card">
+                      <div className="team-member-card-header">
+                        <span className="member-number">Member {index + 1}</span>
+                        <button
+                          type="button"
+                          className="btn-remove-member"
+                          onClick={() => removeTeamMember(index)}
+                          title="Remove member"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                      <div className="team-member-fields">
+                        <div className="form-group">
+                          <label>
+                            <User size={16} />
+                            Name <span className="required">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            value={member.name}
+                            onChange={(e) => handleTeamMemberChange(index, 'name', e.target.value)}
+                            placeholder="Member's full name"
+                            className={errors[`teamMember_${index}_name`] ? 'error' : ''}
+                          />
+                          {errors[`teamMember_${index}_name`] && <span className="error-message">{errors[`teamMember_${index}_name`]}</span>}
+                        </div>
+                        <div className="form-group">
+                          <label>
+                            <Mail size={16} />
+                            Email <span className="required">*</span>
+                          </label>
+                          <input
+                            type="email"
+                            value={member.email}
+                            onChange={(e) => handleTeamMemberChange(index, 'email', e.target.value)}
+                            placeholder="Member's email"
+                            className={errors[`teamMember_${index}_email`] ? 'error' : ''}
+                          />
+                          {errors[`teamMember_${index}_email`] && <span className="error-message">{errors[`teamMember_${index}_email`]}</span>}
+                        </div>
+                        <div className="form-group">
+                          <label>
+                            <Phone size={16} />
+                            Phone <span className="required">*</span>
+                          </label>
+                          <input
+                            type="tel"
+                            value={member.phone}
+                            onChange={(e) => handleTeamMemberChange(index, 'phone', e.target.value)}
+                            placeholder="10-digit phone number"
+                            className={errors[`teamMember_${index}_phone`] ? 'error' : ''}
+                          />
+                          {errors[`teamMember_${index}_phone`] && <span className="error-message">{errors[`teamMember_${index}_phone`]}</span>}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {formData.teamMembers.length === 0 && (
+                    <div className="no-members-hint">
+                      <Users size={24} />
+                      <p>No team members added yet. Click "Add Member" to add your teammates.</p>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
@@ -340,7 +534,7 @@ const Info = () => {
                       <span>
                         {formData.governmentDocumentName || "Click to upload or drag and drop"}
                       </span>
-                      <small>JPG, PNG or PDF (Max 5MB)</small>
+                      <small>JPG, PNG or PDF (Max 50KB)</small>
                     </div>
                     {errors.governmentDocument && <span className="error-message">{errors.governmentDocument}</span>}
                     {formData.governmentDocumentName && (
@@ -368,7 +562,7 @@ const Info = () => {
                       <span>
                         {formData.collegeIdName || "Click to upload or drag and drop"}
                       </span>
-                      <small>JPG, PNG or PDF (Max 5MB)</small>
+                      <small>JPG, PNG or PDF (Max 50KB)</small>
                     </div>
                     {errors.collegeId && <span className="error-message">{errors.collegeId}</span>}
                     {formData.collegeIdName && (
@@ -379,6 +573,71 @@ const Info = () => {
                     )}
                   </div>
                 </div>
+
+                {/* Team Member Documents */}
+                {formData.teamMembers.length > 0 && (
+                  <div className="team-member-docs-section">
+                    <h3 className="team-docs-title"><Users size={20} /> Team Member Documents</h3>
+                    <p className="team-docs-hint">Upload government document and college ID for each team member</p>
+
+                    {formData.teamMembers.map((member, index) => (
+                      <div key={index} className="team-member-doc-card">
+                        <h4 className="member-doc-title">Member {index + 1}: {member.name || 'Unnamed'}</h4>
+                        <div className="form-grid">
+                          <div className="form-group file-upload">
+                            <label>
+                              <FileText size={16} />
+                              Government Document <span className="required">*</span>
+                            </label>
+                            <p className="file-hint">Aadhar Card, PAN Card, Driving License, or Passport</p>
+                            <div className={`upload-area ${errors[`teamMember_${index}_governmentDocument`] ? 'error' : ''}`}>
+                              <input
+                                type="file"
+                                accept=".jpg,.jpeg,.png,.pdf"
+                                onChange={(e) => handleTeamMemberFileChange(e, index, 'governmentDocument')}
+                              />
+                              <Upload size={28} />
+                              <span>{member.governmentDocumentName || "Click to upload"}</span>
+                              <small>JPG, PNG or PDF (Max 50KB)</small>
+                            </div>
+                            {errors[`teamMember_${index}_governmentDocument`] && <span className="error-message">{errors[`teamMember_${index}_governmentDocument`]}</span>}
+                            {member.governmentDocumentName && (
+                              <div className="file-selected">
+                                <CheckCircle size={14} />
+                                <span>{member.governmentDocumentName}</span>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="form-group file-upload">
+                            <label>
+                              <Building size={16} />
+                              College ID Card <span className="required">*</span>
+                            </label>
+                            <p className="file-hint">Valid college/university ID card</p>
+                            <div className={`upload-area ${errors[`teamMember_${index}_collegeId`] ? 'error' : ''}`}>
+                              <input
+                                type="file"
+                                accept=".jpg,.jpeg,.png,.pdf"
+                                onChange={(e) => handleTeamMemberFileChange(e, index, 'collegeId')}
+                              />
+                              <Upload size={28} />
+                              <span>{member.collegeIdName || "Click to upload"}</span>
+                              <small>JPG, PNG or PDF (Max 50KB)</small>
+                            </div>
+                            {errors[`teamMember_${index}_collegeId`] && <span className="error-message">{errors[`teamMember_${index}_collegeId`]}</span>}
+                            {member.collegeIdName && (
+                              <div className="file-selected">
+                                <CheckCircle size={14} />
+                                <span>{member.collegeIdName}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
@@ -560,6 +819,38 @@ const Info = () => {
                     </div>
                   </div>
 
+                  {formData.teamMembers.length > 0 && (
+                    <div className="review-section">
+                      <h3><Users size={20} /> Team Members</h3>
+                      <div className="review-grid">
+                        {formData.teamMembers.map((member, index) => (
+                          <div key={index} className="review-item full-width">
+                            <span className="review-label">Member {index + 1}:</span>
+                            <span className="review-value">
+                              {member.name} — {member.email} — {member.phone}
+                            </span>
+                            <div className="review-member-docs">
+                              <span className="review-value">
+                                Gov. Doc: {member.governmentDocumentName ? (
+                                  <span className="file-status success"><CheckCircle size={12} /> {member.governmentDocumentName}</span>
+                                ) : (
+                                  <span className="file-status error"><AlertCircle size={12} /> Not uploaded</span>
+                                )}
+                              </span>
+                              <span className="review-value">
+                                College ID: {member.collegeIdName ? (
+                                  <span className="file-status success"><CheckCircle size={12} /> {member.collegeIdName}</span>
+                                ) : (
+                                  <span className="file-status error"><AlertCircle size={12} /> Not uploaded</span>
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <div className="review-section">
                     <h3><Briefcase size={20} /> Project Details</h3>
                     <div className="review-grid">
@@ -611,6 +902,46 @@ const Info = () => {
               </div>
             )}
 
+            {/* Step 5: Payment */}
+            {currentStep === 5 && (
+              <div className="form-step">
+                <Payment 
+                  selectedCategory={formData.projectCategory}
+                  teamSize={formData.teamMembers.length + 1}
+                />
+                
+                <div className="transaction-id-section">
+                  <h3>Enter Transaction ID</h3>
+                  <p>Please enter the Transaction ID from your payment confirmation</p>
+                  
+                  <div className="form-group full-width">
+                    <label htmlFor="transactionId">
+                      <CheckCircle size={18} />
+                      UPI Transaction ID <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="transactionId"
+                      name="transactionId"
+                      value={formData.transactionId}
+                      onChange={handleInputChange}
+                      placeholder="Enter your UPI transaction ID (e.g., 123456789012)"
+                      className={errors.transactionId ? 'error' : ''}
+                      maxLength="50"
+                    />
+                    <div className="transaction-help">
+                      <p>You can find the Transaction ID in:</p>
+                      <ul>
+                        <li>Payment confirmation message</li>
+                        <li>Your UPI app transaction history</li>
+                        <li>SMS confirmation from your bank</li>
+                      </ul>
+                    </div>
+                    {errors.transactionId && <span className="error-message">{errors.transactionId}</span>}
+                  </div>
+                </div>
+              </div>
+            )}
 
 
             {/* Navigation Buttons */}

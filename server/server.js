@@ -40,6 +40,15 @@ const registrationSchema = new mongoose.Schema({
   projectGithubUrl: { type: String },
   projectDemoUrl: { type: String },
   
+  // Team Members
+  teamMembers: [{
+    name:  { type: String },
+    email: { type: String },
+    phone: { type: String },
+    governmentDocument: { type: String },
+    collegeId: { type: String },
+  }],
+  
   // Registration Status
   status: {
     type: String,
@@ -78,7 +87,7 @@ const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024 // 5MB limit
+    fileSize: 50 * 1024 // 50KB limit
   }
 });
 
@@ -88,15 +97,33 @@ const upload = multer({
 app.post('/api/registration', 
   upload.fields([
     { name: 'governmentDocument', maxCount: 1 },
-    { name: 'collegeId', maxCount: 1 }
+    { name: 'collegeId', maxCount: 1 },
+    { name: 'memberGovDoc_0', maxCount: 1 },
+    { name: 'memberGovDoc_1', maxCount: 1 },
+    { name: 'memberGovDoc_2', maxCount: 1 },
+    { name: 'memberGovDoc_3', maxCount: 1 },
+    { name: 'memberCollegeId_0', maxCount: 1 },
+    { name: 'memberCollegeId_1', maxCount: 1 },
+    { name: 'memberCollegeId_2', maxCount: 1 },
+    { name: 'memberCollegeId_3', maxCount: 1 },
   ]),
   async (req, res) => {
     try {
       const {
         name, email, phone,
         projectTitle, projectDescription, projectTechStack,
-        projectGithubUrl, projectDemoUrl
+        projectGithubUrl, projectDemoUrl, teamMembers
       } = req.body;
+
+      // Parse teamMembers if it's a JSON string
+      let parsedTeamMembers = [];
+      if (teamMembers) {
+        try {
+          parsedTeamMembers = typeof teamMembers === 'string' ? JSON.parse(teamMembers) : teamMembers;
+        } catch (e) {
+          parsedTeamMembers = [];
+        }
+      }
 
       // Check if email already registered
       const existingRegistration = await Registration.findOne({ email });
@@ -115,6 +142,23 @@ app.post('/api/registration',
         ? req.files['collegeId'][0].path 
         : null;
 
+      // Attach document file paths to each team member
+      const teamMembersWithDocs = parsedTeamMembers.map((member, i) => {
+        const memberGovPath = req.files[`memberGovDoc_${i}`]
+          ? req.files[`memberGovDoc_${i}`][0].path
+          : null;
+        const memberColPath = req.files[`memberCollegeId_${i}`]
+          ? req.files[`memberCollegeId_${i}`][0].path
+          : null;
+        return {
+          name: member.name,
+          email: member.email,
+          phone: member.phone,
+          governmentDocument: memberGovPath,
+          collegeId: memberColPath,
+        };
+      });
+
       // Create new registration
       const registration = new Registration({
         name,
@@ -126,7 +170,8 @@ app.post('/api/registration',
         projectDescription,
         projectTechStack,
         projectGithubUrl,
-        projectDemoUrl
+        projectDemoUrl,
+        teamMembers: teamMembersWithDocs,
       });
 
       await registration.save();

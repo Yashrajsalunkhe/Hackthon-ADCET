@@ -1,4 +1,6 @@
 const Prizes = () => {
+  const totalPrize = 200000;
+  const formattedTotalPrize = totalPrize.toLocaleString('en-IN');
   const softwarePrizes = [
     { 
       position: 'RUNNER UP', 
@@ -84,7 +86,7 @@ const Prizes = () => {
               marginBottom: '15px',
               animation: 'glow 2s ease-in-out infinite'
             }}>
-              ₹2,00,000
+              {`₹${formattedTotalPrize}`}
             </div>
             <p style={{fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.05em'}}>Equal prizes for both Software & Hardware Tracks</p>
           </div>
