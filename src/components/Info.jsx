@@ -36,7 +36,6 @@ const Info = () => {
     projectTechStack: "",
     projectGithubUrl: "",
     projectDemoUrl: "",
-    projectCategory: "software", // hardware or software
     // Payment Details
     transactionId: "",
   });
