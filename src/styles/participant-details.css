@@ -106,7 +106,22 @@
   font-size: 2rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.pd-leader-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #a78bfa;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.pd-leader-name svg {
+  color: #8b5cf6;
 }
 
 /* Category Badge */
@@ -420,6 +435,11 @@
 
   .pd-name {
     font-size: 1.5rem;
+  }
+
+  .pd-leader-name {
+    font-size: 0.9rem;
+    justify-content: center;
   }
 
   .pd-info-grid {

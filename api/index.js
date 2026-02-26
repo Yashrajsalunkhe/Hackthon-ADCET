@@ -248,7 +248,7 @@ app.post(
       res.status(201).json({
         success: true,
         message: 'Registration successful',
-        data: { id: registration._id, name: registration.name, email: registration.email, status: registration.status },
+        data: { id: registration._id, teamName: registration.teamName, email: registration.email, status: registration.status },
       });
     } catch (err) {
       console.error('Registration Error Details:', {
@@ -323,7 +323,7 @@ app.get('/api/registration/status/:email', async (req, res) => {
   try {
     await connectDB();
     const registration = await Registration.findOne({ email: req.params.email })
-      .select('name email status projectTitle createdAt');
+      .select('teamName email status projectTitle createdAt');
 
     if (!registration)
       return res.status(404).json({ success: false, message: 'No registration found with this email' });

@@ -443,6 +443,14 @@
   margin-bottom: 0.5rem;
 }
 
+.team-fallback-note {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
+
 .participant-team {
   display: flex;
   align-items: center;

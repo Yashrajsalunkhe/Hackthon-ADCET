@@ -61,7 +61,13 @@ const ParticipantDetails = () => {
             )}
           </div>
           <div className="pd-profile-info">
-            <h1 className="pd-name">{participant.name}</h1>
+            <h1 className="pd-name">
+              {participant.teamName || `${participant.name}'s Team`}
+            </h1>
+            <p className="pd-leader-name">
+              <User size={16} />
+              Team Leader: {participant.name}
+            </p>
             <span className={`pd-category-badge ${participant.projectCategory}`}>
               {participant.projectCategory === 'software' ? (
                 <><Code size={16} /> Software Project</>

@@ -63,9 +63,9 @@ const Participants = () => {
   // Filter participants
   const filteredParticipants = participants.filter(participant => {
     const matchesSearch = 
+      participant.teamName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       participant.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       participant.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      participant.teamName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       participant.projectTitle?.toLowerCase().includes(searchTerm.toLowerCase());
     
     const matchesCategory = categoryFilter === "all" || participant.projectCategory === categoryFilter;
@@ -133,7 +133,7 @@ const Participants = () => {
             <Search size={20} />
             <input
               type="text"
-              placeholder="Search by name, email, team, or project..."
+              placeholder="Search by team, project, name, or email..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -193,7 +193,12 @@ const Participants = () => {
                 </div>
 
                 <div className="card-body">
-                  <h3 className="participant-name">{participant.teamName || participant.name}</h3>
+                  <h3 className="participant-name">
+                    {participant.teamName || `${participant.name}'s Team`}
+                  </h3>
+                  {!participant.teamName && (
+                    <p className="team-fallback-note">Individual Participant</p>
+                  )}
 
                   <div className="project-info">
                     <h4>
