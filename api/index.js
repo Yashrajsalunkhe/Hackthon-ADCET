@@ -48,6 +48,9 @@ const registrationSchema = new mongoose.Schema({
   name:  { type: String, required: true },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
+  
+  // Team Name
+  teamName: { type: String, required: true },
 
   // Documents stored as binary in MongoDB
   governmentDocument: {
@@ -153,17 +156,17 @@ app.post(
       await connectDB();
 
       const {
-        name, email, phone,
+        name, email, phone, teamName,
         projectCategory, projectTitle, projectDescription, projectTechStack,
         projectGithubUrl, projectDemoUrl, teamMembers,
       } = req.body;
 
       // Validate required fields
-      if (!name || !email || !phone) {
+      if (!name || !email || !phone || !teamName) {
         return res.status(400).json({ 
           success: false, 
-          message: 'Name, email, and phone are required',
-          missing: { name: !name, email: !email, phone: !phone }
+          message: 'Name, email, phone, and team name are required',
+          missing: { name: !name, email: !email, phone: !phone, teamName: !teamName }
         });
       }
 
@@ -224,7 +227,7 @@ app.post(
       });
 
       const registration = new Registration({
-        name, email, phone,
+        name, email, phone, teamName,
         governmentDocument: {
           data:        govFile.buffer,
           contentType: govFile.mimetype,

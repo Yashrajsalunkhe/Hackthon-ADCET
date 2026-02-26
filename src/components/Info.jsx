@@ -22,6 +22,8 @@ const Info = () => {
     name: "",
     email: "",
     phone: "",
+    // Team Information
+    teamName: "",
     // Team Members
     teamMembers: [],
     // Documents
@@ -148,6 +150,7 @@ const Info = () => {
     switch(step) {
       case 1: // Personal Information
         if (!formData.name.trim()) newErrors.name = "Name is required";
+        if (!formData.teamName.trim()) newErrors.teamName = "Team name is required";
         if (!formData.email.trim()) {
           newErrors.email = "Email is required";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -273,6 +276,7 @@ const Info = () => {
           name: "",
           email: "",
           phone: "",
+          teamName: "",
           teamMembers: [],
           governmentDocument: null,
           governmentDocumentName: "",
@@ -423,6 +427,22 @@ const Info = () => {
                     {errors.phone && <span className="error-message">{errors.phone}</span>}
                   </div>
 
+                  <div className="form-group full-width">
+                    <label htmlFor="teamName">
+                      <Users size={18} />
+                      Team Name <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="teamName"
+                      name="teamName"
+                      value={formData.teamName}
+                      onChange={handleInputChange}
+                      placeholder="Enter your team name"
+                      className={errors.teamName ? 'error' : ''}
+                    />
+                    {errors.teamName && <span className="error-message">{errors.teamName}</span>}
+                  </div>
 
                 </div>
 

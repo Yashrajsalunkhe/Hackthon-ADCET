@@ -45,6 +45,7 @@ const Participants = () => {
           name: 'Demo User',
           email: 'demo@example.com',
           phone: '9876543210',
+          teamName: 'Team Innovators',
           projectCategory: 'software',
           projectTitle: 'Smart Campus App',
           projectDescription: 'An innovative app for campus management with AI-powered features for students and faculty.',
@@ -64,6 +65,7 @@ const Participants = () => {
     const matchesSearch = 
       participant.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       participant.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      participant.teamName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       participant.projectTitle?.toLowerCase().includes(searchTerm.toLowerCase());
     
     const matchesCategory = categoryFilter === "all" || participant.projectCategory === categoryFilter;
@@ -131,7 +133,7 @@ const Participants = () => {
             <Search size={20} />
             <input
               type="text"
-              placeholder="Search by name, email, or project..."
+              placeholder="Search by name, email, team, or project..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -191,15 +193,7 @@ const Participants = () => {
                 </div>
 
                 <div className="card-body">
-                  <h3 className="participant-name">{participant.name}</h3>
-                  <p className="participant-email">
-                    <Mail size={14} />
-                    {participant.email}
-                  </p>
-                  <p className="participant-phone">
-                    <Phone size={14} />
-                    {participant.phone}
-                  </p>
+                  <h3 className="participant-name">{participant.teamName || participant.name}</h3>
 
                   <div className="project-info">
                     <h4>

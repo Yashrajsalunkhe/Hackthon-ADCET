@@ -443,6 +443,20 @@
   margin-bottom: 0.5rem;
 }
 
+.participant-team {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #a78bfa;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.participant-team svg {
+  color: #8b5cf6;
+}
+
 .participant-email {
   display: flex;
   align-items: center;

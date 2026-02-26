@@ -101,11 +101,12 @@ const ParticipantDetails = () => {
         </div>
 
         {/* Team Section */}
-        {participant.teamMembers && participant.teamMembers.length > 0 && (
+        {(participant.teamName || (participant.teamMembers && participant.teamMembers.length > 0)) && (
           <div className="pd-section">
             <h2 className="pd-section-title">
               <Users size={22} />
-              Team Members ({participant.teamMembers.length + 1} total)
+              {participant.teamName ? `Team: ${participant.teamName}` : 'Team Members'} 
+              {participant.teamMembers && participant.teamMembers.length > 0 && ` (${participant.teamMembers.length + 1} members)`}
             </h2>
             <div className="pd-team-grid">
               {/* Team Leader */}
