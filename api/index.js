@@ -68,6 +68,23 @@ const registrationSchema = new mongoose.Schema({
   projectGithubUrl:   { type: String },
   projectDemoUrl:     { type: String },
 
+  // Team Members
+  teamMembers: [{
+    name:  { type: String },
+    email: { type: String },
+    phone: { type: String },
+    governmentDocument: {
+      data:        { type: Buffer },
+      contentType: { type: String },
+      filename:    { type: String },
+    },
+    collegeId: {
+      data:        { type: Buffer },
+      contentType: { type: String },
+      filename:    { type: String },
+    },
+  }],
+
   // Registration Status
   status: {
     type:    String,
@@ -92,7 +109,7 @@ const upload = multer({
       ? cb(null, true)
       : cb(new Error('Only JPG, PNG and PDF files are allowed.'), false);
   },
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
+  limits: { fileSize: 50 * 1024 }, // 50 KB
 });
 
 // ─── Routes ───────────────────────────────────────────────────────────────
@@ -121,6 +138,14 @@ app.post(
   upload.fields([
     { name: 'governmentDocument', maxCount: 1 },
     { name: 'collegeId',          maxCount: 1 },
+    { name: 'memberGovDoc_0',     maxCount: 1 },
+    { name: 'memberGovDoc_1',     maxCount: 1 },
+    { name: 'memberGovDoc_2',     maxCount: 1 },
+    { name: 'memberGovDoc_3',     maxCount: 1 },
+    { name: 'memberCollegeId_0',  maxCount: 1 },
+    { name: 'memberCollegeId_1',  maxCount: 1 },
+    { name: 'memberCollegeId_2',  maxCount: 1 },
+    { name: 'memberCollegeId_3',  maxCount: 1 },
   ]),
   async (req, res) => {
     try {
@@ -129,8 +154,18 @@ app.post(
       const {
         name, email, phone,
         projectTitle, projectDescription, projectTechStack,
-        projectGithubUrl, projectDemoUrl,
+        projectGithubUrl, projectDemoUrl, teamMembers,
       } = req.body;
+
+      // Parse teamMembers if it's a JSON string
+      let parsedTeamMembers = [];
+      if (teamMembers) {
+        try {
+          parsedTeamMembers = typeof teamMembers === 'string' ? JSON.parse(teamMembers) : teamMembers;
+        } catch (e) {
+          parsedTeamMembers = [];
+        }
+      }
 
       const existing = await Registration.findOne({ email });
       if (existing) {
@@ -143,6 +178,27 @@ app.post(
       if (!govFile || !colFile) {
         return res.status(400).json({ success: false, message: 'Both documents are required' });
       }
+
+      // Attach document files to each team member
+      const teamMembersWithDocs = parsedTeamMembers.map((member, i) => {
+        const memberGov = req.files?.[`memberGovDoc_${i}`]?.[0];
+        const memberCol = req.files?.[`memberCollegeId_${i}`]?.[0];
+        return {
+          name: member.name,
+          email: member.email,
+          phone: member.phone,
+          governmentDocument: memberGov ? {
+            data: memberGov.buffer,
+            contentType: memberGov.mimetype,
+            filename: memberGov.originalname,
+          } : undefined,
+          collegeId: memberCol ? {
+            data: memberCol.buffer,
+            contentType: memberCol.mimetype,
+            filename: memberCol.originalname,
+          } : undefined,
+        };
+      });
 
       const registration = new Registration({
         name, email, phone,
@@ -158,6 +214,7 @@ app.post(
         },
         projectTitle, projectDescription, projectTechStack,
         projectGithubUrl, projectDemoUrl,
+        teamMembers: teamMembersWithDocs,
       });
 
       await registration.save();

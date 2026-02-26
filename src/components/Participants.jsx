@@ -38,21 +38,6 @@ const Participants = () => {
     } catch (err) {
       console.error('Error fetching participants:', err);
       setError('Unable to load participants. Please try again later.');
-      // Demo data for development
-      setParticipants([
-        {
-          _id: '1',
-          name: 'Demo User',
-          email: 'demo@example.com',
-          phone: '9876543210',
-          projectTitle: 'Smart Campus App',
-          projectDescription: 'An innovative app for campus management with AI-powered features for students and faculty.',
-          projectTechStack: 'React Native, Node.js, MongoDB',
-          status: 'approved',
-          paymentStatus: 'verified',
-          createdAt: new Date().toISOString()
-        }
-      ]);
     } finally {
       setLoading(false);
     }
