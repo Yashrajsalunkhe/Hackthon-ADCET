@@ -19,6 +19,7 @@ import Info from './components/Info';
 import Participants from './components/Participants';
 import TrackDetails from './components/TrackDetails';
 import ParticipantDetails from './components/ParticipantDetails';
+import DataHack from './components/DataHack';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './styles/timeline-modern.css';
@@ -55,6 +56,7 @@ function App() {
         <Route path="/college-info" element={<CollegeInfo />} />
         <Route path="/info" element={<Info />} />
         <Route path="/participants" element={<Participants />} />
+        <Route path="/datahack" element={<DataHack />} />
         <Route path="/track/:track" element={<TrackDetails />} />
         <Route path="/participant/:id" element={<ParticipantDetails />} />
         <Route path="/" element={

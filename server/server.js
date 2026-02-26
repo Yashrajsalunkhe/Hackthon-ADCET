@@ -201,8 +201,7 @@ app.post('/api/registration',
 app.get('/api/registrations', async (req, res) => {
   try {
     const registrations = await Registration.find()
-      .sort({ createdAt: -1 })
-      .select('-governmentDocument -collegeId'); // Exclude sensitive file paths
+      .sort({ createdAt: -1 });
 
     res.json({
       success: true,
@@ -331,6 +330,31 @@ app.delete('/api/registration/:id', async (req, res) => {
 
 // Serve uploaded files (for admin viewing)
 app.use('/uploads', express.static('uploads'));
+
+// GET: Download/view specific document
+app.get('/api/document/:filename', (req, res) => {
+  try {
+    const filename = req.params.filename;
+    const filePath = path.join(__dirname, 'uploads', filename);
+    
+    // Check if file exists
+    if (!require('fs').existsSync(filePath)) {
+      return res.status(404).json({
+        success: false,
+        message: 'Document not found'
+      });
+    }
+
+    // Send file
+    res.sendFile(filePath);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve document',
+      error: error.message
+    });
+  }
+});
 
 // Create uploads directory if it doesn't exist
 const fs = require('fs');
