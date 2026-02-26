@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import Footer from "./Footer";
+import Payment from "./Payment";
 import "../styles/info.css";
 
 const Info = () => {
@@ -34,13 +35,16 @@ const Info = () => {
     projectTechStack: "",
     projectGithubUrl: "",
     projectDemoUrl: "",
+    projectCategory: "software", // hardware or software
+    // Payment Details
+    transactionId: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   // Handle input changes
   const handleInputChange = (e) => {
@@ -188,10 +192,16 @@ const Info = () => {
           newErrors.projectDescription = "Description must be at least 50 characters";
         }
         if (!formData.projectTechStack.trim()) newErrors.projectTechStack = "Tech stack is required";
+        if (!formData.projectCategory) newErrors.projectCategory = "Project category is required";
         break;
       
       case 4: // Project Review - Optional validations
         // No required fields for review step
+        break;
+      
+      case 5: // Payment
+        if (!formData.transactionId.trim()) newErrors.transactionId = "Transaction ID is required";
+        else if (formData.transactionId.trim().length < 8) newErrors.transactionId = "Transaction ID must be at least 8 characters";
         break;
       
 
@@ -286,7 +296,7 @@ const Info = () => {
   // Step indicator component
   const StepIndicator = () => (
     <div className="step-indicator">
-      {[1, 2, 3, 4].map((step) => (
+      {[1, 2, 3, 4, 5].map((step) => (
         <div key={step} className={`step-item ${currentStep >= step ? 'active' : ''} ${currentStep === step ? 'current' : ''}`}>
           <div className="step-number">{step}</div>
           <div className="step-label">
@@ -294,6 +304,7 @@ const Info = () => {
             {step === 2 && "Documents"}
             {step === 3 && "Project Overview"}
             {step === 4 && "Review"}
+            {step === 5 && "Payment"}
           </div>
         </div>
       ))}
@@ -638,6 +649,31 @@ const Info = () => {
 
                 <div className="form-grid">
                   <div className="form-group full-width">
+                    <label htmlFor="projectCategory">
+                      <Briefcase size={18} />
+                      Project Category <span className="required">*</span>
+                    </label>
+                    <select
+                      id="projectCategory"
+                      name="projectCategory"
+                      value={formData.projectCategory}
+                      onChange={handleInputChange}
+                      className={errors.projectCategory ? 'error' : ''}
+                    >
+                      <option value="software">Software Project (₹200 per member)</option>
+                      <option value="hardware">Hardware Project (₹300 per member)</option>
+                    </select>
+                    <div className="category-info">
+                      {formData.projectCategory === 'software' ? (
+                        <p><strong>Software Projects:</strong> Web Development, Mobile Apps, AI/ML, Data Science, etc.</p>
+                      ) : (
+                        <p><strong>Hardware Projects:</strong> IoT, Robotics, Electronics, Embedded Systems, etc.</p>
+                      )}
+                    </div>
+                    {errors.projectCategory && <span className="error-message">{errors.projectCategory}</span>}
+                  </div>
+
+                  <div className="form-group full-width">
                     <label htmlFor="projectTitle">
                       <Briefcase size={18} />
                       Project Title <span className="required">*</span>
@@ -821,6 +857,12 @@ const Info = () => {
                   <div className="review-section">
                     <h3><Briefcase size={20} /> Project Details</h3>
                     <div className="review-grid">
+                      <div className="review-item">
+                        <span className="review-label">Project Category:</span>
+                        <span className="review-value">
+                          {formData.projectCategory === 'hardware' ? 'Hardware Project (₹300/member)' : 'Software Project (₹200/member)'}
+                        </span>
+                      </div>
                       <div className="review-item full-width">
                         <span className="review-label">Project Title:</span>
                         <span className="review-value">{formData.projectTitle || "Not provided"}</span>
@@ -859,6 +901,46 @@ const Info = () => {
               </div>
             )}
 
+            {/* Step 5: Payment */}
+            {currentStep === 5 && (
+              <div className="form-step">
+                <Payment 
+                  selectedCategory={formData.projectCategory}
+                  teamSize={formData.teamMembers.length + 1}
+                />
+                
+                <div className="transaction-id-section">
+                  <h3>Enter Transaction ID</h3>
+                  <p>Please enter the Transaction ID from your payment confirmation</p>
+                  
+                  <div className="form-group full-width">
+                    <label htmlFor="transactionId">
+                      <CheckCircle size={18} />
+                      UPI Transaction ID <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="transactionId"
+                      name="transactionId"
+                      value={formData.transactionId}
+                      onChange={handleInputChange}
+                      placeholder="Enter your UPI transaction ID (e.g., 123456789012)"
+                      className={errors.transactionId ? 'error' : ''}
+                      maxLength="50"
+                    />
+                    <div className="transaction-help">
+                      <p>You can find the Transaction ID in:</p>
+                      <ul>
+                        <li>Payment confirmation message</li>
+                        <li>Your UPI app transaction history</li>
+                        <li>SMS confirmation from your bank</li>
+                      </ul>
+                    </div>
+                    {errors.transactionId && <span className="error-message">{errors.transactionId}</span>}
+                  </div>
+                </div>
+              </div>
+            )}
 
 
             {/* Navigation Buttons */}
