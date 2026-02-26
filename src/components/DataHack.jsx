@@ -57,41 +57,79 @@ const DataHack = () => {
     try {
       setLoading(true);
       
-      // Try different possible ports (5001 first since server is running there)
-      const ports = [5001, 5000, 3001];
+      // Determine the correct API URL based on environment
+      const getApiUrl = () => {
+        // In development, try localhost ports
+        if (process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost') {
+          return 'http://localhost:5001/api/registrations';
+        }
+        // In production, use relative URL (works with Vercel)
+        return '/api/registrations';
+      };
+
       let response = null;
-      let lastError = null;
       
-      for (const port of ports) {
-        try {
-          response = await fetch(`http://localhost:${port}/api/registrations`);
-          if (response.ok) {
-            break;
+      try {
+        const apiUrl = getApiUrl();
+        console.log('Fetching registrations from:', apiUrl);
+        response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        if (data.success) {
+          setRegistrations(data.data);
+          console.log('Successfully loaded', data.data.length, 'registrations from database');
+        } else {
+          throw new Error(data.message || 'Failed to fetch registrations');
+        }
+      } catch (error) {
+        console.error('Error fetching registrations:', error);
+        
+        // In development, try fallback ports if main port fails
+        if (process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost') {
+          const fallbackPorts = [5000, 3001];
+          let fallbackSuccess = false;
+          
+          for (const port of fallbackPorts) {
+            try {
+              response = await fetch(`http://localhost:${port}/api/registrations`);
+              if (response.ok) {
+                const data = await response.json();
+                if (data.success) {
+                  setRegistrations(data.data);
+                  console.log('Successfully connected to fallback port', port);
+                  fallbackSuccess = true;
+                  break;
+                }
+              }
+            } catch (err) {
+              continue;
+            }
           }
-        } catch (err) {
-          lastError = err;
-          continue;
+          
+          if (!fallbackSuccess) {
+            throw new Error('Could not connect to any backend server');
+          }
+        } else {
+          // In production, if API call fails, show error instead of dummy data
+          throw error;
         }
       }
-      
-      if (!response || !response.ok) {
-        // If no server found, show sample data for demo
-        console.warn('No backend server found, showing sample data');
-        setRegistrations(getSampleData());
-        return;
-      }
-      
-      const data = await response.json();
-      if (data.success) {
-        setRegistrations(data.data);
-      } else {
-        throw new Error(data.message || 'Failed to fetch registrations');
-      }
     } catch (error) {
-      console.error('Error fetching registrations:', error);
-      // Show sample data as fallback
-      console.warn('Showing sample data due to API error');
-      setRegistrations(getSampleData());
+      console.error('Final error fetching registrations:', error);
+      
+      // Only show sample data in development environment
+      if (process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost') {
+        console.warn('Development mode: Showing sample data due to API error');
+        setRegistrations(getSampleData());
+      } else {
+        // In production, show empty state or error
+        console.error('Production: API connection failed, no data available');
+        setRegistrations([]);
+      }
     } finally {
       setLoading(false);
     }
@@ -226,25 +264,45 @@ const DataHack = () => {
         ? documentPath.split('\\').pop() 
         : documentPath;
     
-    // Try different ports for document serving (start with 5001 since that's where server is running)
-    const ports = [5001, 5000, 3001];
-    let opened = false;
-    
-    for (const port of ports) {
-      try {
-        const documentUrl = `http://localhost:${port}/uploads/${filename}`;
-        window.open(documentUrl, '_blank');
-        opened = true;
-        break;
-      } catch (error) {
-        console.warn(`Failed to open document on port ${port}:`, error);
-        continue;
+    // Determine the correct document URL based on environment
+    const getDocumentUrl = () => {
+      // In development, try localhost ports
+      if (process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost') {
+        return `http://localhost:5001/uploads/${filename}`;
       }
-    }
-    
-    if (!opened) {
-      // Fallback: show alert with document info
-      alert(`Unable to open document: ${filename}\nTeam: ${teamName}\nMember: ${memberName}\n\nPlease ensure the server is running on port 5001.`);
+      // In production, use relative URL (works with Vercel)
+      return `/uploads/${filename}`;
+    };
+
+    try {
+      const documentUrl = getDocumentUrl();
+      console.log('Opening document:', documentUrl);
+      window.open(documentUrl, '_blank');
+    } catch (error) {
+      console.error('Failed to open document:', error);
+      
+      // In development, try fallback ports
+      if (process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost') {
+        const fallbackPorts = [5000, 3001];
+        let opened = false;
+        
+        for (const port of fallbackPorts) {
+          try {
+            const documentUrl = `http://localhost:${port}/uploads/${filename}`;
+            window.open(documentUrl, '_blank');
+            opened = true;
+            break;
+          } catch (error) {
+            continue;
+          }
+        }
+        
+        if (!opened) {
+          alert(`Unable to open document: ${filename}\nTeam: ${teamName}\nMember: ${memberName}\n\nPlease ensure the server is running.`);
+        }
+      } else {
+        alert(`Unable to open document: ${filename}\nTeam: ${teamName}\nMember: ${memberName}\n\nPlease check if the document exists on the server.`);
+      }
     }
   };
 
