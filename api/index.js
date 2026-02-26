@@ -110,7 +110,7 @@ const upload = multer({
       ? cb(null, true)
       : cb(new Error('Only JPG, PNG and PDF files are allowed.'), false);
   },
-  limits: { fileSize: 50 * 1024 }, // 50 KB
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
 });
 
 // ─── Routes ───────────────────────────────────────────────────────────────
@@ -157,6 +157,28 @@ app.post(
         projectCategory, projectTitle, projectDescription, projectTechStack,
         projectGithubUrl, projectDemoUrl, teamMembers,
       } = req.body;
+
+      // Validate required fields
+      if (!name || !email || !phone) {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Name, email, and phone are required',
+          missing: { name: !name, email: !email, phone: !phone }
+        });
+      }
+
+      if (!projectCategory || !projectTitle || !projectDescription || !projectTechStack) {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'All project details are required',
+          missing: { 
+            projectCategory: !projectCategory, 
+            projectTitle: !projectTitle, 
+            projectDescription: !projectDescription, 
+            projectTechStack: !projectTechStack 
+          }
+        });
+      }
 
       // Parse teamMembers if it's a JSON string
       let parsedTeamMembers = [];
@@ -229,8 +251,30 @@ app.post(
       console.error('Registration Error Details:', {
         message: err.message,
         stack: err.stack,
-        name: err.name
+        name: err.name,
+        code: err.code
       });
+      
+      // Handle specific errors
+      if (err.name === 'ValidationError') {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Validation failed',
+          error: err.message,
+          details: Object.keys(err.errors).map(key => ({
+            field: key,
+            message: err.errors[key].message
+          }))
+        });
+      }
+      
+      if (err.code === 11000) {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Email already registered'
+        });
+      }
+      
       res.status(500).json({ 
         success: false, 
         message: 'Registration failed',

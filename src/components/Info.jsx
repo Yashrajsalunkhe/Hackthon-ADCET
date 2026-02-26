@@ -265,6 +265,8 @@ const Info = () => {
         body: submitData,
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setSubmitStatus('success');
         // Reset form after successful submission
@@ -286,11 +288,16 @@ const Info = () => {
         });
         setCurrentStep(1);
       } else {
-        throw new Error('Submission failed');
+        // Show detailed error message from API
+        const errorMessage = data.message || 'Submission failed';
+        console.error('API Error:', data);
+        throw new Error(errorMessage);
       }
     } catch (error) {
       console.error('Submission error:', error);
       setSubmitStatus('error');
+      // Store error message to display to user
+      setErrors(prev => ({ ...prev, submit: error.message }));
     } finally {
       setIsSubmitting(false);
     }
@@ -991,7 +998,7 @@ const Info = () => {
                 <AlertCircle size={24} />
                 <div>
                   <h4>Submission Failed</h4>
-                  <p>There was an error submitting your registration. Please try again or contact support.</p>
+                  <p>{errors.submit || 'There was an error submitting your registration. Please try again or contact support.'}</p>
                 </div>
               </div>
             )}
