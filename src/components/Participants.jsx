@@ -218,6 +218,14 @@ const Participants = () => {
                     ))}
                   </div>
 
+                  {/* Team Members Count */}
+                  {participant.teamMembers && participant.teamMembers.length > 0 && (
+                    <div className="team-info-mini">
+                      <Users size={12} />
+                      <span>Team of {participant.teamMembers.length + 1}</span>
+                    </div>
+                  )}
+
                   {participant.projectGithubUrl && (
                     <a href={participant.projectGithubUrl} target="_blank" rel="noopener noreferrer" className="github-link-mini">
                       <ExternalLink size={12} />

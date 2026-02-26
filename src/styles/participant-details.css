@@ -320,6 +320,92 @@
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
 }
 
+/* Team Members Section */
+.pd-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.pd-team-member {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.pd-team-member:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+.pd-team-member.leader {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(52, 211, 153, 0.05);
+}
+
+.pd-team-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9CA3AF;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pd-team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pd-team-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pd-team-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.leader-badge {
+  font-size: 0.75rem;
+  background: rgba(52, 211, 153, 0.2);
+  color: #34D399;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.pd-team-email {
+  font-size: 0.9rem;
+  color: #9CA3AF;
+  margin: 2px 0;
+  word-break: break-all;
+}
+
+.pd-team-phone {
+  font-size: 0.9rem;
+  color: #9CA3AF;
+  margin: 2px 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .pd-container {
@@ -338,5 +424,20 @@
 
   .pd-info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pd-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pd-team-member {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .pd-team-name {
+    justify-content: center;
   }
 }

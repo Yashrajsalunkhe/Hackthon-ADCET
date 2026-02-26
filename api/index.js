@@ -291,7 +291,7 @@ app.get('/api/registrations', async (req, res) => {
     await connectDB();
     const registrations = await Registration.find()
       .sort({ createdAt: -1 })
-      .select('-governmentDocument -collegeId'); // don't send binary blobs in list
+      .select('-governmentDocument -collegeId -teamMembers.governmentDocument -teamMembers.collegeId'); // don't send binary blobs in list
 
     res.json({ success: true, count: registrations.length, data: registrations });
   } catch (err) {

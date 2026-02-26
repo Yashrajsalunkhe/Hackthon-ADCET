@@ -531,6 +531,19 @@
   color: #3b82f6;
 }
 
+.team-info-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+  font-size: 0.75rem;
+  color: #34d399;
+  padding: 0.25rem 0.6rem;
+  background: rgba(52, 211, 153, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
 .card-footer {
   display: flex;
   justify-content: space-between;
